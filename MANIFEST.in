@@ -1,4 +1,4 @@
-include README.md NOTICE.md LICENSE AGENTS.md environment.yml
+include README.md NOTICE.md LICENSE AGENTS.md environment.yml .gitattributes
 include .github/workflows/tests.yml
 include .github/workflows/release.yml
 recursive-include markdown *.md *.json

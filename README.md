@@ -177,7 +177,9 @@ The exporter saves individual tensors and provenance records, the canonical
 feature schema, and a complete `(N, 27500)` feature matrix with ordered sample
 IDs when every row succeeds. Use the [sample guide](examples/protein_ligand/README.md)
 and [manifest](examples/protein_ligand/manifest.csv) to prepare your own batch.
-Sample provenance and redistribution status are recorded with the data.
+Sample provenance and redistribution status are recorded with the data. Git
+preserves these structure files byte-for-byte on every platform, including
+Windows, so their recorded SHA-256 checksums remain valid after cloning.
 
 Read the [full workflow guide](workflows/protein_ligand_prediction/README.md) for
 input preparation, channel/statistic meanings, resource guards and output files.

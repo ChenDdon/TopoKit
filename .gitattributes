@@ -1,0 +1,3 @@
+# Preserve the exact input bytes recorded in examples/protein_ligand/SOURCE.json.
+# In particular, Windows core.autocrlf must not alter structure-file hashes.
+examples/protein_ligand/structures/** -text

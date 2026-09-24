@@ -58,8 +58,8 @@ def check_sdist(path):
             return handle.read()
 
         required = {
-            "README.md", "NOTICE.md", "LICENSE", "environment.yml",
-            ".github/workflows/tests.yml", "markdown/CHANGELOG.md",
+            "README.md", "NOTICE.md", "LICENSE", "environment.yml", ".gitattributes",
+            ".github/workflows/tests.yml", ".github/workflows/release.yml", "markdown/CHANGELOG.md",
             "examples/point_cloud.py", "examples/data/README.md",
             "examples/data/point_cloud_24.csv", "examples/data/point_cloud_24.json",
             "examples/data/data_6PT3_receptor.pdb", "examples/data/data_6PT3_ligand.mol2",
@@ -112,7 +112,9 @@ def check_sdist(path):
                 assert not relative.is_absolute() and ".." not in relative.parts
                 member = f"{SAMPLE_DIRECTORY}/{relative}"
                 assert member in names, f"Manifest input absent from source archive: {member}"
-                assert hashlib.sha256(read(member)).hexdigest() == expected_files[str(relative)]
+                assert hashlib.sha256(read(member)).hexdigest() == expected_files[str(relative)], (
+                    f"Source input checksum mismatch: {member}"
+                )
     print("Source archive: tutorials, recipes, agent skills and ten verified pairs; generated pressure outputs excluded.")
 
 

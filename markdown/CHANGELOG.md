@@ -3022,3 +3022,14 @@ The platform/release results are recorded by GitHub Actions for the release tag;
 local archive and test evidence are retained outside the repository. Structure
 inputs keep their source provenance and terms rather than inheriting the MIT
 code license. Full pretrained sequence inference is outside these release checks.
+
+## 2026-09-24 — Preserve sample bytes in Windows clones
+
+The initial GitHub matrix exposed automatic line-ending conversion in Windows
+checkouts: all source tests passed, but packaged sample hashes did not match
+SOURCE.json. Added a narrowly scoped `.gitattributes` rule disabling conversion
+for the checksummed structures, included it in source distributions, and kept
+strict distribution hashes with more informative failures. README and validation
+notes explain this cross-platform guarantee. No runtime API, scientific input,
+expected hash, feature recipe or notebook changed. Linux/macOS and clean local
+archive checks passed; the subsequent GitHub matrix verifies the Windows fix.

@@ -2,6 +2,20 @@
 
 ## 2026-09-24 — Initial GitHub release preparation
 
+The first GitHub CI run passed on Linux and macOS with both Python versions.
+Windows passed source tests but caught a sample-data checksum mismatch in the
+source archive: Git's automatic line-ending conversion changed the checked-out
+PDB/MOL2 bytes. `.gitattributes` now disables text conversion specifically for
+the ten checksummed structure pairs. The checksum checks remain strict and
+report the affected filename; no scientific inputs or expected hashes changed.
+Subsequent platform results are available in GitHub Actions.
+
+A clean export of the uploaded commit passed 1,278 tests, with 24 skipped and
+one external-weight inference test deselected; supervised TopoFormer tests were
+excluded. The extra skip versus the working-copy run is an intentionally absent
+generated local artifact. A base-only wheel installation passed both isolated
+smoke tests and all ten pairs using NumPy 2.5.3 and SciPy 1.18.1.
+
 The public source is attached to `git@github.com:ChenDdon/TopoKit.git`, preserving
 the repository's initial commit and removing its placeholder `tempfile`.
 The publication file set excludes caches, builds, generated example results,
