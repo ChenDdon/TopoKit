@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "recipe_id": "sequence-esm2-t33-cpz-bos-v1",
+  "scope": "frozen sequence feature extraction only",
+  "selected_model_strategy": "FS-AU",
+  "selected_model_recipe_id": "sequence-esm2-t33-cpz-bos-nmi-sqrt-gbdt-v1",
+  "installed_api": "topokit.workflows.protein_ligand_prediction.sequence.SequenceEncoder",
+  "constructor": {"ligand_profile": "cpz", "device": "cpu"},
+  "protein": {
+    "model": "facebook/esm2_t33_650M_UR50D",
+    "revision": "08e4846e537177426273712802403f7ba8261b6c",
+    "source": "https://huggingface.co/facebook/esm2_t33_650M_UR50D/tree/08e4846e537177426273712802403f7ba8261b6c",
+    "input": "explicit caller-selected full protein chains as uppercase amino-acid strings",
+    "window_residues": 1022,
+    "window_overlap": 0,
+    "layer": 33,
+    "pooling": "mean of final hidden states excluding BOS, EOS and padding; residue-count-weighted means across windows and chains; retain repeated-chain multiplicity",
+    "width": 1280,
+    "asset_sha256": {
+      "model.safetensors": "a08adabb949fa67ad3c14b509d04fd60368b35007b0095e3358f81200c4f4db0",
+      "config.json": "539095c22efc52a09d6147074ba4ca119f76a890df5901213b2b55f7d2f96b2b",
+      "special_tokens_map.json": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1",
+      "tokenizer_config.json": "7e9161ecdb548ec45a41cbc6b24aa4476fdd418461f491c4207baa99419a29ad",
+      "vocab.txt": "0b82cc0a7c7cf9e567b1e5892d793285b9fbae822c964ca48696f7db44598e03"
+    }
+  },
+  "ligand": {
+    "model": "WeilabMSU/PretrainModels/chembl27_pubchem_zinc_512",
+    "source": "https://github.com/WeilabMSU/PretrainModels",
+    "source_code_commit": "454393fb57bfbf12982745449dc3b6752b00d04d",
+    "input": "prepared canonical isomeric SMILES; no automatic molecular preparation or canonicalization",
+    "pooling": "final hidden state at BOS (token position 0)",
+    "width": 512,
+    "context_tokens_including_special": 256,
+    "default_truncation_policy": "reject",
+    "default_unknown_token_policy": "reject",
+    "explicit_truncation_policy": "with allow_truncation=True retain the first 254 content tokens then EOS; record omitted count",
+    "explicit_unknown_token_policy": "with allow_unknown=True map whole unsupported tokens to the existing UNK; record symbols and count",
+    "asset_sha256": {
+      "checkpoint_best.pt": "c47887518a1c72591445f972b57145f68c820bbe50f7f3c36ed8d4e56b7add1d",
+      "dict.txt": "beccc7cd81c5e0e921bd55b918eaca34b54433aa969cac77b62b7817c04f4dcd"
+    }
+  },
+  "output": {
+    "shape": [1792],
+    "dtype": "float32",
+    "order": ["protein_0:1280", "ligand_1280:1792"],
+    "scaling": "none",
+    "finite_required": true
+  },
+  "execution": {
+    "frozen_weights": true,
+    "evaluation_mode": true,
+    "autograd": false,
+    "autocast": false,
+    "model_downloads": false,
+    "training": false,
+    "weights_bundled": false,
+    "trusted_local_assets_required": true
+  },
+  "historical_api": {
+    "default_ligand_profile": "chembl27",
+    "default_feature_recipe_id": "sequence-esm2-t33-chembl27-bos-v1",
+    "model": "WeilabMSU/PretrainModels/chembl27_512",
+    "checkpoint_sha256": "8f4b94db0b35514068b755313a1630233041a1f99714003ad76c530dbc979924",
+    "dictionary_sha256": "65fd0c5ca8af7403bd170155c9740b63273fb203ef347c856a0e9d72045acc7c",
+    "make_gbdt_and_predict_gbdt": "retain original FS-AQ settings and bundle identity; not the selected FS-AU training or inference route"
+  },
+  "provenance": {
+    "model_selection_receipt": "MODEL_SELECTION.json",
+    "asset_hash_authority": "retained CPZ_COPY.json and ESM_UPSTREAM.json/installed ESM metadata from the source study; assets are external",
+    "feature_history": "FS-AU reused the ESM-2/CPZ features of FS-AS; selected GBDT parameters do not change embeddings",
+    "selected_gbdt_parameters_information_only": {
+      "n_estimators": 10000,
+      "learning_rate": 0.005,
+      "max_depth": 7,
+      "min_samples_split": 2,
+      "subsample": 0.4,
+      "max_features": "sqrt",
+      "random_state": null,
+      "n_iter_no_change": null,
+      "scaling": "training-only StandardScaler embedded in each saved pipeline"
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "environment": {
+    "python": "3.12.2 | packaged by conda-forge | (main, Feb 16 2024, 20:54:21) [Clang 16.0.6 ]",
+    "executable": "/opt/anaconda3/bin/python",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "seed": 20260905,
+  "notes": [
+    "Five interleaved timed repeats with alternating order after warmup/equivalence; shared desktop environment, no concurrent subprocesses launched by this script.",
+    "Prototype only; production source unmodified.",
+    "Flag check compares full exact filtration, GF(2/3/5) homology and interval provenance, including zero bars.",
+    "Nearest-query result is kernel-only, uses scalar float squaring to preserve baseline arithmetic; centers need batching inside full alpha algorithm.",
+    "20 extra seeded arbitrary-label flag cases and deliberate validation failure checked."
+  ],
+  "results": [
+    {
+      "name": "complete_27_vertices_flag_through_dimension_3_including_graph_setup",
+      "baseline": {
+        "median_seconds": 0.08089245902374387,
+        "samples_seconds": [
+          0.08089245902374387,
+          0.08204687491524965,
+          0.07504374999552965,
+          0.07497116690501571,
+          0.08352691703476012
+        ]
+      },
+      "candidate": {
+        "median_seconds": 0.028526457957923412,
+        "samples_seconds": [
+          0.021550667006522417,
+          0.029572125058621168,
+          0.02946737501770258,
+          0.027592957951128483,
+          0.028526457957923412
+        ]
+      },
+      "speedup": 2.8356993757535696,
+      "equivalence": "passed",
+      "num_simplices": 20853
+    },
+    {
+      "name": "validate_same_27_vertex_flag_all_checks_retained",
+      "baseline": {
+        "median_seconds": 0.10385716601740569,
+        "samples_seconds": [
+          0.10413716698531061,
+          0.10451279091648757,
+          0.10385716601740569,
+          0.1035365000134334,
+          0.10376058390829712
+        ]
+      },
+      "candidate": {
+        "median_seconds": 0.012865416007116437,
+        "samples_seconds": [
+          0.012928041978739202,
+          0.012694249977357686,
+          0.012931041070260108,
+          0.012541582924313843,
+          0.012865416007116437
+        ]
+      },
+      "speedup": 8.072585135215032,
+      "equivalence": "passed"
+    },
+    {
+      "name": "boundary_rank_d1_path_2000_vertices_GF2",
+      "baseline": {
+        "median_seconds": 0.0011800420470535755,
+        "samples_seconds": [
+          0.0011775000020861626,
+          0.0011800420470535755,
+          0.0011784160742536187,
+          0.0012262919917702675,
+          0.0011823750101029873
+        ]
+      },
+      "candidate": {
+        "median_seconds": 0.0006970419781282544,
+        "samples_seconds": [
+          0.0006693339673802257,
+          0.0006970419781282544,
+          0.0007125830743461847,
+          0.0007272920338436961,
+          0.0006719999946653843
+        ]
+      },
+      "speedup": 1.6929282368650256,
+      "equivalence": "passed",
+      "rank": 1999
+    },
+    {
+      "name": "boundary_rank_d1_path_10000_vertices_GF2",
+      "baseline": {
+        "median_seconds": 0.00722612498793751,
+        "samples_seconds": [
+          0.0073850000044330955,
+          0.00722612498793751,
+          0.007118042092770338,
+          0.00734308292157948,
+          0.0072170409839600325
+        ]
+      },
+      "candidate": {
+        "median_seconds": 0.003437999985180795,
+        "samples_seconds": [
+          0.0033333749743178487,
+          0.003437999985180795,
+          0.0036214159335941076,
+          0.0034693339839577675,
+          0.003359207999892533
+        ]
+      },
+      "speedup": 2.101839737953782,
+      "equivalence": "passed",
+      "rank": 9999
+    },
+    {
+      "name": "alpha_nearest_query_kernel_12000_centers_1000_points_only",
+      "baseline": {
+        "median_seconds": 0.09237804100848734,
+        "samples_seconds": [
+          0.09276929195038974,
+          0.09226670896168798,
+          0.09237804100848734,
+          0.09319829207379371,
+          0.09186483302619308
+        ]
+      },
+      "candidate": {
+        "median_seconds": 0.005577457952313125,
+        "samples_seconds": [
+          0.005577457952313125,
+          0.0054723749635741115,
+          0.005729250027798116,
+          0.005638666916638613,
+          0.005519416066817939
+        ]
+      },
+      "speedup": 16.56274987607493,
+      "equivalence": "passed"
+    },
+    {
+      "name": "alpha_500_points_3d_full_builder_chunked_exact_queries",
+      "baseline": {
+        "median_seconds": 0.3880413749720901,
+        "samples_seconds": [
+          0.3901494999881834,
+          0.3880413749720901,
+          0.3875486250035465,
+          0.3791089999722317,
+          0.3884382920805365
+        ]
+      },
+      "candidate": {
+        "median_seconds": 0.2667589170159772,
+        "samples_seconds": [
+          0.2630538330413401,
+          0.264076792052947,
+          0.2671720840735361,
+          0.27011341706383973,
+          0.2667589170159772
+        ]
+      },
+      "speedup": 1.4546519355859016,
+      "equivalence": "passed",
+      "additional_exact_alpha_cases": 132,
+      "exact_and_nextafter_cutoff_checks": 168,
+      "num_simplices": 13709
+    }
+  ]
+}

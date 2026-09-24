@@ -1,0 +1,11 @@
+sample_id,protein_file,ligand_file
+2lk1,structures/2lk1/protein.pdb,structures/2lk1/ligand.mol2
+6fhu,structures/6fhu/protein.pdb,structures/6fhu/ligand.mol2
+6v1c,structures/6v1c/protein.pdb,structures/6v1c/ligand.mol2
+2m3z,structures/2m3z/protein.pdb,structures/2m3z/ligand.mol2
+2p0x,structures/2p0x/protein.pdb,structures/2p0x/ligand.mol2
+2kaw,structures/2kaw/protein.pdb,structures/2kaw/ligand.mol2
+2kfx,structures/2kfx/protein.pdb,structures/2kfx/ligand.mol2
+4lwv,structures/4lwv/protein.pdb,structures/4lwv/ligand.mol2
+4jv7,structures/4jv7/protein.pdb,structures/4jv7/ligand.mol2
+4aq3,structures/4aq3/protein.pdb,structures/4aq3/ligand.mol2

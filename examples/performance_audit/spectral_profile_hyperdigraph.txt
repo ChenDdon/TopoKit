@@ -1,0 +1,43 @@
+         6779159 function calls (6778917 primitive calls) in 1.677 seconds
+
+   Ordered by: cumulative time
+   List reduced from 376 to 35 due to restriction <35>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    1.695    1.695 analysis.py:22(analyze)
+        4    0.006    0.001    0.989    0.247 chain_complex.py:419(build_filtered_chain_complex)
+        1    0.000    0.000    0.652    0.652 __init__.py:23(persistence)
+        1    0.001    0.001    0.652    0.652 hyperdigraph.py:87(persistence)
+        1    0.002    0.002    0.650    0.650 persistence.py:402(compute_persistence)
+        9    0.000    0.000    0.556    0.062 __init__.py:27(laplacian)
+        9    0.000    0.000    0.556    0.062 hyperdigraph.py:127(laplacian)
+        3    0.000    0.000    0.486    0.162 __init__.py:19(homology)
+        3    0.001    0.000    0.486    0.162 hyperdigraph.py:73(homology)
+  1047961    0.404    0.000    0.453    0.000 gf2.py:8(iter_set_bits)
+        3    0.000    0.000    0.450    0.150 chain_complex.py:536(compute_homology)
+        3    0.001    0.000    0.442    0.147 chain_complex.py:517(build_chain_complex)
+        4    0.016    0.004    0.407    0.102 chain_complex.py:353(_express_boundaries)
+    42058    0.080    0.000    0.381    0.000 gf2.py:98(apply_columns)
+        9    0.000    0.000    0.379    0.042 hyperdigraph.py:105(_spectrum)
+        9    0.001    0.000    0.376    0.042 _spectral.py:19(solve_symmetric)
+       16    0.004    0.000    0.278    0.017 chain_complex.py:282(_construct_omega_basis)
+        3    0.116    0.039    0.264    0.088 chain_complex.py:138(_filtered_column_compatible_basis)
+        7    0.261    0.037    0.261    0.037 linalg.py:1090(eigvalsh)
+       20    0.000    0.000    0.176    0.009 chain_complex.py:441(<genexpr>)
+       16    0.040    0.002    0.176    0.011 chain_complex.py:103(_prepare_boundary)
+       12    0.000    0.000    0.137    0.011 hyperdigraph.py:38(_snapshot)
+       12    0.001    0.000    0.137    0.011 model.py:373(snapshot)
+       12    0.030    0.002    0.123    0.010 model.py:107(__init__)
+        7    0.000    0.000    0.109    0.016 _interface.py:307(matmat)
+        7    0.000    0.000    0.109    0.016 _interface.py:586(_matmat)
+        7    0.003    0.000    0.109    0.016 spectral.py:213(matmat)
+       58    0.006    0.000    0.106    0.002 spectral.py:210(apply)
+    71190    0.031    0.000    0.090    0.000 model.py:46(_validate_hyperedge)
+    13421    0.003    0.000    0.087    0.000 {built-in method builtins.max}
+       16    0.000    0.000    0.085    0.005 chain_complex.py:338(_max_late_faces_at_birth)
+    32436    0.007    0.000    0.084    0.000 chain_complex.py:342(<genexpr>)
+  1363054    0.081    0.000    0.081    0.000 {method 'bit_length' of 'int' objects}
+       12    0.030    0.002    0.081    0.007 gf2.py:107(transpose_columns)
+    32433    0.009    0.000    0.077    0.000 {built-in method builtins.sum}
+
+

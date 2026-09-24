@@ -1,0 +1,313 @@
+{
+  "date": "2026-09-05",
+  "python": "3.12.2",
+  "numpy": "1.26.4",
+  "scipy": "1.13.1",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "filepath": "/opt/anaconda3/lib/libopenblasp-r0.3.21.dylib",
+      "version": "0.3.21",
+      "threading_layer": "pthreads",
+      "architecture": "armv8"
+    }
+  ],
+  "diagonal": [
+    {
+      "n": 400,
+      "generic_solver": {
+        "median_seconds": 0.0006603749934583902,
+        "runs_seconds": [
+          0.0006602909415960312,
+          0.0006770830368623137,
+          0.0006603749934583902
+        ]
+      },
+      "sort_diagonal": {
+        "median_seconds": 1.5409896150231361e-06,
+        "runs_seconds": [
+          2.3330794647336006e-06,
+          1.7910497263073921e-06,
+          1.4998950064182281e-06,
+          1.5409896150231361e-06,
+          1.4170072972774506e-06
+        ]
+      },
+      "kernel_speedup": 428.53954823600515,
+      "bitwise_equal": true,
+      "one_dense_matrix_bytes": 1280000,
+      "diagonal_bytes": 3200
+    },
+    {
+      "n": 1000,
+      "generic_solver": {
+        "median_seconds": 0.005889583029784262,
+        "runs_seconds": [
+          0.005889583029784262,
+          0.006676750024780631,
+          0.005754166981205344
+        ]
+      },
+      "sort_diagonal": {
+        "median_seconds": 4.00003045797348e-06,
+        "runs_seconds": [
+          4.375004209578037e-06,
+          4.125060513615608e-06,
+          3.915978595614433e-06,
+          3.959052264690399e-06,
+          4.00003045797348e-06
+        ]
+      },
+      "kernel_speedup": 1472.384545983702,
+      "bitwise_equal": true,
+      "one_dense_matrix_bytes": 8000000,
+      "diagonal_bytes": 8000
+    }
+  ],
+  "diagonal_resource_limit": {
+    "n": 2100,
+    "public_error": "eigensolver workspace estimate 282,240,000 bytes exceeds max_dense_bytes=268,435,456; request fewer modes or raise the budget",
+    "exact_full_spectrum_count": 2100,
+    "spectrum_bytes": 16800
+  },
+  "matrix_free_simplicial": {
+    "star_edges": 700,
+    "laplacian_nnz": 490000,
+    "boundaries_nnz": 1400,
+    "laplacian_csr_bytes": 5882804,
+    "boundaries_csr_bytes": 22412,
+    "assembly": {
+      "median_seconds": 0.004559332970529795,
+      "runs_seconds": [
+        0.004559332970529795,
+        0.004597791936248541,
+        0.0046475830022245646,
+        0.00454925000667572,
+        0.004428790998645127
+      ]
+    },
+    "max_matvec_absolute_difference": 4.3520742565306136e-14,
+    "scope": "same real operator, floating-point summation order differs; no eigensolver speedup claimed"
+  },
+  "engine_reuse": {
+    "factor_points": [
+      12,
+      24
+    ],
+    "scales": 9,
+    "degrees": 3,
+    "baseline": {
+      "median_seconds": 0.5054892500629649,
+      "runs_seconds": [
+        0.5054892500629649,
+        0.5121293329866603,
+        0.5027768329018727
+      ]
+    },
+    "call_scoped_engine": {
+      "median_seconds": 0.44267295801546425,
+      "runs_seconds": [
+        0.4423101249849424,
+        0.44267295801546425,
+        0.4458277500234544
+      ]
+    },
+    "speedup": 1.141902257434271,
+    "eigenvalues_bitwise_equal": true,
+    "basis_nullity_metadata_equal": true
+  },
+  "demo_profiles": {
+    "simplicial": {
+      "build": {
+        "median_seconds": 0.010807916056364775,
+        "runs_seconds": [
+          0.011066667037084699,
+          0.010697707999497652,
+          0.010807916056364775
+        ]
+      },
+      "analysis": {
+        "median_seconds": 0.010828042053617537,
+        "runs_seconds": [
+          0.010828042053617537,
+          0.011385750025510788,
+          0.010769625077955425
+        ]
+      },
+      "interval_count": 47,
+      "matrix_sizes": {
+        "1.0": [
+          24,
+          42,
+          12
+        ],
+        "3.0": [
+          24,
+          104,
+          132
+        ],
+        "5.0": [
+          24,
+          113,
+          158
+        ]
+      }
+    },
+    "hyperdigraph": {
+      "build": {
+        "median_seconds": 0.05580895801540464,
+        "runs_seconds": [
+          0.04961816594004631,
+          0.060698750079609454,
+          0.05580895801540464
+        ]
+      },
+      "analysis": {
+        "median_seconds": 1.0452598750125617,
+        "runs_seconds": [
+          1.0504641250008717,
+          1.0440224170451984,
+          1.0452598750125617
+        ]
+      },
+      "interval_count": 110,
+      "matrix_sizes": {
+        "1.0": [
+          24,
+          0,
+          0
+        ],
+        "2.0": [
+          24,
+          84,
+          84
+        ],
+        "3.0": [
+          24,
+          208,
+          1334
+        ]
+      }
+    },
+    "interaction": {
+      "build": {
+        "median_seconds": 0.04211091704200953,
+        "runs_seconds": [
+          0.04184795799665153,
+          0.04211091704200953,
+          0.04253687500022352
+        ]
+      },
+      "analysis": {
+        "median_seconds": 0.3291337920818478,
+        "runs_seconds": [
+          0.3278732090257108,
+          0.3343006659997627,
+          0.3291337920818478
+        ]
+      },
+      "interval_count": 99,
+      "matrix_sizes": {
+        "1.0": [
+          12,
+          60,
+          66
+        ],
+        "3.0": [
+          12,
+          164,
+          766
+        ],
+        "5.0": [
+          12,
+          200,
+          1216
+        ]
+      }
+    }
+  },
+  "barcode_queries": {
+    "simplicial": {
+      "scales": [
+        1.0,
+        3.0,
+        5.0
+      ],
+      "baseline": {
+        "median_seconds": 0.002095916075631976,
+        "runs_seconds": [
+          0.0020952500635758042,
+          0.002095916075631976,
+          0.002280500018969178
+        ]
+      },
+      "barcode_queries": {
+        "median_seconds": 0.00040537503082305193,
+        "runs_seconds": [
+          0.00041504204273223877,
+          0.00040537503082305193,
+          0.0003992089768871665
+        ]
+      },
+      "speedup": 5.170313700319774,
+      "betti_exact_equal": true,
+      "scope": "barcodes plus Betti tuples only; not a substitute for chain/basis diagnostics or representatives"
+    },
+    "hyperdigraph": {
+      "scales": [
+        1.0,
+        2.0,
+        3.0
+      ],
+      "baseline": {
+        "median_seconds": 0.6073867080267519,
+        "runs_seconds": [
+          0.6038933750241995,
+          0.6073867080267519,
+          0.6151255000149831
+        ]
+      },
+      "barcode_queries": {
+        "median_seconds": 0.37451862497255206,
+        "runs_seconds": [
+          0.3761406249832362,
+          0.37451862497255206,
+          0.36983470793347806
+        ]
+      },
+      "speedup": 1.6217797127479745,
+      "betti_exact_equal": true,
+      "scope": "barcodes plus Betti tuples only; not a substitute for chain/basis diagnostics or representatives"
+    },
+    "interaction": {
+      "scales": [
+        1.0,
+        3.0,
+        5.0
+      ],
+      "baseline": {
+        "median_seconds": 0.03501341596711427,
+        "runs_seconds": [
+          0.03479708300437778,
+          0.03514891699887812,
+          0.03501341596711427
+        ]
+      },
+      "barcode_queries": {
+        "median_seconds": 0.008833041065372527,
+        "runs_seconds": [
+          0.00898379203863442,
+          0.008833041065372527,
+          0.008641166030429304
+        ]
+      },
+      "speedup": 3.9639140934569634,
+      "betti_exact_equal": true,
+      "scope": "barcodes plus Betti tuples only; not a substitute for chain/basis diagnostics or representatives"
+    }
+  }
+}

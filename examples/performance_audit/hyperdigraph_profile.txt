@@ -1,0 +1,33 @@
+         4538616 function calls in 1.015 seconds
+
+   Ordered by: cumulative time
+   List reduced from 100 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.003    0.003    1.027    1.027 persistence.py:402(compute_persistence)
+        1    0.004    0.004    0.989    0.989 chain_complex.py:419(build_filtered_chain_complex)
+        1    0.011    0.011    0.521    0.521 chain_complex.py:353(_express_boundaries)
+   979779    0.468    0.000    0.515    0.000 gf2.py:8(iter_set_bits)
+    32458    0.090    0.000    0.503    0.000 gf2.py:98(apply_columns)
+        4    0.002    0.001    0.260    0.065 chain_complex.py:282(_construct_omega_basis)
+        1    0.126    0.126    0.252    0.252 chain_complex.py:138(_filtered_column_compatible_basis)
+        5    0.000    0.000    0.124    0.025 chain_complex.py:441(<genexpr>)
+        4    0.028    0.007    0.124    0.031 chain_complex.py:103(_prepare_boundary)
+  1369430    0.080    0.000    0.080    0.000 {method 'bit_length' of 'int' objects}
+        3    0.021    0.007    0.060    0.020 gf2.py:107(transpose_columns)
+     7555    0.002    0.000    0.058    0.000 {built-in method builtins.max}
+        4    0.000    0.000    0.057    0.014 chain_complex.py:338(_max_late_faces_at_birth)
+    22474    0.004    0.000    0.056    0.000 chain_complex.py:342(<genexpr>)
+    22470    0.006    0.000    0.052    0.000 {built-in method builtins.sum}
+   109504    0.009    0.000    0.046    0.000 chain_complex.py:343(<genexpr>)
+   493942    0.037    0.000    0.037    0.000 {method 'get' of 'dict' objects}
+   727957    0.026    0.000    0.026    0.000 {built-in method builtins.len}
+    30256    0.006    0.000    0.023    0.000 gf2.py:48(insert)
+        8    0.000    0.000    0.023    0.003 gf2.py:94(rank)
+        9    0.002    0.000    0.023    0.003 gf2.py:23(__init__)
+        1    0.003    0.003    0.022    0.022 persistence.py:73(_ordinary_intervals_for_dimensions)
+    28286    0.003    0.000    0.021    0.000 gf2.py:56(add)
+    22446    0.011    0.000    0.021    0.000 chain_complex.py:96(_deletion_faces)
+        1    0.003    0.003    0.017    0.017 persistence.py:57(_filtered_records)
+
+

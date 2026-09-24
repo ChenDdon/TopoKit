@@ -1,0 +1,10 @@
+{
+  "name": "point_cloud_24",
+  "description": "Numerical 24-point fixture; no chemical interpretation is used by topokit.",
+  "coordinate_units": "input_units",
+  "coordinate_source": "examples/data/B12N12_cage.xyz in the integration source workspace",
+  "source_reference": "https://doi.org/10.1021/ja410088y",
+  "weights": "Uniform assigned direction weights of 1.0, not physical or alpha weights.",
+  "subset": "The first 12 original point IDs are selected. This is an ID-defined point group.",
+  "data_provenance_note": "Coordinates preserve their source attribution. The toolkit MIT code license does not replace source dataset notices. Local integration and reuse were authorized by the project owner."
+}

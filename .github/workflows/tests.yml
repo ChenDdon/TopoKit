@@ -1,0 +1,90 @@
+name: Tests and wheel
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ['3.10', '3.12']
+    env:
+      OPENBLAS_NUM_THREADS: 1
+      OMP_NUM_THREADS: 1
+      MKL_NUM_THREADS: 1
+      VECLIB_MAXIMUM_THREADS: 1
+      MPLBACKEND: Agg
+      PYTHONUTF8: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install source-test dependencies
+        run: python -m pip install ".[test,plot,ml]" build
+      - name: Record test environment
+        shell: python
+        run: |
+          from pathlib import Path
+          import platform
+          import subprocess
+          import sys
+          output = Path("test-results")
+          output.mkdir(exist_ok=True)
+          freeze = subprocess.run([sys.executable, "-m", "pip", "freeze"],
+                                  check=True, capture_output=True, text=True)
+          (output / "environment.txt").write_text(
+              sys.version + "\n" + platform.platform() + "\n" + freeze.stdout,
+              encoding="utf-8")
+      - name: Test source checkout
+        run: python -m pytest -q --junitxml=test-results/pytest.xml
+      - name: Build wheel and source archive
+        run: python -m build
+      - name: Check distribution contents
+        shell: python
+        run: |
+          from pathlib import Path
+          import subprocess
+          import sys
+          wheel, = Path("dist").glob("*.whl")
+          sdist, = Path("dist").glob("*.tar.gz")
+          subprocess.run([sys.executable, "tests/check_distribution.py", str(wheel), str(sdist)], check=True)
+      - name: Smoke-test installed wheel with base dependencies only
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          import subprocess
+          import venv
+          root = Path.cwd().resolve()
+          temporary = Path(os.environ["RUNNER_TEMP"]).resolve()
+          environment = temporary / "topokit-wheel-env"
+          venv.EnvBuilder(with_pip=True).create(environment)
+          python = environment / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+          wheel, = (root / "dist").glob("*.whl")
+          subprocess.run([str(python), "-m", "pip", "install", str(wheel)], check=True)
+          subprocess.run([str(python), "-I", str(root / "tests/wheel_smoke.py"),
+                          str(temporary / "topokit-core-smoke"),
+                          str(root / "examples/data/point_cloud_24.csv")], cwd=temporary, check=True)
+          subprocess.run([str(python), "-I", str(root / "tests/protein_ligand_wheel_smoke.py"),
+                          str(root / "examples/protein_ligand/manifest.csv")], cwd=temporary, check=True)
+      - name: Run repository point-cloud example
+        run: python examples/point_cloud.py --output examples/output
+      - name: Preserve test reports and distributions
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checks-${{ matrix.os }}-python${{ matrix.python }}
+          path: |
+            test-results/
+            dist/
+          if-no-files-found: ignore
+          retention-days: 14

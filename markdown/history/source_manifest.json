@@ -1,0 +1,110 @@
+{
+  "captured": "2026-09-03",
+  "purpose": "Checksums of first-party source files before topokit integration; integrated files may intentionally differ.",
+  "files": [
+    {
+      "source": "Interaction_Topo/src/interaction_topology/__init__.py",
+      "sha256": "4adf761631f3cf52c8f0c9469a0f80c4fad12f53d621cc44b6497349fa4bd540"
+    },
+    {
+      "source": "Interaction_Topo/src/interaction_topology/converters.py",
+      "sha256": "9e8282aa40c8b8002bd7d10b035ba0d9fd4bad7e4b540f8e7e550e55d040092d"
+    },
+    {
+      "source": "Interaction_Topo/src/interaction_topology/interaction.py",
+      "sha256": "cf8bdf038fa0b0bd8fe7eaa93543e7d5f9560e73e7dc5dfe7918225fc12ea1d8"
+    },
+    {
+      "source": "Interaction_Topo/src/interaction_topology/laplacian.py",
+      "sha256": "1e1c1a47d3a5fa254172643d59f0be1358c89173ad710f9727e06653ac6aa604"
+    },
+    {
+      "source": "Interaction_Topo/src/interaction_topology/model.py",
+      "sha256": "f910d76e9a6fbb5676a6f4272c38df75b576c655816f1ed772b3999f9a0f111b"
+    },
+    {
+      "source": "Interaction_Topo/src/interaction_topology/persistence.py",
+      "sha256": "c8e48a2340919033706f31498232dd97fcae505cdedcf9b15b21e5dc66360aa5"
+    },
+    {
+      "source": "Interaction_Topo/src/interaction_topology/results.py",
+      "sha256": "d744b8b8d66f06f1afa5b5f6dab8f1ececaceaade96923f6f54038ec34576ce9"
+    },
+    {
+      "source": "hyperdigraph_topo/src/hyperdigraph_topo/__init__.py",
+      "sha256": "c1460606a01d0442f2b72e61bd143bc800eb1c7ff349c1bb206ddc01288390a5"
+    },
+    {
+      "source": "hyperdigraph_topo/src/hyperdigraph_topo/chain_complex.py",
+      "sha256": "062e2c29bfe0ef33f5aca21288a406d19f67a25a5018a1d0674d351747d21338"
+    },
+    {
+      "source": "hyperdigraph_topo/src/hyperdigraph_topo/converters.py",
+      "sha256": "da53b522694eaf87d22780a6a5b51e9df06d5d91b67c191b6d647ef88759ecf0"
+    },
+    {
+      "source": "hyperdigraph_topo/src/hyperdigraph_topo/gf2.py",
+      "sha256": "90c61eacbf0ccb02e1bcbcb10e70b25c961aa7335c510c277ee5aa22da342fef"
+    },
+    {
+      "source": "hyperdigraph_topo/src/hyperdigraph_topo/laplacian.py",
+      "sha256": "0c5253c5860f39e8f7907dfee86967681501631fee408efe5c03eb3a2e708848"
+    },
+    {
+      "source": "hyperdigraph_topo/src/hyperdigraph_topo/model.py",
+      "sha256": "cf00a1a602845941fab5228fd1e0594a5816405a7a3991f76874e1cf276c0ae9"
+    },
+    {
+      "source": "hyperdigraph_topo/src/hyperdigraph_topo/path_compatible.py",
+      "sha256": "cef5cfe70ca7b3c42fdc5a7a5f28a3b6b492248838c0e05b1768179255ff2afb"
+    },
+    {
+      "source": "hyperdigraph_topo/src/hyperdigraph_topo/persistence.py",
+      "sha256": "4820754b4806bcb2362345b0dd0c15a841377ea3e515fbc5627188ab2f1fb626"
+    },
+    {
+      "source": "hyperdigraph_topo/src/hyperdigraph_topo/point_cloud.py",
+      "sha256": "2fb12bd5d7ea0d2a5d9edcdc07c2053767dd9e3cd60666ef42e457c24942661d"
+    },
+    {
+      "source": "hyperdigraph_topo/src/hyperdigraph_topo/results.py",
+      "sha256": "a418a258a593b244120b22a240533c2c1b37e60969d5491e3a8006a30777cdfa"
+    },
+    {
+      "source": "simplicial_topo/src/simplicial_topo/__init__.py",
+      "sha256": "9f6306bcf353cbc8d3bb96fe8e98a5776603dc60fab486f8af454ea3f2f6b5b9"
+    },
+    {
+      "source": "simplicial_topo/src/simplicial_topo/_validation.py",
+      "sha256": "a93cacaf086e8e0557cbcda7d6572d38495ee3363d1921ceac973a6f661bbee3"
+    },
+    {
+      "source": "simplicial_topo/src/simplicial_topo/algebra.py",
+      "sha256": "674641971830d888c8c87d1b18fb9a47937f9be6472a3b6abe42b51bac7379e1"
+    },
+    {
+      "source": "simplicial_topo/src/simplicial_topo/api.py",
+      "sha256": "63f06827508350288f6b2b29cec21e350f476048ecd1869e62a2971079422f1b"
+    },
+    {
+      "source": "simplicial_topo/src/simplicial_topo/builders.py",
+      "sha256": "e2aa6eade7fef15a97f4b2ef07f5edd9ce60fa005d3ed90ae531dbbf44d695ff"
+    },
+    {
+      "source": "simplicial_topo/src/simplicial_topo/complex.py",
+      "sha256": "5a96aecfd920ddc3897eae573d3b650a1b2438833c57420a6d3e370e0c6f8732"
+    },
+    {
+      "source": "simplicial_topo/src/simplicial_topo/homology.py",
+      "sha256": "40d7e0ce86d956ff6f4f0e373d011c7b312775a6df8ace743aa63fe116e6bc38"
+    },
+    {
+      "source": "simplicial_topo/src/simplicial_topo/laplacian.py",
+      "sha256": "07834834556092f184ce6c3f125f4d69426f957f512d00bbbf93914e44f6977a"
+    },
+    {
+      "source": "simplicial_topo/src/simplicial_topo/persistence.py",
+      "sha256": "17b3976424a28453ad701967c614f80e4a657839f84e89ed7f80b908b0416551"
+    }
+  ]
+}

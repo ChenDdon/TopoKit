@@ -1,0 +1,43 @@
+         116769 function calls (112977 primitive calls) in 0.023 seconds
+
+   Ordered by: cumulative time
+   List reduced from 249 to 35 due to restriction <35>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.023    0.023 analysis.py:22(analyze)
+        9    0.000    0.000    0.017    0.002 __init__.py:27(laplacian)
+        9    0.000    0.000    0.017    0.002 simplicial.py:130(laplacian)
+        9    0.000    0.000    0.009    0.001 laplacian.py:29(laplacian_matrix)
+       18    0.001    0.000    0.005    0.000 algebra.py:10(boundary_matrix)
+  207/171    0.000    0.000    0.005    0.000 _compressed.py:27(__init__)
+        3    0.000    0.000    0.005    0.002 __init__.py:19(homology)
+        9    0.000    0.000    0.005    0.001 simplicial.py:115(_spectrum_result)
+        3    0.000    0.000    0.005    0.002 simplicial.py:78(homology)
+        9    0.000    0.000    0.004    0.000 _spectral.py:19(solve_symmetric)
+       15    0.000    0.000    0.004    0.000 complex.py:130(at)
+     3755    0.002    0.000    0.004    0.000 complex.py:69(_store)
+        3    0.000    0.000    0.003    0.001 homology.py:21(homology)
+      105    0.001    0.000    0.003    0.000 {built-in method builtins.sorted}
+       78    0.000    0.000    0.002    0.000 complex.py:117(simplices)
+      297    0.000    0.000    0.002    0.000 _base.py:1329(_get_index_dtype)
+        9    0.002    0.000    0.002    0.000 linalg.py:1090(eigvalsh)
+40413/36657    0.002    0.000    0.002    0.000 {built-in method builtins.len}
+        9    0.000    0.000    0.002    0.000 algebra.py:80(boundary_rank)
+      297    0.001    0.000    0.002    0.000 _sputils.py:149(get_index_dtype)
+       18    0.000    0.000    0.002    0.000 _base.py:691(__matmul__)
+       18    0.000    0.000    0.002    0.000 _base.py:568(_matmul_dispatch)
+     5565    0.001    0.000    0.002    0.000 complex.py:120(<genexpr>)
+       18    0.000    0.000    0.002    0.000 _compressed.py:509(_matmul_sparse)
+       18    0.000    0.000    0.001    0.000 simplicial.py:53(_basis)
+       18    0.000    0.000    0.001    0.000 _compressed.py:1292(_binopt)
+      207    0.001    0.000    0.001    0.000 _compressed.py:132(check_format)
+       18    0.000    0.000    0.001    0.000 _coo.py:27(__init__)
+       45    0.000    0.000    0.001    0.000 _base.py:407(asformat)
+     7907    0.001    0.000    0.001    0.000 complex.py:25(facets)
+        1    0.000    0.000    0.001    0.001 __init__.py:23(persistence)
+        1    0.000    0.000    0.001    0.001 simplicial.py:97(persistence)
+        9    0.000    0.000    0.001    0.000 numeric.py:2170(allclose)
+        9    0.000    0.000    0.001    0.000 numeric.py:2249(isclose)
+        1    0.000    0.000    0.001    0.001 persistence.py:78(persistent_homology)
+
+

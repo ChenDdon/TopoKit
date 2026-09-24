@@ -1,0 +1,18 @@
+include README.md NOTICE.md LICENSE AGENTS.md environment.yml
+include .github/workflows/tests.yml
+include .github/workflows/release.yml
+recursive-include markdown *.md *.json
+recursive-include examples *.py *.md *.csv *.json *.ipynb
+recursive-include examples/data *.xyz *.pdb *.pdbqt *.mol2 *.sdf *.mol *.cif
+recursive-include examples/protein_ligand *.pdb *.mol2
+prune examples/output
+prune examples/pressure_test/results
+prune examples/pressure_test/transfer
+prune examples/pressure_test/readability
+exclude examples/pressure_test/AWS_STATUS.json
+recursive-include tests *.py
+recursive-include workflows *.py *.md *.sh *.json *.txt *.yml
+prune archive
+prune build
+prune dist
+global-exclude __pycache__ *.py[cod] .DS_Store

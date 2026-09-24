@@ -1,0 +1,87 @@
+{
+  "strategy_id": "FS-AN",
+  "reference_recipe_id": "hpcc-alpha15-cb4760366e92bd2e",
+  "model_family": "arithmetic mean of three StandardScaler + GradientBoostingRegressor pipelines",
+  "default_training_set": "general_v2020R1",
+  "training_count": 18498,
+  "parameters": {
+    "alpha": 0.9,
+    "ccp_alpha": 0.0,
+    "criterion": "deprecated",
+    "init": null,
+    "learning_rate": 0.005,
+    "loss": "squared_error",
+    "max_depth": 7,
+    "max_features": "sqrt",
+    "max_leaf_nodes": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "n_estimators": 10000,
+    "n_iter_no_change": null,
+    "subsample": 0.4,
+    "tol": 0.0001,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "seed_parameter": "random_state",
+  "aggregation": "arithmetic_mean",
+  "weights": [
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333
+  ],
+  "preprocessing": "Each pipeline applies its own fitted training-only StandardScaler once to raw float32 C-order features",
+  "target": "unscaled pK",
+  "ensemble_receipt_sha256": "a54cbcfe852d9cb432e37e1624bed7f927163f51d49cb9b7d2c98c88c0283a3a",
+  "members": [
+    {
+      "seed": 0,
+      "path": "seed_0",
+      "pipeline_sha256": "8c7d9eba55309f626cab2a76cc23007bf8c56377bf39ad8656d43e0e19a2981b",
+      "scaler_sha256": "2eea91f1bb01099ac411bbdde8184f35a5dcc04fa3a87925f5d0421b3e6aef8d",
+      "model_receipt_sha256": "ca6aeaf2bb6ecda03f2507306ec549f63189fdce43626f6f1ab63f77b450e430"
+    },
+    {
+      "seed": 1,
+      "path": "seed_1",
+      "pipeline_sha256": "3c078c3a8babba88ee0bd9e4cd329b4dbcfe723392786e232007c6aa4e518952",
+      "scaler_sha256": "2eea91f1bb01099ac411bbdde8184f35a5dcc04fa3a87925f5d0421b3e6aef8d",
+      "model_receipt_sha256": "46f47355f3820da03469187e4419033645add6e39a4f766419a97aa203d794a9"
+    },
+    {
+      "seed": 2,
+      "path": "seed_2",
+      "pipeline_sha256": "6a35515849e99292e17eb2c2b5b7612961c2c7181545541dff2b0b167332476f",
+      "scaler_sha256": "2eea91f1bb01099ac411bbdde8184f35a5dcc04fa3a87925f5d0421b3e6aef8d",
+      "model_receipt_sha256": "20245963f41978ea36fd3b15f8bbcfc3b92021ca96211cd61f839a8dd2e21dd9"
+    }
+  ],
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.5.2",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.0",
+    "joblib": "1.5.3"
+  },
+  "final_bundle": "datasets/protein_ligand_prediction/final/topology_gbdt/models/general_v2020R1",
+  "feature_selection_parameters": {
+    "n_estimators": 10000,
+    "learning_rate": 0.002,
+    "max_depth": 7,
+    "max_features": "sqrt",
+    "min_samples_split": 5,
+    "subsample": 0.8,
+    "random_state": 0,
+    "n_iter_no_change": null
+  },
+  "selection_role": "user-selected final general-v2020R1 three-seed consensus; refined ensembles retained for matched benchmarks",
+  "distribution": "trusted external companion bundles; no weights or fitted scalers embedded in the wheel"
+}

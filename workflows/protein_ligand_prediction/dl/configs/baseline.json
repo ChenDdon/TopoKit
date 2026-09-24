@@ -1,0 +1,81 @@
+{
+  "evaluation": {
+    "final_refit": "reinitialize, refit scaler on full manifest, fixed selected epoch count; no CASF monitoring",
+    "final_seeds": [
+      0,
+      1,
+      2
+    ],
+    "secondary_metric": "validation_pcc",
+    "selection_metric": "validation_rmse",
+    "test_sets_used_for_selection": false
+  },
+  "feature": {
+    "dtype": "float32",
+    "flatten_order": "C",
+    "recipe_id": "hpcc-alpha15-cb4760366e92bd2e",
+    "schema_sha256": "34dde88aff5d7deab170347299f10b4153d2cdf3408a06d4f681b685490c0fa2",
+    "shape": [
+      10,
+      50,
+      55
+    ],
+    "token_order": "scale, then statistic-major/channel-minor",
+    "tokens": 50,
+    "values_per_token": 550
+  },
+  "format": "topokit.topoformer.supervised_plan.v1",
+  "model": {
+    "activation": "gelu",
+    "attention_dropout": 0.1,
+    "cls_position": "zero_vector",
+    "d_model": 256,
+    "dropout": 0.1,
+    "ff_multiplier": 4,
+    "head_activation": "tanh",
+    "head_hidden": "d_model",
+    "independent_layer_initialization": true,
+    "name": "TopoFormerMini",
+    "norm_first": true,
+    "num_heads": 8,
+    "num_layers": 4,
+    "pooling": "cls_token",
+    "position_encoding": "topoformer_fixed_2d_sincos",
+    "position_grid": [
+      50,
+      1
+    ],
+    "position_index_unit": "patch_index",
+    "position_trainable": false
+  },
+  "plan_revision": 2,
+  "preprocessing": {
+    "axis": "27500 flattened coordinates; reshape back before tokenizing",
+    "fit_scope": "inner training rows during selection; complete training manifest during final refit",
+    "method": "StandardScaler",
+    "reuse_gbdt_scaler_for_dl_validation": false,
+    "target_scaling": false
+  },
+  "pretraining": {
+    "enabled": false
+  },
+  "status": "planned_not_trained",
+  "training": {
+    "batch_size": 32,
+    "batch_size_semantics": "32 complexes per optimizer step in initial single-device runs; keep effective batch fixed",
+    "early_stopping_min_delta": 0.0001,
+    "early_stopping_patience": 50,
+    "gradient_accumulation_steps": 1,
+    "gradient_clip_norm": 1.0,
+    "learning_rate": 0.0001,
+    "loss": "mse",
+    "max_epochs": 500,
+    "min_lr_ratio": 0.1,
+    "monitor": "validation_rmse",
+    "optimizer": "AdamW",
+    "scheduler": "cosine",
+    "seed": 0,
+    "warmup_epochs": 10,
+    "weight_decay": 0.001
+  }
+}

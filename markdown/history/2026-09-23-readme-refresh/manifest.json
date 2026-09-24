@@ -1,0 +1,15 @@
+{
+  "purpose": "Byte-for-byte README snapshots before public-facing documentation refresh. Relative links remain historical and were not rewritten.",
+  "files": [
+    {
+      "source": "README.md",
+      "archive": "markdown/history/2026-09-23-readme-refresh/README.original.md",
+      "sha256": "3772ee58dc620458346e1663f7a8739b9076f85919bcbfc773fddd677c97612f"
+    },
+    {
+      "source": "workflows/README.md",
+      "archive": "markdown/history/2026-09-23-readme-refresh/workflows.README.original.md",
+      "sha256": "0155fff748a2e8f2db2985020c6be01c7028889dee64fe158af350de7bb77c1e"
+    }
+  ]
+}

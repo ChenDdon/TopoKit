@@ -1,0 +1,55 @@
+{
+  "commit": "a63a8383be3cd9938a498d8a676840b531b3eb32",
+  "files": [
+    {
+      "bytes": 13877,
+      "file": "README.md",
+      "sha256": "9830d6f57847f9b3a19f5226cb5c9b976c829b2cdf2d235f256fb97d1947edd3"
+    },
+    {
+      "bytes": 1066,
+      "file": "LICENSE",
+      "sha256": "d8649e46eb8b1b32fede76677d04bfac6aca9736f620764320ad472760971062"
+    },
+    {
+      "bytes": 6678,
+      "file": "code_pkg/top_transformer/configuration_topt.py",
+      "sha256": "56f8a7f01b5b039f4d3f0b168b1735b7fefce96a3449e72f0dc8c58cb8fb0c91"
+    },
+    {
+      "bytes": 58950,
+      "file": "code_pkg/top_transformer/modeling_topt.py",
+      "sha256": "772f8b70c5fac71bd8f18690de073584856085a33dc31291ff7a0080a73cc718"
+    },
+    {
+      "bytes": 17101,
+      "file": "code_pkg/topt_regression_finetuning.py",
+      "sha256": "c81d8b6f71d7900ae6a8a539168743a35594c5958fd6f88a0a883a926dbf77f7"
+    },
+    {
+      "bytes": 16818,
+      "file": "code_pkg/topt_regression_finetuning_docking.py",
+      "sha256": "5730226923afbf9a15bec650140ae98e687ce740e40a8c827cca3fce6ff60f6e"
+    }
+  ],
+  "pooling_implementation": {
+    "file": "code_pkg/topt_regression_finetuning.py",
+    "module": "TopTPooler",
+    "operation": "last hidden CLS -> Linear(d,d) -> tanh -> Linear(d,1)",
+    "pooler_type": "cls_token"
+  },
+  "position_implementation": {
+    "adapted_grid": [
+      50,
+      1
+    ],
+    "cls_position": "all zero",
+    "d_model_multiple_of": 4,
+    "file": "code_pkg/top_transformer/modeling_topt.py",
+    "frequency_base": 10000,
+    "function": "get_2d_sincos_pos_embed",
+    "index_order": "meshgrid(width,height), width first; concatenate width then height embeddings",
+    "trainable": false
+  },
+  "reference_scope": "Matches pinned source recipe conventions; not a claim all published checkpoints share every configuration"
+}

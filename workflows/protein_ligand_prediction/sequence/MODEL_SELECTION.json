@@ -1,0 +1,105 @@
+{
+  "status": "final_user_selected",
+  "utc": "2026-09-23T16:33:30.121433+00:00",
+  "scope": "Final ESM-2 + CPZ sequence ML configuration; topology FS-AN remains a separate unchanged selection",
+  "user_request": "Archive previous ML parameters/results; fix NMI-based parameters as final and save parameters, model and results",
+  "strategy_id": "FS-AU",
+  "recipe_id": "sequence-esm2-t33-cpz-bos-nmi-sqrt-gbdt-v1",
+  "study": "experiments/sequence_esm2_cpz_sqrt_20260923",
+  "parameter_file": "PARAMETERS.json",
+  "parameter_sha256": "efa46b601603b181b0833997fcc2094a99a0c990d834a69c196acb51824e9e0b",
+  "resolved_parameters": {
+    "alpha": 0.9,
+    "ccp_alpha": 0.0,
+    "criterion": "deprecated",
+    "init": null,
+    "learning_rate": 0.005,
+    "loss": "squared_error",
+    "max_depth": 7,
+    "max_features": "sqrt",
+    "max_leaf_nodes": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "n_estimators": 10000,
+    "n_iter_no_change": null,
+    "random_state": null,
+    "subsample": 0.4,
+    "tol": 0.0001,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "primary_training_set": "general_v2020R1",
+  "primary_pipeline": "models/general_v2020R1/pipeline.joblib",
+  "primary_scaler": "embedded StandardScaler; portable copy models/general_v2020R1/scaler.npz",
+  "all_retained_models": {
+    "general_v2020R1": {
+      "pipeline": "experiments/sequence_esm2_cpz_sqrt_20260923/models/general_v2020R1/pipeline.joblib",
+      "pipeline_sha256": "3e0fec832f2a5c96c8a35ca23ba68ce7524f9c6f8b75c23546f5ee50b0761b8e",
+      "scaler_arrays": "experiments/sequence_esm2_cpz_sqrt_20260923/models/general_v2020R1/scaler.npz",
+      "scaler_sha256": "6d1f3c3af03fbf050e614b2f0cdcfb4f82ef862325cc9861bdd403de7c6bb543",
+      "receipt_sha256": "e7d76973ca5a90c08675b49f073ae2a40c20e7c0ca42dcb0992ac039fb06845a",
+      "rng_state_sha256": "86697406c0e05dcb9130dc00fdd3fe2f71f42b7ed8cb92a590ab1df596111f5a",
+      "n_train": 18498,
+      "n_estimators": 10000
+    },
+    "refined_2007": {
+      "pipeline": "experiments/sequence_esm2_cpz_sqrt_20260923/models/refined_2007/pipeline.joblib",
+      "pipeline_sha256": "c8df0a62f6cca48cc038c59d47edc09fa6d7a76dc8b34a80614b1afca2901f41",
+      "scaler_arrays": "experiments/sequence_esm2_cpz_sqrt_20260923/models/refined_2007/scaler.npz",
+      "scaler_sha256": "4c1f7c0eedcc0d35f8da5cda8deb8b607fede4780cbf9e126f18efba3a20729d",
+      "receipt_sha256": "52db111d11e23cb987746c530ebb6342b48def1542a7e186c8d583aa2343f3b3",
+      "rng_state_sha256": "d303c0f0d1afa037774fdd7330d263790f63c44e78d224f96ee474e410a98254",
+      "n_train": 1105,
+      "n_estimators": 10000
+    },
+    "refined_2013": {
+      "pipeline": "experiments/sequence_esm2_cpz_sqrt_20260923/models/refined_2013/pipeline.joblib",
+      "pipeline_sha256": "b7d825b855812e3a04825c261a052ea74e96b9c93f127a8183283b62cf8d4e34",
+      "scaler_arrays": "experiments/sequence_esm2_cpz_sqrt_20260923/models/refined_2013/scaler.npz",
+      "scaler_sha256": "3462c12313f1b2d405562b1b4545db17c29ebb689cdd4f1d52c89e0e8d20b821",
+      "receipt_sha256": "730fd78cacb7694c51af6fb499453d317b928c4322d52d0bdc2f1b690becb0ea",
+      "rng_state_sha256": "6015b87197e00efd676041989f901adbfab09b54b4dbb9fdef69dffdb8844bdf",
+      "n_train": 2764,
+      "n_estimators": 10000
+    },
+    "refined_2016": {
+      "pipeline": "experiments/sequence_esm2_cpz_sqrt_20260923/models/refined_2016/pipeline.joblib",
+      "pipeline_sha256": "8e2bf56efa045b1d2ec0b9c3ae5702ff1f1ed97547b226c3eefdf2f36fb4da0d",
+      "scaler_arrays": "experiments/sequence_esm2_cpz_sqrt_20260923/models/refined_2016/scaler.npz",
+      "scaler_sha256": "6700a86aced388ddae72f02a82e1235755034eb37e8bc83f100f456cf7ac4e77",
+      "receipt_sha256": "b61bcd2732e6c41c4380c471e16adcac9638ee83aaa71aaac089eb26ec9c6e23",
+      "rng_state_sha256": "e0ca8a31912f020440421efdba8cc5fa1b26f87e97fa173d303b170093969e2b",
+      "n_train": 3772,
+      "n_estimators": 10000
+    }
+  },
+  "feature_size": 1792,
+  "feature_order": [
+    "ESM-2 protein1280",
+    "CPZ ligand BOS512"
+  ],
+  "feature_shape": [
+    19066,
+    1792
+  ],
+  "features_sha256": "df11d5dd0d88eb2ad7e50452ea3f1437d93b78df653c16252bf13731c33621f6",
+  "ids_sha256": "fe336c6284604e10e5143533723eb50096a91342a81b3996cf8fb2ceec552c77",
+  "metrics_sha256": "d654a0d9d95a15bbba61c7a2209a6d53ec1a3ebf6b82cfe7368b40b947871e59",
+  "source_lock_sha256": "41371fc419d8b5e0af7be9938d06a5cc705ec12d6cdc4dc4ea9d9293e4ae7435",
+  "final_audit_sha256": "819c183fd93abf31a8b1c197f643fd1de5ae1b52389f07cf9e7f30c2c6b6dade",
+  "local_delivery_sha256": "ea08c73b6d6ab235271a27a1c8a17c62ba64a10352728de872a9893e7fc43a1d",
+  "runtime": {
+    "sklearn": "1.9.0",
+    "numpy": "2.5.2"
+  },
+  "training_only_scaler": true,
+  "target_scaling": false,
+  "target_units": "logKa/pK",
+  "nmi_description": "NMI-inspired parameters with user-requested sqrt, single-fit study; not exact consensus reproduction",
+  "shared_cache_retention": "experiments/sequence_esm2_cpz_sqrt_20260923/RETENTION.json",
+  "reuse_guide": "experiments/sequence_esm2_cpz_sqrt_20260923/REUSE.md",
+  "previous_parameters_archive": "experiments/sequence_esm2_cpz_previous_20260923/ARCHIVE.json"
+}

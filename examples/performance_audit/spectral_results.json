@@ -1,0 +1,380 @@
+{
+  "date": "2026-09-05",
+  "python": "3.12.2",
+  "numpy": "1.26.4",
+  "scipy": "1.13.1",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "filepath": "/opt/anaconda3/lib/libopenblasp-r0.3.21.dylib",
+      "version": "0.3.21",
+      "threading_layer": "pthreads",
+      "architecture": "armv8"
+    }
+  ],
+  "source_sha256": {
+    "src/topokit/__init__.py": "52797eae51d59999ca2cb6e64985f9ce1537121909292d1626a19a2ed0216a21",
+    "src/topokit/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/topokit/_validation.py": "f240027e02e2a8388262b87b676d374d4e3b4e5ad9ecd34fb1fbe463dbef59b9",
+    "src/topokit/api.py": "c86ac88f9f09e41ee6853f999a8c74638a314dc9ce0f4bf71e28f6fa6e32990b",
+    "src/topokit/builders/__init__.py": "73331c05fcf5b80d303b76297c50ea0225f4afbeb789f3024ffc70cd4722e21d",
+    "src/topokit/builders/_hyperdigraph_compact.py": "90d86039da99f6bbf32910230d46c5684de17c3be35c477bd0db6b16f2769878",
+    "src/topokit/builders/_hyperdigraph_converters.py": "72d982fd0a540d960d034eeef94c70b51d1e42318cd8a5bf188475325c14dbe4",
+    "src/topokit/builders/_hyperdigraph_geometry.py": "2fb12bd5d7ea0d2a5d9edcdc07c2053767dd9e3cd60666ef42e457c24942661d",
+    "src/topokit/builders/_simplicial.py": "5dcd0d5b129d70d438186e0dc419ba2f7481ddb88b1e40eed5b8fbb89361a1b0",
+    "src/topokit/builders/connections.py": "792f620cc454fe1ad225a81fb18a46148d0296274ecabe0e09e4dbb01f4fc4d3",
+    "src/topokit/builders/hyperdigraph.py": "43d52f4bed92221d5a8ab759c4d88678983ade799773183065aaac3a04572231",
+    "src/topokit/builders/interaction.py": "a041be8c0c2d09caec4bc240271a3f8aa73469135bcb05144ca37ef609e84063",
+    "src/topokit/builders/simplicial.py": "bc62b5465176e0046fe95a0f59638b1239f94739c9cbd11ba51c34909b65c69a",
+    "src/topokit/cli.py": "6667e154389b3ddca8f742e6baef48a50d0005c7b7e116fa6330db75e25c9b95",
+    "src/topokit/core/__init__.py": "1b5129147df8b4f000c6c8154141db24cf7e8b7e7c3b97baa45f895f2c4fca83",
+    "src/topokit/core/_hyperdigraph/__init__.py": "d11d27af4876fff00e408b071ff84fc37c47fc674ce64464bb46e5a68b230f06",
+    "src/topokit/core/_hyperdigraph/chain_complex.py": "062e2c29bfe0ef33f5aca21288a406d19f67a25a5018a1d0674d351747d21338",
+    "src/topokit/core/_hyperdigraph/gf2.py": "90c61eacbf0ccb02e1bcbcb10e70b25c961aa7335c510c277ee5aa22da342fef",
+    "src/topokit/core/_hyperdigraph/laplacian.py": "6018be8e0721b15d37b60bbed5f1e321c89d443174e8ee2785c1d7a1c147894e",
+    "src/topokit/core/_hyperdigraph/model.py": "cf00a1a602845941fab5228fd1e0594a5816405a7a3991f76874e1cf276c0ae9",
+    "src/topokit/core/_hyperdigraph/path_compatible.py": "0915c9fa7bba4559529b0b43f96a67e8155afe13f3117996c6c842039f9dfb2c",
+    "src/topokit/core/_hyperdigraph/persistence.py": "4820754b4806bcb2362345b0dd0c15a841377ea3e515fbc5627188ab2f1fb626",
+    "src/topokit/core/_hyperdigraph/results.py": "a418a258a593b244120b22a240533c2c1b37e60969d5491e3a8006a30777cdfa",
+    "src/topokit/core/_hyperdigraph/spectral.py": "bd7e30a35c25e9dffcda41f4ad597037d8c42da2f913ac54893c260c7f578cf9",
+    "src/topokit/core/_interaction/__init__.py": "84d439f04b63311b12c282744abe0ac9bcc546c5d9c6ec89a8cbc55d8928c778",
+    "src/topokit/core/_interaction/interaction.py": "cf8bdf038fa0b0bd8fe7eaa93543e7d5f9560e73e7dc5dfe7918225fc12ea1d8",
+    "src/topokit/core/_interaction/laplacian.py": "1e1c1a47d3a5fa254172643d59f0be1358c89173ad710f9727e06653ac6aa604",
+    "src/topokit/core/_interaction/model.py": "289ee709985fd8cdd966854d5ada5f042dcef9e4cc6734904a13a6eb33c67604",
+    "src/topokit/core/_interaction/persistence.py": "9f6ae1c620ee193a842e6a6083ad6709218d9b84dcf8982746c907a12b7352f9",
+    "src/topokit/core/_interaction/results.py": "d744b8b8d66f06f1afa5b5f6dab8f1ececaceaade96923f6f54038ec34576ce9",
+    "src/topokit/core/_simplicial/__init__.py": "b96a1ba6f5556e344bcab843ee62fde9bdfb71d630c47f3a61c4bb020cbfdc7a",
+    "src/topokit/core/_simplicial/_validation.py": "4263cb4f4d15718620eff33c05ff81fa61d5e155a0e534d5b2de3faf031b5649",
+    "src/topokit/core/_simplicial/algebra.py": "674641971830d888c8c87d1b18fb9a47937f9be6472a3b6abe42b51bac7379e1",
+    "src/topokit/core/_simplicial/complex.py": "5a96aecfd920ddc3897eae573d3b650a1b2438833c57420a6d3e370e0c6f8732",
+    "src/topokit/core/_simplicial/homology.py": "40d7e0ce86d956ff6f4f0e373d011c7b312775a6df8ace743aa63fe116e6bc38",
+    "src/topokit/core/_simplicial/laplacian.py": "07834834556092f184ce6c3f125f4d69426f957f512d00bbbf93914e44f6977a",
+    "src/topokit/core/_simplicial/persistence.py": "17b3976424a28453ad701967c614f80e4a657839f84e89ed7f80b908b0416551",
+    "src/topokit/core/_spectral.py": "a8c12f267b54282eea36c0c70503ea257af263d2cac77fc660e6be0241a0e49b",
+    "src/topokit/core/hyperdigraph.py": "db639fd15c33363f87ea730594f1b660fc63e9f66d1d9f0cf8b3aa385f4bedac",
+    "src/topokit/core/interaction.py": "8963038e3b3cb4b7707e42f12257ee388f35d89f36e5230a72f52f5223e2f2a8",
+    "src/topokit/core/simplicial.py": "0263dbb1a3c66adf74c4d50bc5377ab28175efc266c92b4c29478dc0dda3bbc6",
+    "src/topokit/data.py": "ae30e3ec286cfdb62071e5816cab4d3568333e8e771e01952e9c1f67106cf6db",
+    "src/topokit/exceptions.py": "10e53185ea93436d3cff6a3ab19a6c63da290c4d4043b7fa4f500acb27a432f1",
+    "src/topokit/filtrations.py": "566cc80ab080d593d704e3109e28670de370877d345941df7539ff2ee3527415",
+    "src/topokit/postprocessing/__init__.py": "b2004c6dc361a36b5d3951107e3d7a20a67d6e9d4e46eb893183cb3a99c6aa7f",
+    "src/topokit/postprocessing/_barcode_bins.py": "b9fba8fa508a263c29b9ac47c1077b3c2982240f178830dc8146293382a77dc3",
+    "src/topokit/postprocessing/_metadata.py": "ed68e7062e2234d901922b64f3bee8dcf6779b4894b283709405369ec37cd7bf",
+    "src/topokit/postprocessing/barcodes.py": "394f408e7a8f5af02c28b3b6307db8a9bd3ddd6a2bce20a160ce5a5116aad569",
+    "src/topokit/postprocessing/spectra.py": "d3a06ca749b862f7e41a2df0942f95a34418bc2d51a869ee47cff92d375395e0",
+    "src/topokit/readers/__init__.py": "312ce3344010d59152e6d07c8475aa65d760de16974d857c8faa9658401cf660",
+    "src/topokit/readers/atomic_properties.py": "dd100b251f297526a2f89d5b7bc3834af46c232dad3813831f74ce7546a94024",
+    "src/topokit/readers/formats.py": "8e836ce3833cd36293813aa4ec509f46c6d2aed5853c2800f5896bf41212efb4",
+    "src/topokit/readers/registry.py": "dc0df5f3d38358a103303e1e92904e4838d95ba1dc2577589eb81b20b7fcdc19",
+    "src/topokit/results.py": "158ff60e9fa70d951c68da056f263a7007f4549ae0c5d64d33cb92d1f731a336",
+    "src/topokit/serialization.py": "21f2c48ae42d1845a51514e8c6760583226ac148c1986c8586711f0bd3bf19ec",
+    "src/topokit/visualization/__init__.py": "f0813dffc069b4e8076b53fdacba258f9af23fc05eaa27928c536645f9864cd2",
+    "src/topokit/visualization/plots.py": "fb1a27e129b4ac4cf5c90cc930c40a340dd305d4cad7d7a926cb082587f3b334",
+    "src/topokit/workflows/__init__.py": "7962d1dd40d6c3aad1dd8e2f42ef8e1eedec811cc5183db437e220107e29391d",
+    "src/topokit/workflows/analysis.py": "0dde31a0a42eaa8e4d71566a49d080e27a847fec2bf2a9d59851d23e4b21e407",
+    "src/topokit/workflows/export.py": "4610b0a9134a5d122f6050b9ef7c16273c26d0f869baa569a16ea9ab28ead2f4",
+    "src/topokit/workflows/hyperdigraph.py": "a8b00d27279a0aabfa7cc3cedae1cedbf05eb2b60f2f51db089cf12b37d7ae26",
+    "src/topokit/workflows/interaction.py": "f95c6ea27ab27e8e0ffc1dac76e29a1b208e4297dd8f5122910ad67d8558c249",
+    "src/topokit/workflows/ml.py": "bd756e3ebfdecd8d176187596dc0347b9e2f9b3f847be029d7d86e7dff56e16f",
+    "src/topokit/workflows/simplicial.py": "bdae41668b44e2a329e184a6370d029da6a81317faa18b03749325f36796033c",
+    "src/topokit/workflows/spectral.py": "54d10e44e3cd397b0d834d0f1aae7ea348c58c3ba6373ac0c09f217e02ba36f2"
+  },
+  "diagonal": [
+    {
+      "n": 400,
+      "generic_solver": {
+        "median_seconds": 0.0006603749934583902,
+        "runs_seconds": [
+          0.0006602909415960312,
+          0.0006770830368623137,
+          0.0006603749934583902
+        ]
+      },
+      "sort_diagonal": {
+        "median_seconds": 1.5409896150231361e-06,
+        "runs_seconds": [
+          2.3330794647336006e-06,
+          1.7910497263073921e-06,
+          1.4998950064182281e-06,
+          1.5409896150231361e-06,
+          1.4170072972774506e-06
+        ]
+      },
+      "kernel_speedup": 428.53954823600515,
+      "bitwise_equal": true,
+      "one_dense_matrix_bytes": 1280000,
+      "diagonal_bytes": 3200
+    },
+    {
+      "n": 1000,
+      "generic_solver": {
+        "median_seconds": 0.005889583029784262,
+        "runs_seconds": [
+          0.005889583029784262,
+          0.006676750024780631,
+          0.005754166981205344
+        ]
+      },
+      "sort_diagonal": {
+        "median_seconds": 4.00003045797348e-06,
+        "runs_seconds": [
+          4.375004209578037e-06,
+          4.125060513615608e-06,
+          3.915978595614433e-06,
+          3.959052264690399e-06,
+          4.00003045797348e-06
+        ]
+      },
+      "kernel_speedup": 1472.384545983702,
+      "bitwise_equal": true,
+      "one_dense_matrix_bytes": 8000000,
+      "diagonal_bytes": 8000
+    }
+  ],
+  "diagonal_resource_limit": {
+    "n": 2100,
+    "public_error": "eigensolver workspace estimate 282,240,000 bytes exceeds max_dense_bytes=268,435,456; request fewer modes or raise the budget",
+    "exact_full_spectrum_count": 2100,
+    "spectrum_bytes": 16800
+  },
+  "matrix_free_simplicial": {
+    "star_edges": 700,
+    "laplacian_nnz": 490000,
+    "boundaries_nnz": 1400,
+    "laplacian_csr_bytes": 5882804,
+    "boundaries_csr_bytes": 22412,
+    "assembly": {
+      "median_seconds": 0.004559332970529795,
+      "runs_seconds": [
+        0.004559332970529795,
+        0.004597791936248541,
+        0.0046475830022245646,
+        0.00454925000667572,
+        0.004428790998645127
+      ]
+    },
+    "max_matvec_absolute_difference": 4.3520742565306136e-14,
+    "scope": "same real operator, floating-point summation order differs; no eigensolver speedup claimed"
+  },
+  "engine_reuse": {
+    "factor_points": [
+      12,
+      24
+    ],
+    "scales": 9,
+    "degrees": 3,
+    "baseline": {
+      "median_seconds": 0.5054892500629649,
+      "runs_seconds": [
+        0.5054892500629649,
+        0.5121293329866603,
+        0.5027768329018727
+      ]
+    },
+    "call_scoped_engine": {
+      "median_seconds": 0.44267295801546425,
+      "runs_seconds": [
+        0.4423101249849424,
+        0.44267295801546425,
+        0.4458277500234544
+      ]
+    },
+    "speedup": 1.141902257434271,
+    "eigenvalues_bitwise_equal": true,
+    "basis_nullity_metadata_equal": true
+  },
+  "demo_profiles": {
+    "simplicial": {
+      "build": {
+        "median_seconds": 0.010807916056364775,
+        "runs_seconds": [
+          0.011066667037084699,
+          0.010697707999497652,
+          0.010807916056364775
+        ]
+      },
+      "analysis": {
+        "median_seconds": 0.010828042053617537,
+        "runs_seconds": [
+          0.010828042053617537,
+          0.011385750025510788,
+          0.010769625077955425
+        ]
+      },
+      "interval_count": 47,
+      "matrix_sizes": {
+        "1.0": [
+          24,
+          42,
+          12
+        ],
+        "3.0": [
+          24,
+          104,
+          132
+        ],
+        "5.0": [
+          24,
+          113,
+          158
+        ]
+      }
+    },
+    "hyperdigraph": {
+      "build": {
+        "median_seconds": 0.05580895801540464,
+        "runs_seconds": [
+          0.04961816594004631,
+          0.060698750079609454,
+          0.05580895801540464
+        ]
+      },
+      "analysis": {
+        "median_seconds": 1.0452598750125617,
+        "runs_seconds": [
+          1.0504641250008717,
+          1.0440224170451984,
+          1.0452598750125617
+        ]
+      },
+      "interval_count": 110,
+      "matrix_sizes": {
+        "1.0": [
+          24,
+          0,
+          0
+        ],
+        "2.0": [
+          24,
+          84,
+          84
+        ],
+        "3.0": [
+          24,
+          208,
+          1334
+        ]
+      }
+    },
+    "interaction": {
+      "build": {
+        "median_seconds": 0.04211091704200953,
+        "runs_seconds": [
+          0.04184795799665153,
+          0.04211091704200953,
+          0.04253687500022352
+        ]
+      },
+      "analysis": {
+        "median_seconds": 0.3291337920818478,
+        "runs_seconds": [
+          0.3278732090257108,
+          0.3343006659997627,
+          0.3291337920818478
+        ]
+      },
+      "interval_count": 99,
+      "matrix_sizes": {
+        "1.0": [
+          12,
+          60,
+          66
+        ],
+        "3.0": [
+          12,
+          164,
+          766
+        ],
+        "5.0": [
+          12,
+          200,
+          1216
+        ]
+      }
+    }
+  },
+  "barcode_queries": {
+    "simplicial": {
+      "scales": [
+        1.0,
+        3.0,
+        5.0
+      ],
+      "baseline": {
+        "median_seconds": 0.002095916075631976,
+        "runs_seconds": [
+          0.0020952500635758042,
+          0.002095916075631976,
+          0.002280500018969178
+        ]
+      },
+      "barcode_queries": {
+        "median_seconds": 0.00040537503082305193,
+        "runs_seconds": [
+          0.00041504204273223877,
+          0.00040537503082305193,
+          0.0003992089768871665
+        ]
+      },
+      "speedup": 5.170313700319774,
+      "betti_exact_equal": true,
+      "scope": "barcodes plus Betti tuples only; not a substitute for chain/basis diagnostics or representatives"
+    },
+    "hyperdigraph": {
+      "scales": [
+        1.0,
+        2.0,
+        3.0
+      ],
+      "baseline": {
+        "median_seconds": 0.6073867080267519,
+        "runs_seconds": [
+          0.6038933750241995,
+          0.6073867080267519,
+          0.6151255000149831
+        ]
+      },
+      "barcode_queries": {
+        "median_seconds": 0.37451862497255206,
+        "runs_seconds": [
+          0.3761406249832362,
+          0.37451862497255206,
+          0.36983470793347806
+        ]
+      },
+      "speedup": 1.6217797127479745,
+      "betti_exact_equal": true,
+      "scope": "barcodes plus Betti tuples only; not a substitute for chain/basis diagnostics or representatives"
+    },
+    "interaction": {
+      "scales": [
+        1.0,
+        3.0,
+        5.0
+      ],
+      "baseline": {
+        "median_seconds": 0.03501341596711427,
+        "runs_seconds": [
+          0.03479708300437778,
+          0.03514891699887812,
+          0.03501341596711427
+        ]
+      },
+      "barcode_queries": {
+        "median_seconds": 0.008833041065372527,
+        "runs_seconds": [
+          0.00898379203863442,
+          0.008833041065372527,
+          0.008641166030429304
+        ]
+      },
+      "speedup": 3.9639140934569634,
+      "betti_exact_equal": true,
+      "scope": "barcodes plus Betti tuples only; not a substitute for chain/basis diagnostics or representatives"
+    }
+  }
+}

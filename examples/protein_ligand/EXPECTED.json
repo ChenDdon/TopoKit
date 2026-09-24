@@ -1,0 +1,353 @@
+{
+  "validation_date": "2026-09-24",
+  "strategy_id": "FS-AN",
+  "recipe_id": "hpcc-alpha15-cb4760366e92bd2e",
+  "implementation_receipt": {
+    "strategy_id": "FS-AN",
+    "reference_recipe_id": "hpcc-alpha15-cb4760366e92bd2e",
+    "implementation_version": "1.0.0",
+    "implementation_module": "topokit.workflows.protein_ligand_prediction.features",
+    "implementation_sha256": "7c7872ce006d6001e3094f041c97b8e0c1599a8302419d130b6faf21e32f55fc",
+    "reference_schema_sha256": "34dde88aff5d7deab170347299f10b4153d2cdf3408a06d4f681b685490c0fa2"
+  },
+  "environment": {
+    "topokit": "0.3.0",
+    "python": "3.12.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "platform": "Darwin arm64",
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  "samples": [
+    {
+      "sample_id": "2lk1",
+      "tensor_shape": [
+        10,
+        50,
+        55
+      ],
+      "dtype": "float32",
+      "all_finite": true,
+      "feature_count": 27500,
+      "nonzero_values": 7781,
+      "seconds": 0.228927,
+      "ligand_elements": [
+        "C",
+        "H",
+        "O",
+        "S"
+      ],
+      "counts": {
+        "protein_reader_atoms": 514,
+        "protein_CNOS_ATOM_before_crop": 256,
+        "protein_CNOS_ATOM_after_crop": 226,
+        "ligand_reader_atoms": 27,
+        "ligand_crop_anchor_atoms_including_supported_H": 27,
+        "ligand_feature_atoms_including_explicit_hydrogen": 27,
+        "protein_unique_atoms": 226,
+        "ligand_unique_atoms": 27,
+        "duplicate_atoms_removed": 0
+      }
+    },
+    {
+      "sample_id": "6fhu",
+      "tensor_shape": [
+        10,
+        50,
+        55
+      ],
+      "dtype": "float32",
+      "all_finite": true,
+      "feature_count": 27500,
+      "nonzero_values": 8338,
+      "seconds": 0.371425,
+      "ligand_elements": [
+        "C",
+        "H",
+        "N",
+        "O"
+      ],
+      "counts": {
+        "protein_reader_atoms": 833,
+        "protein_CNOS_ATOM_before_crop": 406,
+        "protein_CNOS_ATOM_after_crop": 342,
+        "ligand_reader_atoms": 42,
+        "ligand_crop_anchor_atoms_including_supported_H": 42,
+        "ligand_feature_atoms_including_explicit_hydrogen": 42,
+        "protein_unique_atoms": 342,
+        "ligand_unique_atoms": 42,
+        "duplicate_atoms_removed": 0
+      }
+    },
+    {
+      "sample_id": "6v1c",
+      "tensor_shape": [
+        10,
+        50,
+        55
+      ],
+      "dtype": "float32",
+      "all_finite": true,
+      "feature_count": 27500,
+      "nonzero_values": 8524,
+      "seconds": 0.339548,
+      "ligand_elements": [
+        "C",
+        "H",
+        "N",
+        "O"
+      ],
+      "counts": {
+        "protein_reader_atoms": 840,
+        "protein_CNOS_ATOM_before_crop": 376,
+        "protein_CNOS_ATOM_after_crop": 298,
+        "ligand_reader_atoms": 51,
+        "ligand_crop_anchor_atoms_including_supported_H": 51,
+        "ligand_feature_atoms_including_explicit_hydrogen": 51,
+        "protein_unique_atoms": 298,
+        "ligand_unique_atoms": 51,
+        "duplicate_atoms_removed": 0
+      }
+    },
+    {
+      "sample_id": "2m3z",
+      "tensor_shape": [
+        10,
+        50,
+        55
+      ],
+      "dtype": "float32",
+      "all_finite": true,
+      "feature_count": 27500,
+      "nonzero_values": 10457,
+      "seconds": 0.454288,
+      "ligand_elements": [
+        "C",
+        "H",
+        "N",
+        "O",
+        "S"
+      ],
+      "counts": {
+        "protein_reader_atoms": 882,
+        "protein_CNOS_ATOM_before_crop": 440,
+        "protein_CNOS_ATOM_after_crop": 376,
+        "ligand_reader_atoms": 37,
+        "ligand_crop_anchor_atoms_including_supported_H": 37,
+        "ligand_feature_atoms_including_explicit_hydrogen": 37,
+        "protein_unique_atoms": 376,
+        "ligand_unique_atoms": 37,
+        "duplicate_atoms_removed": 0
+      }
+    },
+    {
+      "sample_id": "2p0x",
+      "tensor_shape": [
+        10,
+        50,
+        55
+      ],
+      "dtype": "float32",
+      "all_finite": true,
+      "feature_count": 27500,
+      "nonzero_values": 10868,
+      "seconds": 0.584111,
+      "ligand_elements": [
+        "C",
+        "H",
+        "N",
+        "O",
+        "P"
+      ],
+      "counts": {
+        "protein_reader_atoms": 1037,
+        "protein_CNOS_ATOM_before_crop": 525,
+        "protein_CNOS_ATOM_after_crop": 445,
+        "ligand_reader_atoms": 43,
+        "ligand_crop_anchor_atoms_including_supported_H": 43,
+        "ligand_feature_atoms_including_explicit_hydrogen": 43,
+        "protein_unique_atoms": 445,
+        "ligand_unique_atoms": 43,
+        "duplicate_atoms_removed": 0
+      }
+    },
+    {
+      "sample_id": "2kaw",
+      "tensor_shape": [
+        10,
+        50,
+        55
+      ],
+      "dtype": "float32",
+      "all_finite": true,
+      "feature_count": 27500,
+      "nonzero_values": 9218,
+      "seconds": 0.750648,
+      "ligand_elements": [
+        "C",
+        "F",
+        "H",
+        "O",
+        "S"
+      ],
+      "counts": {
+        "protein_reader_atoms": 1348,
+        "protein_CNOS_ATOM_before_crop": 673,
+        "protein_CNOS_ATOM_after_crop": 552,
+        "ligand_reader_atoms": 41,
+        "ligand_crop_anchor_atoms_including_supported_H": 41,
+        "ligand_feature_atoms_including_explicit_hydrogen": 41,
+        "protein_unique_atoms": 552,
+        "ligand_unique_atoms": 41,
+        "duplicate_atoms_removed": 0
+      }
+    },
+    {
+      "sample_id": "2kfx",
+      "tensor_shape": [
+        10,
+        50,
+        55
+      ],
+      "dtype": "float32",
+      "all_finite": true,
+      "feature_count": 27500,
+      "nonzero_values": 10579,
+      "seconds": 0.891867,
+      "ligand_elements": [
+        "C",
+        "Cl",
+        "H",
+        "N",
+        "O",
+        "S"
+      ],
+      "counts": {
+        "protein_reader_atoms": 1365,
+        "protein_CNOS_ATOM_before_crop": 698,
+        "protein_CNOS_ATOM_after_crop": 593,
+        "ligand_reader_atoms": 44,
+        "ligand_crop_anchor_atoms_including_supported_H": 44,
+        "ligand_feature_atoms_including_explicit_hydrogen": 44,
+        "protein_unique_atoms": 593,
+        "ligand_unique_atoms": 44,
+        "duplicate_atoms_removed": 0
+      }
+    },
+    {
+      "sample_id": "4lwv",
+      "tensor_shape": [
+        10,
+        50,
+        55
+      ],
+      "dtype": "float32",
+      "all_finite": true,
+      "feature_count": 27500,
+      "nonzero_values": 12501,
+      "seconds": 1.076871,
+      "ligand_elements": [
+        "C",
+        "Cl",
+        "F",
+        "H",
+        "N",
+        "O",
+        "S"
+      ],
+      "counts": {
+        "protein_reader_atoms": 1417,
+        "protein_CNOS_ATOM_before_crop": 690,
+        "protein_CNOS_ATOM_after_crop": 596,
+        "ligand_reader_atoms": 71,
+        "ligand_crop_anchor_atoms_including_supported_H": 71,
+        "ligand_feature_atoms_including_explicit_hydrogen": 71,
+        "protein_unique_atoms": 596,
+        "ligand_unique_atoms": 71,
+        "duplicate_atoms_removed": 0
+      }
+    },
+    {
+      "sample_id": "4jv7",
+      "tensor_shape": [
+        10,
+        50,
+        55
+      ],
+      "dtype": "float32",
+      "all_finite": true,
+      "feature_count": 27500,
+      "nonzero_values": 9603,
+      "seconds": 0.895371,
+      "ligand_elements": [
+        "Br",
+        "C",
+        "H",
+        "N",
+        "O"
+      ],
+      "counts": {
+        "protein_reader_atoms": 1505,
+        "protein_CNOS_ATOM_before_crop": 703,
+        "protein_CNOS_ATOM_after_crop": 589,
+        "ligand_reader_atoms": 50,
+        "ligand_crop_anchor_atoms_including_supported_H": 50,
+        "ligand_feature_atoms_including_explicit_hydrogen": 50,
+        "protein_unique_atoms": 589,
+        "ligand_unique_atoms": 50,
+        "duplicate_atoms_removed": 0
+      }
+    },
+    {
+      "sample_id": "4aq3",
+      "tensor_shape": [
+        10,
+        50,
+        55
+      ],
+      "dtype": "float32",
+      "all_finite": true,
+      "feature_count": 27500,
+      "nonzero_values": 12255,
+      "seconds": 1.526808,
+      "ligand_elements": [
+        "C",
+        "Cl",
+        "H",
+        "I",
+        "N",
+        "O",
+        "S"
+      ],
+      "counts": {
+        "protein_reader_atoms": 2192,
+        "protein_CNOS_ATOM_before_crop": 1126,
+        "protein_CNOS_ATOM_after_crop": 736,
+        "ligand_reader_atoms": 94,
+        "ligand_crop_anchor_atoms_including_supported_H": 94,
+        "ligand_feature_atoms_including_explicit_hydrogen": 94,
+        "protein_unique_atoms": 736,
+        "ligand_unique_atoms": 94,
+        "duplicate_atoms_removed": 0
+      }
+    }
+  ],
+  "batch_expected_shape": [
+    10,
+    10,
+    50,
+    55
+  ],
+  "flattened_expected_shape": [
+    10,
+    27500
+  ],
+  "all_samples_finite": true,
+  "total_seconds": 7.123736,
+  "comparison_note": "Shapes, dtype, finite values, and input hashes are portable expectations. Times and exact floating-point values vary with hardware and numerical libraries; this smoke record is not a prediction-accuracy benchmark."
+}

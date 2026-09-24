@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "created_date": "2026-09-24",
+  "collection": "topokit protein–ligand local demonstration pairs",
+  "source_dataset_workspace_relative_path": "datasets/protein_ligand_prediction",
+  "selection": {
+    "sample_ids": [
+      "2lk1",
+      "6fhu",
+      "6v1c",
+      "2m3z",
+      "2p0x",
+      "2kaw",
+      "2kfx",
+      "4lwv",
+      "4jv7",
+      "4aq3"
+    ],
+    "rationale": "Ten compact manifest-backed structure pairs spanning all ten FS-AN ligand elements. All selected protein PDB files have no explicit alternate-location labels or MODEL records; input bytes are copied unchanged. This is a functional demonstration set, not a representative evaluation benchmark.",
+    "ligand_atom_count_range": [
+      10,
+      100
+    ]
+  },
+  "source_manifest": {
+    "dataset_relative_path": "labels/final/feature_union.csv",
+    "sha256": "a2c545a13d6e3f2fed77259afafeaa92846f003b2620ecaa859c86cb17ab3f52"
+  },
+  "source_provenance_record": {
+    "dataset_relative_path": "labels/final/provenance.json",
+    "sha256": "916f27353141f58ece10b2a068ba21338b2664724452069d4265b313f5d681f8"
+  },
+  "provenance_status": "Local file identity and existing dataset metadata verified. Original upstream acquisition and preparation chain and redistribution permission have not been independently verified.",
+  "license_notice": "These structure files are third-party data. The topokit MIT code license does not relicense them. Existing upstream source terms apply. The local dataset manifest identifies PDBbind v2020R1 with a v2024 reprocessing workflow and archive new_download/v2020_P-L.tar.gz; it is not a grant of redistribution permission. Confirm source terms before including these files in a public release.",
+  "samples": [
+    {
+      "sample_id": "2lk1",
+      "pdb_accession": "2lk1",
+      "dataset_metadata": {
+        "structure_version": "PDBbind v2020R1; v2024 reprocessing workflow",
+        "structure_source": "new_download/v2020_P-L.tar.gz",
+        "resolution_angstrom": "NMR",
+        "release_year": "2011",
+        "index_reference": "2lk1.pdf",
+        "index_note": "(AQN) Fragment: RanBP2-type zinc finger residues 181-210; Kd=82+/-5uM"
+      },
+      "files": {
+        "protein.pdb": {
+          "example_relative_path": "structures/2lk1/protein.pdb",
+          "dataset_relative_source_path": "structures/2lk1/2lk1_protein.pdb",
+          "sha256": "767e55291c9e6ac8538685015fe1fa2ad97c525c6c247681afc35225c671f2c1",
+          "bytes": 42282
+        },
+        "ligand.mol2": {
+          "example_relative_path": "structures/2lk1/ligand.mol2",
+          "dataset_relative_source_path": "structures/2lk1/2lk1_ligand.mol2",
+          "sha256": "b82151b21db5d49bef96eb353570619a32d7d19766b6ff40883a70c3642643cc",
+          "bytes": 2839
+        }
+      }
+    },
+    {
+      "sample_id": "6fhu",
+      "pdb_accession": "6fhu",
+      "dataset_metadata": {
+        "structure_version": "PDBbind v2020R1; v2024 reprocessing workflow",
+        "structure_source": "new_download/v2020_P-L.tar.gz",
+        "resolution_angstrom": "2.00",
+        "release_year": "2018",
+        "index_reference": "6fap.pdf",
+        "index_note": "(3-mer) ligand is compound H3 3-mer"
+      },
+      "files": {
+        "protein.pdb": {
+          "example_relative_path": "structures/6fhu/protein.pdb",
+          "dataset_relative_source_path": "structures/6fhu/6fhu_protein.pdb",
+          "sha256": "5b1680ee8dd72221131a0c365efb31201a37489bce30b20c16f584ca7773f725",
+          "bytes": 68283
+        },
+        "ligand.mol2": {
+          "example_relative_path": "structures/6fhu/ligand.mol2",
+          "dataset_relative_source_path": "structures/6fhu/6fhu_ligand.mol2",
+          "sha256": "d28c786438a2b8a131745ee32b9ad030ebd8e6cccb8e8aad14535089a0f5732e",
+          "bytes": 4225
+        }
+      }
+    },
+    {
+      "sample_id": "6v1c",
+      "pdb_accession": "6v1c",
+      "dataset_metadata": {
+        "structure_version": "PDBbind v2020R1; v2024 reprocessing workflow",
+        "structure_source": "new_download/v2020_P-L.tar.gz",
+        "resolution_angstrom": "1.55",
+        "release_year": "2019",
+        "index_reference": "6v1c.pdf",
+        "index_note": "(4A4) ligand is GlcNAc-alpha-1,4-Gal disaccharide"
+      },
+      "files": {
+        "protein.pdb": {
+          "example_relative_path": "structures/6v1c/protein.pdb",
+          "dataset_relative_source_path": "structures/6v1c/6v1c_protein.pdb",
+          "sha256": "ee287db242a0094cdfe8f71990993093872a69e03568f925cfc90a953804f7ec",
+          "bytes": 69579
+        },
+        "ligand.mol2": {
+          "example_relative_path": "structures/6v1c/ligand.mol2",
+          "dataset_relative_source_path": "structures/6v1c/6v1c_ligand.mol2",
+          "sha256": "4b21c8230e4057ff4224c5100d6e828bdf4b0f44e432a5669fc52a66d42b74ec",
+          "bytes": 5134
+        }
+      }
+    },
+    {
+      "sample_id": "2m3z",
+      "pdb_accession": "2m3z",
+      "dataset_metadata": {
+        "structure_version": "PDBbind v2020R1; v2024 reprocessing workflow",
+        "structure_source": "new_download/v2020_P-L.tar.gz",
+        "resolution_angstrom": "NMR",
+        "release_year": "2013",
+        "index_reference": "2m3z.pdf",
+        "index_note": "(1HF) ligand is compound 3;Kd=0.27+/-0.07uM"
+      },
+      "files": {
+        "protein.pdb": {
+          "example_relative_path": "structures/2m3z/protein.pdb",
+          "dataset_relative_source_path": "structures/2m3z/2m3z_protein.pdb",
+          "sha256": "6ce8e9729546f287cb8dbd676ce33755527c19fc2a86119d2de5c47be1fa37a8",
+          "bytes": 72252
+        },
+        "ligand.mol2": {
+          "example_relative_path": "structures/2m3z/ligand.mol2",
+          "dataset_relative_source_path": "structures/2m3z/2m3z_ligand.mol2",
+          "sha256": "f55b150aaa1004322be26e216be72fbfbd251b3733172a9e14a40bc8f5549f88",
+          "bytes": 3824
+        }
+      }
+    },
+    {
+      "sample_id": "2p0x",
+      "pdb_accession": "2p0x",
+      "dataset_metadata": {
+        "structure_version": "PDBbind v2020R1; v2024 reprocessing workflow",
+        "structure_source": "new_download/v2020_P-L.tar.gz",
+        "resolution_angstrom": "NMR",
+        "release_year": "2007",
+        "index_reference": "2p0x.pdf",
+        "index_note": "(ATP) C58A"
+      },
+      "files": {
+        "protein.pdb": {
+          "example_relative_path": "structures/2p0x/protein.pdb",
+          "dataset_relative_source_path": "structures/2p0x/2p0x_protein.pdb",
+          "sha256": "90a35b30d77b9264f4e56d4bfc563331feebc416e8904970ef292e77b0085a1f",
+          "bytes": 84807
+        },
+        "ligand.mol2": {
+          "example_relative_path": "structures/2p0x/ligand.mol2",
+          "dataset_relative_source_path": "structures/2p0x/2p0x_ligand.mol2",
+          "sha256": "a9a5be1136eb856607e19ec176001a54f848c4af51c3e948de109821067db673",
+          "bytes": 4389
+        }
+      }
+    },
+    {
+      "sample_id": "2kaw",
+      "pdb_accession": "2kaw",
+      "dataset_metadata": {
+        "structure_version": "PDBbind v2020R1; v2024 reprocessing workflow",
+        "structure_source": "new_download/v2020_P-L.tar.gz",
+        "resolution_angstrom": "NMR",
+        "release_year": "2009",
+        "index_reference": "2kaw.pdf",
+        "index_note": "(SUZ) Ki=10.7+/-1.2uM."
+      },
+      "files": {
+        "protein.pdb": {
+          "example_relative_path": "structures/2kaw/protein.pdb",
+          "dataset_relative_source_path": "structures/2kaw/2kaw_protein.pdb",
+          "sha256": "dd1c1585c4c615873875b0fea968ad02ddff62328f922509c624b709f6e61d60",
+          "bytes": 110160
+        },
+        "ligand.mol2": {
+          "example_relative_path": "structures/2kaw/ligand.mol2",
+          "dataset_relative_source_path": "structures/2kaw/2kaw_ligand.mol2",
+          "sha256": "3f7381b4be8287749b9ec1526cb36eaae08919803c8caed5d7565f504c1cd90c",
+          "bytes": 4196
+        }
+      }
+    },
+    {
+      "sample_id": "2kfx",
+      "pdb_accession": "2kfx",
+      "dataset_metadata": {
+        "structure_version": "PDBbind v2020R1; v2024 reprocessing workflow",
+        "structure_source": "new_download/v2020_P-L.tar.gz",
+        "resolution_angstrom": "NMR",
+        "release_year": "2009",
+        "index_reference": "2kfx.pdf",
+        "index_note": "(WW7) P+L-P.L-P.L.L4, two equilirium, Kd1=100uM; Kd2=0.43pM"
+      },
+      "files": {
+        "protein.pdb": {
+          "example_relative_path": "structures/2kfx/protein.pdb",
+          "dataset_relative_source_path": "structures/2kfx/2kfx_protein.pdb",
+          "sha256": "f4696fb340e6e2dcae92a5e0035ed8c61e36ae13f9b2744b77adbca788da3b61",
+          "bytes": 111537
+        },
+        "ligand.mol2": {
+          "example_relative_path": "structures/2kfx/ligand.mol2",
+          "dataset_relative_source_path": "structures/2kfx/2kfx_ligand.mol2",
+          "sha256": "7ca755f34cad65a011ab0f4f41779cc6b1ceb88b1b469863a6d3556255f21f28",
+          "bytes": 4466
+        }
+      }
+    },
+    {
+      "sample_id": "4lwv",
+      "pdb_accession": "4lwv",
+      "dataset_metadata": {
+        "structure_version": "PDBbind v2020R1; v2024 reprocessing workflow",
+        "structure_source": "new_download/v2020_P-L.tar.gz",
+        "resolution_angstrom": "2.32",
+        "release_year": "2014",
+        "index_reference": "4lwv.pdf",
+        "index_note": "(20W) ligand is compound 16, RO5545353"
+      },
+      "files": {
+        "protein.pdb": {
+          "example_relative_path": "structures/4lwv/protein.pdb",
+          "dataset_relative_source_path": "structures/4lwv/4lwv_protein.pdb",
+          "sha256": "7ccadf7b3cb98b362b4ffbf39ef1a177360f8e3e8a3b5e172113bbd9891e1304",
+          "bytes": 115749
+        },
+        "ligand.mol2": {
+          "example_relative_path": "structures/4lwv/ligand.mol2",
+          "dataset_relative_source_path": "structures/4lwv/4lwv_ligand.mol2",
+          "sha256": "4e467cb0edcb5e9331a7b247537deed3052bef5d90dc2def7d069847e1f5eacd",
+          "bytes": 7145
+        }
+      }
+    },
+    {
+      "sample_id": "4jv7",
+      "pdb_accession": "4jv7",
+      "dataset_metadata": {
+        "structure_version": "PDBbind v2020R1; v2024 reprocessing workflow",
+        "structure_source": "new_download/v2020_P-L.tar.gz",
+        "resolution_angstrom": "2.20",
+        "release_year": "2013",
+        "index_reference": "4jv7.pdf",
+        "index_note": "(1MN) IC50=1.0+/-0.1uM"
+      },
+      "files": {
+        "protein.pdb": {
+          "example_relative_path": "structures/4jv7/protein.pdb",
+          "dataset_relative_source_path": "structures/4jv7/4jv7_protein.pdb",
+          "sha256": "1ecc11f47ea980f658640a6f620e5410563134bac55d95c6fc1a47596181147d",
+          "bytes": 122958
+        },
+        "ligand.mol2": {
+          "example_relative_path": "structures/4jv7/ligand.mol2",
+          "dataset_relative_source_path": "structures/4jv7/4jv7_ligand.mol2",
+          "sha256": "804828943f35883d04ea1437dd691174769dd2b86875de9c3c56a49590c8cc6e",
+          "bytes": 5093
+        }
+      }
+    },
+    {
+      "sample_id": "4aq3",
+      "pdb_accession": "4aq3",
+      "dataset_metadata": {
+        "structure_version": "PDBbind v2020R1; v2024 reprocessing workflow",
+        "structure_source": "new_download/v2020_P-L.tar.gz",
+        "resolution_angstrom": "2.40",
+        "release_year": "2012",
+        "index_reference": "4aq3.pdf",
+        "index_note": "(398) complex Bcl-2 and cmp 18; IC50=47nM(complex Bcl-xl and cmp 18)"
+      },
+      "files": {
+        "protein.pdb": {
+          "example_relative_path": "structures/4aq3/protein.pdb",
+          "dataset_relative_source_path": "structures/4aq3/4aq3_protein.pdb",
+          "sha256": "04096b7b243049c82d70bfd60d8f49ef312482a08e2fe5d91a74979c70533051",
+          "bytes": 179010
+        },
+        "ligand.mol2": {
+          "example_relative_path": "structures/4aq3/ligand.mol2",
+          "dataset_relative_source_path": "structures/4aq3/4aq3_ligand.mol2",
+          "sha256": "2169def9393e0654e6854a03e7092668c7d0252470ee90605a185c24f2e134dc",
+          "bytes": 9407
+        }
+      }
+    }
+  ],
+  "structure_files_total_bytes": 1027335
+}

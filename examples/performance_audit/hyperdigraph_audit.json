@@ -1,0 +1,122 @@
+{
+  "environment": {
+    "python": "3.12.2 | packaged by conda-forge | (main, Feb 16 2024, 20:54:21) [Clang 16.0.6 ]",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "method": "median of 3 warmed serial runs, same stored births, interval multiset equality",
+  "h0": [
+    {
+      "vertices": 1000,
+      "edges": 1000,
+      "public_seconds": 0.006336083053611219,
+      "direct_union_find_seconds": 0.00035216601099818945,
+      "speedup": 17.99175063956923,
+      "exact_intervals": true,
+      "omega_int_payload_bytes": 185360,
+      "boundary_int_payload_bytes": 120812
+    },
+    {
+      "vertices": 4000,
+      "edges": 4000,
+      "public_seconds": 0.030252833967097104,
+      "direct_union_find_seconds": 0.0014330840203911066,
+      "speedup": 21.11030025918559,
+      "exact_intervals": true,
+      "omega_int_payload_bytes": 2341360,
+      "boundary_int_payload_bytes": 1283212
+    },
+    {
+      "vertices": 8000,
+      "edges": 8000,
+      "public_seconds": 0.08221058396156877,
+      "direct_union_find_seconds": 0.003048375016078353,
+      "speedup": 26.96865822871437,
+      "exact_intervals": true,
+      "omega_int_payload_bytes": 8949360,
+      "boundary_int_payload_bytes": 4699744
+    }
+  ],
+  "h1": [
+    {
+      "vertices": 50,
+      "support": "complete_supplied_bonds",
+      "hyperedge_counts": [
+        50,
+        1225,
+        19600
+      ],
+      "public_seconds": 0.1846020829398185,
+      "existing_compact_seconds": 0.009442083071917295,
+      "speedup": 19.550991188465943,
+      "exact_intervals": true,
+      "exact_diagonal_intervals": true,
+      "note": "analysis only; existing geometry and explicit construction excluded from both timings"
+    },
+    {
+      "vertices": 120,
+      "support": "delaunay",
+      "hyperedge_counts": [
+        120,
+        805,
+        3451
+      ],
+      "public_seconds": 0.024461832945235074,
+      "existing_compact_seconds": 0.005388083052821457,
+      "speedup": 4.539988100670737,
+      "exact_intervals": true,
+      "exact_diagonal_intervals": true,
+      "note": "analysis only; existing geometry and explicit construction excluded from both timings"
+    }
+  ],
+  "h2": {
+    "vertices": 24,
+    "weights": "all equal, both edge orientations retained",
+    "hyperedge_counts": [
+      24,
+      242,
+      2266,
+      19938
+    ],
+    "omega_counts": [
+      24,
+      242,
+      1970,
+      14138
+    ],
+    "auto_seconds": 0.6166551250498742,
+    "generic_standard_seconds": 0.6187883749371395,
+    "auto_speedup": 1.0034593888879018,
+    "exact_intervals": true,
+    "omega_backends": [
+      "unit_f0",
+      "face_closed_units",
+      "single_missing_face_grouping",
+      "general_circuit_column_reduction"
+    ],
+    "chain_seconds": 0.6076232920167968,
+    "retained_boundary_chain_seconds": 0.2738179159350693,
+    "retained_boundary_chain_speedup": 2.21907792242814,
+    "retained_boundary_every_chain_field_exact": true,
+    "retained_boundary_arbitrary_hypergraph_equivalence_trials": 60
+  },
+  "clique_counterexample": {
+    "embedded_h1": [
+      [
+        1,
+        1.0,
+        2.0
+      ]
+    ],
+    "clique_h1": [
+      [
+        1,
+        1.0,
+        "inf"
+      ]
+    ]
+  }
+}
