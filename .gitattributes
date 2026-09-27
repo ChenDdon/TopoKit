@@ -1,3 +1,5 @@
 # Preserve the exact input bytes recorded in examples/protein_ligand/SOURCE.json.
 # In particular, Windows core.autocrlf must not alter structure-file hashes.
 examples/protein_ligand/structures/** -text
+# The regression fixture also has a recorded byte-level checksum.
+tests/fixtures/alpha_near_planar_hull_73.csv -text

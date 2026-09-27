@@ -5,7 +5,7 @@ recipe. The reusable APIs are installed under `topokit.workflows`; scripts,
 recipes, agent guidance and example manifests remain in the source repository.
 Run the commands below from the package root after `python -m pip install .`.
 
-## Protein–ligand topology: FS-AN
+## Protein–ligand Topo features
 
 The [protein–ligand workflow](protein_ligand_prediction/README.md) is the default
 non-DL structure-based recipe. It accepts a prepared protein PDB and ligand
@@ -45,7 +45,7 @@ No trained model is needed to extract topology features. Optional
 [GBDT prediction](protein_ligand_prediction/ml/README.md) additionally requires
 compatible external model bundles with their training-fitted scalers.
 
-## Protein–ligand sequence embeddings: FS-AU
+## Protein–ligand sequence embeddings
 
 The [sequence recipe](protein_ligand_prediction/sequence/README.md) combines
 ESM-2 `esm2_t33_650M_UR50D` protein embeddings (1,280) and CPZ
@@ -76,16 +76,14 @@ Construction parameters, coordinate units, feature schemas and training
 memberships remain application choices. Mathematical algorithms stay in the
 builders and core layers.
 
-## Other application records
+## Optional affinity models
 
-[Atom-deletion](protein_ligand_prediction_version2/README.md) and
-[H0 barcode](protein_ligand_persistent_homology/README.md) directories preserve
-separate research applications. They are not alternative defaults for FS-AN
-and may depend on historical datasets or external artifacts. The optional
+[GBDT prediction](protein_ligand_prediction/ml/README.md) and the optional
 [supervised TopoFormer application](protein_ligand_prediction/dl/README.md)
-uses topology features with a separate PyTorch model.
+consume completed Topo features and their own compatible external model bundles.
+They are separate steps from feature extraction.
 
-Earlier workflow-index contents are retained in the
-[historical snapshot](../markdown/history/2026-09-23-readme-refresh/workflows.README.original.md).
-Research asset references in that snapshot are historical and may not resolve
-in a standalone clone.
+The [sequence model card](protein_ligand_prediction/sequence/MODEL_CARD.md)
+describes the optional ESM-2 + CPZ affinity ensemble and its evaluation limits.
+The public workflow supports sequence feature extraction; the selected ensemble's
+inference helper and fitted models are not bundled.

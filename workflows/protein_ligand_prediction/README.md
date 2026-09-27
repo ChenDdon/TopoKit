@@ -1,7 +1,7 @@
-# Protein–ligand topology features: default FS-AN recipe
+# Protein–ligand Topo features
 
-This workflow converts prepared protein–ligand complexes into **27,500 topology
-features per pair**, using the installed NumPy/SciPy implementation. It performs
+The predefined **Topo** recipe converts prepared protein–ligand 3D complexes into
+**27,500 topology features per pair**, using the installed NumPy/SciPy implementation. It performs
 feature extraction without a trained model or affinity labels. The scientific
 recipe is fixed; the batch exporter only handles inputs, outputs and provenance.
 
@@ -61,7 +61,7 @@ ligand and conformer upstream. TopoKit does not dock, align, repair, protonate,
 choose alternate conformations, or infer absent hydrogens. Multi-model PDBs and
 multi-record SDFs are rejected when a selection is ambiguous. The exporter
 reports alternate-location and nonpositive-occupancy PDB rows in stderr and
-sample records; the frozen FS-AN API retains raw eligible rows, so resolve these
+sample records; the fixed Topo API retains raw eligible rows, so resolve these
 warnings before treating the vectors as your intended single-conformer complex.
 
 ## Output and failure contract
@@ -70,7 +70,7 @@ warnings before treating the vectors as your intended single-conformer complex.
 | --- | --- |
 | `samples/<id>.npy` | C-contiguous float32 `(10, 50, 55)` tensor for a successful sample |
 | `records/<id>.json` | Input hashes, result hash, counts, duplicate removals, channel presence, warnings, timing or failure |
-| `feature_schema.json` | Exact canonical schema bytes for the installed FS-AN recipe |
+| `feature_schema.json` | Exact canonical schema bytes for the installed Topo recipe |
 | `manifest.csv` | All requested rows in order, with `pdb_id` as the prediction loader's identifier column |
 | `features.npy` | Float32 `(N, 27500)` matrix, written only after every row succeeds |
 | `sample_ids.json` | IDs in matrix-row order, written only for a complete batch |
@@ -95,11 +95,14 @@ spectra require dense matrices; increasing these caps can substantially increase
 memory and runtime. This runner processes one pair at a time. Large datasets
 may need an explicitly designed scheduling layer.
 
-## Default recipe
+## Predefined Topo recipe
 
 [DEFAULT_RECIPE.json](DEFAULT_RECIPE.json) summarizes the recipe and links it to
 the installed canonical schema. The following definition preserves the selected
-FS-AN arithmetic; the exporter introduces no geometric or statistical change.
+Topo arithmetic; the canonical schema defines the geometric and statistical contract.
+The internal strategy ID `FS-AN` remains in schemas and model receipts for
+compatibility. **Topo** is the user-facing name; do not rename hash-pinned
+identifiers or rewrite schema files.
 
 ## Feature definition
 
@@ -108,9 +111,7 @@ FS-AN arithmetic; the exporter introduces no geometric or statistical change.
    C/N/O/S and the explicit ligand MOL2 atoms. Keep protein atoms with minimum
    distance **≤15 Å** to any supported explicit ligand atom. Supported ligand
    elements are C/N/O/S/P/F/Cl/Br/I/H. Explicit H is retained in both the
-   feature categories and crop anchors; missing H is not inferred. Existing
-   input bytes, including the provenance-pinned `6djc` normalized MOL2, are
-   preserved unchanged on disk. After cropping, inspect the combined selected
+   feature categories and crop anchors; missing H is not inferred. Original input files remain unchanged on disk. After cropping, inspect the combined selected
    protein-then-ligand list and keep the **first atom at each exactly equal
    coordinate**. Keep its element and component labels; do not average or lift
    edges back to removed atoms. Deduplicate across element labels and both
@@ -137,7 +138,7 @@ FS-AN arithmetic; the exporter introduces no geometric or statistical change.
    channels build on the selected protein/ligand union, then retain **only
    cross-component edges**. In null-side channels retain the selected
    component's internal edges. Delaunay support with an edge-length cutoff
-   is not this alpha filtration. There is no r1 complete-connection override.
+   is not this alpha filtration. All channels follow the same alpha birth rule.
 4. **Filtration.** Observe exactly **50 alpha radii `0.1,0.2,…,5.0 Å`**,
    including 5.0. These are physical radii, not squared values or diameters.
    The equivalent diameter grid is `0.2,0.4,…,10.0 Å`. Include an edge
@@ -158,9 +159,9 @@ FS-AN arithmetic; the exporter introduces no geometric or statistical change.
    | 0 | Matrix size | Full spectrum, including isolated vertices |
    | 1 | Number of zero eigenvalues | Full spectrum |
    | 2 | Mean | Positive eigenvalues |
-   | 3 | Minimum / mean | Positive eigenvalues; r5 is not applied |
+   | 3 | Minimum / mean | Positive eigenvalues |
    | 4 | MAD / mean | Positive mean absolute deviation, not standard deviation |
-   | 5 | Maximum / mean | Positive eigenvalues; r5 is not applied |
+   | 5 | Maximum / mean | Positive eigenvalues |
    | 6 | 25th percentile | Positive eigenvalues; linear interpolation |
    | 7 | Median | Positive eigenvalues; linear interpolation |
    | 8 | 75th percentile | Positive eigenvalues; linear interpolation |
@@ -176,24 +177,20 @@ The stored tensor is C-order **float32 `(10,50,55)`**, computed in float64.
 Flattening yields **27,500 features**, with channels varying fastest. Presence
 and atom-count diagnostics are stored in JSON, not appended to model inputs.
 The null/null channel contributes 500 fixed zero coordinates. Ligand H and
-normalized min/max remain included. The only changes from the previous
-20 Å reference are the 15 Å crop and the alpha-radius grid shifted to 0.1–5.0 Å;
-the explicit parameters in the selection receipt define this version.
+normalized min/max remain included. The 15 Å crop and alpha-radius grid
+0.1–5.0 Å are fixed parts of the feature identity.
 
 ## Optional affinity prediction
 
 The completed batch directory is compatible with the installed guarded topology
 prediction loader. A trusted external model bundle and its recorded runtime are
-still required; they are not bundled with the examples or wheel. The selected
-companion predictor averages seeds 0, 1 and 2 of StandardScaler + GBDT pipelines.
-Each has 10,000 trees, learning rate 0.005, depth 7, min_samples_split 2,
-subsample 0.4 and max_features `sqrt`. Scaling occurs once inside each pipeline.
-See the [prediction guide](ml/README.md) and [installed model profile](../../src/topokit/workflows/protein_ligand_prediction/model_profile.json).
+required; fitted models are not bundled with the examples or wheel. The optional
+companion predictor combines three StandardScaler + GBDT pipelines. Scaling
+occurs once inside each pipeline. See the [prediction guide](ml/README.md),
+[model card](ml/MODEL_CARD.md), and [model recipe](MODEL_SELECTION.json).
 
-Older feature-selection experiments used different GBDT parameters. Their
-records remain historical evidence and do not override the current model profile.
 Changing crop, scales, channels, statistics or encoders defines different features
-and makes them incompatible with an FS-AN model unless that model is retrained.
+and makes them incompatible with a Topo model unless that model is retrained.
 
 ## Agent-assisted use and other workflows
 
@@ -204,12 +201,9 @@ install themselves into an assistant or authorize publication/training.
 
 [ESM-2 + CPZ sequence features](sequence/README.md) are a distinct embedding
 modality using protein sequences, ligand SMILES and pretrained encoders. The
-[atom-deletion](../protein_ligand_prediction_version2/README.md) and
-[H0 study](../protein_ligand_persistent_homology/README.md) remain historical
-research controllers with fixed cohort assumptions, not alternate switches of
-this default exporter. The optional supervised [TopoFormer](dl/README.md)
-consumes existing topology features and is outside this extraction workflow.
+public route extracts embeddings; the selected CPZ affinity ensemble requires
+external models and an inference helper that is not bundled here.
 
-The [previous workflow README](../../markdown/history/2026-09-23-readme-refresh/protein_ligand_README.original.md)
-preserves complete experiment status and original references. Some historical
-links require the original research workspace and are not public runtime dependencies.
+The optional supervised [TopoFormer](dl/README.md) consumes existing topology
+features. Its [model card](dl/MODEL_CARD.md) describes architecture, model
+availability and evaluation limits; exact settings are in its [recipe](dl/RECIPE.json).

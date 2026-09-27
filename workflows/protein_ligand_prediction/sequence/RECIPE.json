@@ -3,9 +3,12 @@
   "recipe_id": "sequence-esm2-t33-cpz-bos-v1",
   "scope": "frozen sequence feature extraction only",
   "selected_model_strategy": "FS-AU",
-  "selected_model_recipe_id": "sequence-esm2-t33-cpz-bos-nmi-sqrt-gbdt-v1",
+  "selected_model_recipe_id": "sequence-esm2-t33-cpz-bos-nmi-sqrt-3seed-gbdt-v1",
   "installed_api": "topokit.workflows.protein_ligand_prediction.sequence.SequenceEncoder",
-  "constructor": {"ligand_profile": "cpz", "device": "cpu"},
+  "constructor": {
+    "ligand_profile": "cpz",
+    "device": "cpu"
+  },
   "protein": {
     "model": "facebook/esm2_t33_650M_UR50D",
     "revision": "08e4846e537177426273712802403f7ba8261b6c",
@@ -42,9 +45,14 @@
     }
   },
   "output": {
-    "shape": [1792],
+    "shape": [
+      1792
+    ],
     "dtype": "float32",
-    "order": ["protein_0:1280", "ligand_1280:1792"],
+    "order": [
+      "protein_0:1280",
+      "ligand_1280:1792"
+    ],
     "scaling": "none",
     "finite_required": true
   },
@@ -68,8 +76,23 @@
   },
   "provenance": {
     "model_selection_receipt": "MODEL_SELECTION.json",
-    "asset_hash_authority": "retained CPZ_COPY.json and ESM_UPSTREAM.json/installed ESM metadata from the source study; assets are external",
-    "feature_history": "FS-AU reused the ESM-2/CPZ features of FS-AS; selected GBDT parameters do not change embeddings",
+    "asset_hash_authority": "asset identities pinned by this recipe and the installed encoder; checkpoints remain external",
+    "selected_general_ensemble": {
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "weights": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "aggregation": "arithmetic_mean_predictions",
+      "selection_basis": "fixed equal-weight three-seed prediction protocol, independent of benchmark ranking",
+      "protocol": "ENSEMBLE_PROTOCOL.md",
+      "results": "ENSEMBLE_RESULTS.md"
+    },
     "selected_gbdt_parameters_information_only": {
       "n_estimators": 10000,
       "learning_rate": 0.005,
@@ -77,7 +100,11 @@
       "min_samples_split": 2,
       "subsample": 0.4,
       "max_features": "sqrt",
-      "random_state": null,
+      "random_state_by_member": [
+        0,
+        1,
+        2
+      ],
       "n_iter_no_change": null,
       "scaling": "training-only StandardScaler embedded in each saved pipeline"
     }

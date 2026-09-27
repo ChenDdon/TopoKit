@@ -1,6 +1,6 @@
 ---
 name: topokit-sequence
-description: Extract frozen ESM-2 and CPZ sequence features for an explicit protein-chain and ligand-SMILES pair using TopoKit. Use for the selected sequence recipe; structure topology features use the separate protein-ligand workflow.
+description: Extract frozen ESM-2 and CPZ sequence features for an explicit protein-chain and ligand-SMILES pair using TopoKit. Use for the selected sequence recipe; 3D Topo features use the separate protein-ligand workflow.
 ---
 
 # TopoKit sequence features
@@ -13,8 +13,9 @@ extraction. They define the exact models and required local asset hashes.
 
 The intended result is one unscaled finite `float32[1792]` vector: ESM-2 protein
 1,280 values followed by CPZ ligand BOS 512 values. The feature ID is
-`sequence-esm2-t33-cpz-bos-v1`, used by the selected FS-AU model. These are learned
-sequence embeddings, not the 27,500-dimensional topology representation.
+`sequence-esm2-t33-cpz-bos-v1`. These are learned
+sequence embeddings; the separate Topo recipe produces 27,500 topology features
+from 3D structures.
 
 ## Follow the selected recipe
 
@@ -23,7 +24,7 @@ sequence embeddings, not the 27,500-dimensional topology representation.
    files alone do not specify full sequence, biological assembly or ligand
    protonation; resolve material missing input before extraction. Keep repeated
    biological chains. Do not infer chains from the example set automatically.
-2. Use an environment with `python -m pip install -e '.[sequence]'` from the
+2. Use an environment with `python -m pip install '.[sequence]'` from the
    checkout. Obtain explicit trusted local directories for ESM-2
    `esm2_t33_650M_UR50D` and CPZ `chembl27_pubchem_zinc_512`. Weights are not
    bundled. A feature-extraction request does not itself call for downloading
@@ -59,4 +60,7 @@ asset hashes or dimensionality to make a case pass.
 
 This skill extracts features. Do not call `fit_gbdt`, tune a model, create a
 train/test split, or claim an affinity prediction as part of this recipe.
-Historical `predict_gbdt` is bound to FS-AQ and is not an FS-AU predictor.
+The installed `predict_gbdt` supports only its ChEMBL27 model contract (internal
+ID `FS-AQ`); it rejects CPZ bundles. The selected CPZ ensemble (internal ID
+`FS-AU`) has no bundled inference helper or trained models. See the
+[model card](../../protein_ligand_prediction/sequence/MODEL_CARD.md) for scope.

@@ -48,8 +48,7 @@ the deposited structure. Its SHA-256 digest is
 
 ## Reproducibility checksums
 
-The SHA-256 digests below describe the fixtures as used by the 2026-09-11
-reader validation.
+The SHA-256 digests below identify the bundled reader inputs.
 
 ```text
 8afe10ec5002a0154fb96e5f067f5d96c7789ad42676bda8a94cf7712e2b725b  AQUCOG_clean.cif
@@ -67,6 +66,9 @@ fbe4c6dbab7a71d2bc548df6a8958ba37ca4b8b96c362b53294152adbaa016f0  data_protein.p
 ```
 
 ## Scope
+
+Regression-only geometry fixtures live under `tests/fixtures/`; they are not
+tutorial inputs.
 
 The reader tests use these files to verify parsing, row alignment, coordinate
 conversion, and metadata retention.  They do not validate chemical identity,

@@ -40,6 +40,6 @@ include-package-data = false
 "topokit.workflows.protein_ligand_prediction" = ["reference_schema.json", "model_profile.json"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests", "workflows/protein_ligand_prediction/ml/tests", "workflows/protein_ligand_prediction_version2/tests", "workflows/protein_ligand_persistent_homology/tests"]
+testpaths = ["tests", "workflows/protein_ligand_prediction/ml/tests"]
 pythonpath = ["src", "."]
 addopts = "--import-mode=importlib"

@@ -1,4 +1,4 @@
-"""Predict pK using an FS-AN ensemble or a single pipeline with fitted scalers."""
+"""Predict pK using a Topo ensemble or a single pipeline with fitted scalers."""
 import argparse
 import json
 from pathlib import Path

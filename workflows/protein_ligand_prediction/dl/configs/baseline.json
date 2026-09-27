@@ -48,7 +48,6 @@
     "position_index_unit": "patch_index",
     "position_trainable": false
   },
-  "plan_revision": 2,
   "preprocessing": {
     "axis": "27500 flattened coordinates; reshape back before tokenizing",
     "fit_scope": "inner training rows during selection; complete training manifest during final refit",
@@ -59,7 +58,7 @@
   "pretraining": {
     "enabled": false
   },
-  "status": "planned_not_trained",
+  "status": "untrained_baseline_template",
   "training": {
     "batch_size": 32,
     "batch_size_semantics": "32 complexes per optimizer step in initial single-device runs; keep effective batch fixed",

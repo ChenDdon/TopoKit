@@ -11,11 +11,11 @@ dist/
 .mpl-cache/
 artifacts/
 examples/output/
-examples/pressure_test/results/
-examples/pressure_test/transfer/
-examples/pressure_test/readability/
-examples/pressure_test/AWS_STATUS.json
-examples/performance_audit/*.log
+# Research infrastructure is maintained in the development copy.
+examples/pressure_test/
+examples/performance_audit/
+workflows/protein_ligand_persistent_homology/
+workflows/protein_ligand_prediction_version2/
 archive/
 test-results/
 release-checks/

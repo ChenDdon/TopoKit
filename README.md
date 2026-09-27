@@ -10,7 +10,7 @@ objects or scientific coordinates into homology, persistence, Laplacian spectra,
 and numerical features through composable APIs.
 
 Version **0.3.0** includes a ready-to-run, non-DL protein–ligand feature workflow:
-**FS-AN produces 27,500 topology features per prepared complex** using NumPy and
+**Topo produces 27,500 topology features per prepared complex** using NumPy and
 SciPy. A separate sequence recipe uses frozen **ESM-2 + CPZ** encoders to produce
 1,792 embedding features; it requires optional dependencies and external model
 assets.
@@ -105,7 +105,7 @@ viz.save_figure(axis.figure, "examples/output/barcodes.svg")
 Readers support CSV, native point-cloud JSON, single-frame XYZ, PDB, MOL2,
 single-record SDF/MOL, PDBQT, and atom-site CIF. Reader metadata preserves
 available IDs, elements, charges, bonds and unit-cell information; construction
-choices remain explicit. See [input contracts](markdown/CONTRACTS_0_3.md).
+choices remain explicit. See [input contracts](docs/CONTRACTS.md).
 
 ## Tutorial notebooks
 
@@ -143,12 +143,16 @@ are distinct from the two-scale persistent Laplacian API.
 
 ## Protein–ligand topology features
 
-The default **FS-AN** workflow accepts a prepared protein PDB and ligand MOL2 in
+The default **Topo** workflow accepts a prepared protein PDB and ligand MOL2 in
 the **same coordinate frame**, with coordinates in angstroms. It crops protein
 atoms within 15 Å of supported ligand atoms, uses 50 alpha radii from 0.1 to
 5.0 Å and 55 element/null channels, and computes ten summaries of ordinary
 Hyperdigraph L0 spectra. Its output is a C-contiguous `float32` tensor of shape
 `(10, 50, 55)`; C-order flattening gives **27,500 features**.
+
+The public feature name is **Topo**. Schemas use the internal compatibility
+identifier `FS-AN` to identify the exact numerical recipe, feature order and
+saved-model contract.
 
 For one complex:
 
@@ -191,16 +195,23 @@ preparation are separate steps. Resolve alternate conformations and choose the
 intended receptor/ligand before extraction. Exact duplicate coordinates are
 kept once, in cropped-protein-then-ligand order, with a removal receipt. Changes
 to the crop, radii, channels or summaries define a different feature recipe and
-must not be passed to a model trained for FS-AN.
+must not be passed to a model trained for the default Topo recipe.
 
 Feature extraction produces descriptors. Affinity prediction additionally
 requires a compatible trained model bundle and its fitted scaler. The selected
 companion topology predictor is a three-seed GBDT ensemble; model assets are
 separate from the package. See the [prediction guide](workflows/protein_ligand_prediction/ml/README.md).
 
+The optional [TopoFormer application](workflows/protein_ligand_prediction/dl/README.md)
+also predicts affinity from Topo features. Its
+[model card](workflows/protein_ligand_prediction/dl/MODEL_CARD.md) describes
+the supported model, evaluation and limitations; the accompanying recipe
+records training settings. Trained models and scalers are external assets
+and are not needed for topology feature extraction.
+
 ## Sequence-based features
 
-The selected **FS-AU** sequence recipe combines the **ESM-2
+The **ESM-2 + CPZ** sequence recipe combines the **ESM-2
 `esm2_t33_650M_UR50D`** protein encoder (1,280 features) with the **CPZ
 `chembl27_pubchem_zinc_512`** ligand encoder (512 features), yielding a
 **1,792-dimensional** vector. This is a separate pretrained embedding modality.
@@ -213,6 +224,14 @@ the selected encoders and verification steps. Encoder weights and downstream
 GBDT models are external assets and are not downloaded at import time. Preserve
 the documented model identities, pooling and token policies when reusing the
 recipe; replacing CPZ with the ChEMBL27-only checkpoint changes the features.
+
+An optional sequence affinity model uses these embeddings with an external
+GBDT ensemble. See its
+[model card](workflows/protein_ligand_prediction/sequence/MODEL_CARD.md) for
+model requirements, evaluation and limitations. The supplied sequence runner
+extracts features; ensemble inference requires separate model assets and a
+compatible inference implementation. Sequence embeddings, Topo features and
+trained affinity models are distinct assets.
 
 ## Architecture and scientific scope
 
@@ -231,27 +250,25 @@ Core topology does not load datasets, train models, choose train/test splits, or
 change supplied geometry. Homology over GF(2) and real Laplacian nullity need
 not agree for every object. Alpha geometry uses floating-point calculations;
 large or higher-dimensional constructions can be expensive. CIF parsing does
-not perform symmetry or periodic-image expansion. See the [architecture](markdown/ARCHITECTURE.md),
-[mathematical contracts](markdown/CONTRACTS.md) and [native alpha notes](markdown/NATIVE_ALPHA.md).
+not perform symmetry or periodic-image expansion. See the [architecture](docs/ARCHITECTURE.md),
+[mathematical contracts](docs/CONTRACTS.md) and [native alpha notes](docs/NATIVE_ALPHA.md).
 
 ## Documentation
 
-- [Documentation index](markdown/README.md), [notation](markdown/NOTATION.md) and [version 0.3 contracts](markdown/CONTRACTS_0_3.md)
-- [Workflow index](workflows/README.md) and [visualization guide](markdown/VISUALIZATION.md)
-- [Validation record](markdown/VALIDATION.md), [changelog](markdown/CHANGELOG.md) and [roadmap](markdown/ROADMAP.md)
+- [Reference guide](docs/README.md): architecture, scientific contracts, notation and visualization
+- [Workflow guides](workflows/README.md): Topo features, sequence embeddings and optional affinity prediction
+- [Changelog](CHANGELOG.md), [v0.3.0 release notes](release-notes/v0.3.0.md) and [automated checks](https://github.com/ChenDdon/TopoKit/actions)
 - [Example-data provenance](examples/data/README.md) and [protein–ligand sample provenance](examples/protein_ligand/README.md)
 
 For development checks:
 
 ```bash
-python -m pip install -e '.[test]'
+python -m pip install -e '.[test,plot,ml]'
 python -m pytest -q
 ```
 
-Some tests require optional extras or reference assets; their availability and
-scope are documented in the validation record. Historical research runs and
-model-selection logs are retained in the [previous README snapshot](markdown/history/2026-09-23-readme-refresh/README.original.md).
-Those records may refer to external research datasets absent from a clone.
+Optional encoder, DL and reference-backend tests need their corresponding
+extras or external assets.
 
 ## License
 

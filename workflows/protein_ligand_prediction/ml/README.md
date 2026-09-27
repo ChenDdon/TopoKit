@@ -1,16 +1,14 @@
-# Optional topology GBDT inference
+# Optional Topo GBDT affinity prediction
 
 Feature extraction is available without model weights. Predicting affinity
-requires a trusted external FS-AN model bundle with its fitted scalers and
+requires a trusted external Topo model bundle with its fitted scalers and
 recorded runtime. The examples contain input structures, not pretrained models.
 
-The selected predictor averages seeds **0, 1 and 2** trained on the
-**general-v2020R1** membership. Each pipeline uses its own fitted StandardScaler
-and a 10,000-tree GBDT: learning rate 0.005, depth 7, min_samples_split 2,
-subsample 0.4 and max_features `sqrt`. Predictions are unscaled pK values.
-The installed [model profile](../../../src/topokit/workflows/protein_ligand_prediction/model_profile.json)
-is the current parameter/identity reference. Historical feature-selection fits
-used different settings and retain their own records.
+The optional predictor combines three StandardScaler + GBDT pipelines and
+returns unscaled pK values. See the [model card](MODEL_CARD.md) for its input
+contract, training scope and limitations. Exact settings and bundle identities
+are in the [model recipe](../MODEL_SELECTION.json) and installed
+[model profile](../../../src/topokit/workflows/protein_ligand_prediction/model_profile.json).
 
 ## Extract, then predict
 

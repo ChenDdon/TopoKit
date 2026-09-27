@@ -71,17 +71,6 @@
     "sklearn": "1.9.0",
     "joblib": "1.5.3"
   },
-  "final_bundle": "datasets/protein_ligand_prediction/final/topology_gbdt/models/general_v2020R1",
-  "feature_selection_parameters": {
-    "n_estimators": 10000,
-    "learning_rate": 0.002,
-    "max_depth": 7,
-    "max_features": "sqrt",
-    "min_samples_split": 5,
-    "subsample": 0.8,
-    "random_state": 0,
-    "n_iter_no_change": null
-  },
-  "selection_role": "user-selected final general-v2020R1 three-seed consensus; refined ensembles retained for matched benchmarks",
-  "distribution": "trusted external companion bundles; no weights or fitted scalers embedded in the wheel"
+  "selection_role": "general-v2020R1 three-seed prediction ensemble",
+  "distribution": "external trusted bundles with fitted scalers; models are not bundled with TopoKit"
 }

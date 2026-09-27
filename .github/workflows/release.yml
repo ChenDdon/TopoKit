@@ -45,7 +45,7 @@ jobs:
           version = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))["project"]["version"]
           if tag != f"v{version}":
               raise SystemExit(f"Tag {tag!r} does not match package version v{version}")
-          notes = Path("markdown") / f"RELEASE_{tag}.md"
+          notes = Path("release-notes") / f"{tag}.md"
           if not notes.is_file() or not notes.read_text(encoding="utf-8").strip():
               raise SystemExit(f"Missing release notes: {notes}")
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:

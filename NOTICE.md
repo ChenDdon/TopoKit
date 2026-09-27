@@ -1,7 +1,7 @@
 # Source and data provenance
 
-`topokit` is the primary development home for three first-party research
-implementations integrated with the copyright owner's authorization:
+`topokit` integrates three first-party implementations with the copyright
+owner's authorization:
 
 | Integrated kernel | Source package | Source version |
 | --- | --- | --- |
@@ -9,8 +9,7 @@ implementations integrated with the copyright owner's authorization:
 | `topokit.core._hyperdigraph` and hyperdigraph builders | `hyperdigraph-topo` | 0.6.0 |
 | `topokit.core._interaction` and interaction builders | `interaction-topology` | 0.2.0 |
 
-The three original source directories are retained outside this package as
-migration references. Installed `topokit` does not import those directories.
+Installed `topokit` does not require or import the original source packages.
 Private kernel namespaces are implementation details; new applications use
 the public `topokit` facades. Migrated tests remain in `tests/legacy_*`.
 
@@ -24,8 +23,9 @@ The 24-point numerical fixture preserves coordinates from
 references https://doi.org/10.1021/ja410088y. The public example deliberately
 uses only coordinates, generic IDs, a selected ID subset, and assigned uniform
 weights. It makes no chemical or predictive-performance claim. Coordinate
-data and fixture-specific loaders now live only in `examples/`, outside the
-installed library. Historical migration notes are in `markdown/`.
+data and fixture-specific loaders live in `examples/`, outside the installed
+library. Regression-only geometry inputs live in `tests/fixtures/`, with their
+own provenance notes; these inputs are also excluded from the installed library.
 Coordinate provenance is not erased by renaming the fixture; the MIT code license does
 not override source dataset notices. Check data redistribution metadata when
 preparing a public release or adding further datasets.
@@ -38,7 +38,7 @@ whose original preparation or redistribution terms were not retained are
 appropriate for local validation only until those terms are confirmed.
 
 The ten complexes in `examples/protein_ligand/` were copied byte-for-byte from
-the user's local protein–ligand dataset for requested smoke testing. Their
+the protein–ligand source collection identified in their provenance inventory. Their
 `SOURCE.json` records source paths, dataset-release metadata and SHA-256 values;
 `EXPECTED.json` records feature-extraction checks. These files are not relicensed
 under MIT. Upstream structure/preparation redistribution terms remain to be
@@ -61,7 +61,7 @@ originating experimental structure is Wood et al., *Chem. Commun.* **52**,
 The reader-layer Pauling electronegativity constants are an offline snapshot
 of factual [PubChem periodic-table values](https://pubchem.ncbi.nlm.nih.gov/periodic-table/electronegativity).
 Their source, date, checksum, missing entries, and override policy are documented
-in [markdown/REFERENCE_DATA.md](markdown/REFERENCE_DATA.md). They are attributed
+in [reference constants](docs/REFERENCE_DATA.md). They are attributed
 scientific reference constants, distinct from the example coordinate dataset
 and the first-party algorithms. No runtime data download occurs.
 

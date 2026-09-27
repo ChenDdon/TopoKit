@@ -20,7 +20,7 @@ def check_wheel(path):
     with zipfile.ZipFile(path) as archive:
         names = set(archive.namelist())
     forbidden_prefixes = (
-        "examples/", "tests/", "markdown/", "workflows/",
+        "examples/", "tests/", "markdown/", "docs/", "release-notes/", "workflows/",
         "topokit/datasets/", "topokit/_core/",
     )
     forbidden_suffixes = (
@@ -59,8 +59,10 @@ def check_sdist(path):
 
         required = {
             "README.md", "NOTICE.md", "LICENSE", "environment.yml", ".gitattributes",
-            ".github/workflows/tests.yml", ".github/workflows/release.yml", "markdown/CHANGELOG.md",
-            "examples/point_cloud.py", "examples/data/README.md",
+            ".github/workflows/tests.yml", ".github/workflows/release.yml", "CHANGELOG.md",
+            "release-notes/v0.3.0.md", "docs/README.md", "docs/ARCHITECTURE.md",
+            "docs/CONTRACTS.md", "docs/NOTATION.md", "docs/REFERENCE_DATA.md",
+            "examples/README.md", "examples/point_cloud.py", "examples/data/README.md",
             "examples/data/point_cloud_24.csv", "examples/data/point_cloud_24.json",
             "examples/data/data_6PT3_receptor.pdb", "examples/data/data_6PT3_ligand.mol2",
             "examples/data/data_molecule.sdf", "examples/data/data_molecule.mol",
@@ -72,6 +74,8 @@ def check_sdist(path):
             "examples/different_input_formats_workflow.ipynb",
             "tests/check_distribution.py", "tests/wheel_smoke.py",
             "tests/protein_ligand_wheel_smoke.py",
+            "tests/fixtures/alpha_near_planar_hull_73.csv",
+            "tests/fixtures/alpha_near_planar_hull_73.md",
             "workflows/skills/topokit-protein-ligand/SKILL.md",
             "workflows/skills/topokit-sequence/SKILL.md",
             *(f"{SAMPLE_DIRECTORY}/{name}" for name in
@@ -79,25 +83,36 @@ def check_sdist(path):
             *("workflows/protein_ligand_prediction/" + name for name in
               ("representative_strategy.py", "README.md", "extract_features.py",
                "ml/predict.py", "ml/tests/test_predict.py", "MODEL_SELECTION.json",
+               "ml/MODEL_CARD.md", "sequence/MODEL_CARD.md", "dl/MODEL_CARD.md",
+               "DEFAULT_RECIPE.json", "dl/RECIPE.json",
                "sequence/README.md", "sequence/RECIPE.json", "sequence/MODEL_SELECTION.json",
                "sequence/extract_features.py")),
-            *("examples/pressure_test/" + name for name in
-              ("run_pressure.py", "worker.py", "fast_worker.py", "cases.py",
-               "summarize.py", "aggregate_aws.py", "matrices/smoke.json")),
         }
         assert required <= names, f"Missing source files: {sorted(required - names)}"
         forbidden_prefixes = (
-            "archive/", "examples/output/", "src/topokit/datasets/",
-            "examples/pressure_test/results/", "examples/pressure_test/transfer/",
-            "examples/pressure_test/readability/",
+            "archive/", "maintenance/", "examples/output/", "src/topokit/datasets/",
+            "markdown/", "examples/pressure_test/", "examples/performance_audit/",
+            "examples/benchmark_incremental_l0.py", "examples/validate_incremental_l0_features.py",
+            "workflows/protein_ligand_persistent_homology/",
+            "workflows/protein_ligand_prediction_version2/",
             "workflows/protein_ligand_prediction/hpcc_15a/",
             "workflows/protein_ligand_prediction/cornell_15a/",
+            "workflows/protein_ligand_prediction/REPRESENTATIVE_STRATEGY.json",
+            "workflows/protein_ligand_prediction/sequence/history/",
+            "workflows/protein_ligand_prediction/sequence/ENSEMBLE_STUDY.json",
+            "examples/data/alpha_near_planar_hull_73.csv",
+            "examples/data/alpha_near_planar_hull_73.md",
         )
         unexpected = sorted(name for name in names if name.startswith(forbidden_prefixes)
                             or "__pycache__" in name or name.endswith(".pyc"))
         assert not unexpected, f"Generated or stale source artifacts: {unexpected}"
         assert "workflows/protein_ligand_prediction/feature_strategy.py" not in names
         assert "workflows/protein_ligand_prediction/ml_feature_comparison.py" not in names
+
+        fixture = "tests/fixtures/alpha_near_planar_hull_73.csv"
+        assert hashlib.sha256(read(fixture)).hexdigest() == (
+            "0648db773f30190eaeac370fd4427649c79956dfcd0e0d3ff036fd223f281092"
+        ), f"Regression input checksum mismatch: {fixture}"
 
         rows = list(csv.DictReader(io.StringIO(read(f"{SAMPLE_DIRECTORY}/manifest.csv").decode())))
         assert len(rows) == 10 and len({row["sample_id"] for row in rows}) == 10
@@ -115,7 +130,7 @@ def check_sdist(path):
                 assert hashlib.sha256(read(member)).hexdigest() == expected_files[str(relative)], (
                     f"Source input checksum mismatch: {member}"
                 )
-    print("Source archive: tutorials, recipes, agent skills and ten verified pairs; generated pressure outputs excluded.")
+    print("Source archive: public references, tutorials, recipes, agent skills and ten verified pairs; research-only files excluded.")
 
 
 def main():

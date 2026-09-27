@@ -58,9 +58,9 @@ def test_documentation_tracks_current_release():
     import topokit
     base = Path(__file__).resolve().parents[1]
     assert topokit.__version__ in (base / "README.md").read_text()
-    assert topokit.__version__ in (base / "markdown/CHANGELOG.md").read_text()
-    for name in ("ARCHITECTURE", "NOTATION", "CONTRACTS", "CHANGELOG", "MIGRATION_0_2", "VALIDATION"):
-        assert (base / "markdown" / f"{name}.md").is_file()
+    assert topokit.__version__ in (base / "CHANGELOG.md").read_text()
+    for name in ("ARCHITECTURE", "NOTATION", "CONTRACTS", "REFERENCE_DATA"):
+        assert (base / "docs" / f"{name}.md").is_file()
 
 
 @pytest.mark.parametrize("route", ["simplicial", "hyperdigraph", "interaction"])

@@ -1,15 +1,15 @@
 ---
 name: topokit-protein-ligand
-description: Extract the fixed TopoKit FS-AN topology features from prepared protein–ligand 3D pairs or a manifest, and verify the resulting feature store. Use for bound or docked complexes; sequence embeddings use the separate topokit-sequence recipe.
+description: Extract the predefined Topo protein–ligand topology features from prepared protein–ligand 3D pairs or a manifest, and verify the resulting feature store. Use for bound or docked complexes; sequence embeddings use the separate topokit-sequence recipe.
 ---
 
-# Protein–ligand features with TopoKit
+# Protein–ligand Topo features
 
 Read the [workflow guide](../../protein_ligand_prediction/README.md) for the
 input/output contract and [default recipe](../../protein_ligand_prediction/DEFAULT_RECIPE.json)
 for feature identity. Locate the repository root by its `pyproject.toml`.
 Check that `topokit.__file__` belongs to the intended installation when multiple
-development copies exist. Use `python -m pip install .` from that root when an
+Python environments or checkouts exist. Use `python -m pip install .` from that root when an
 installation is needed; base extraction requires only NumPy and SciPy.
 
 ## Inputs and recipe
@@ -21,13 +21,31 @@ chains as an unannounced preprocessing step. Clarify missing molecular identity
 or pose information before extracting features. Review alternate-location and
 occupancy warnings; the frozen recipe retains raw eligible PDB rows.
 
-The default is FS-AN: 15 Å crop; 50 alpha radii 0.1–5.0 Å; 55 element/null
+The predefined Topo recipe uses 15 Å crop; 50 alpha radii 0.1–5.0 Å; 55 element/null
 channels; ten ordinary Hyperdigraph L0 spectral summaries. Output is float32
 `(10, 50, 55)`, flattened in C order to 27,500 features. These are successive
 ordinary L0 spectra, not two-scale persistent Laplacians. Changing this recipe
 requires an explicit scientific choice and a distinct feature identity.
 
-## Execute
+## Quick start: one prepared complex
+
+The user supplies a structure pair and receives a numerical vector for their
+own analysis; no topology terminology or model training is needed to run it.
+For an individual pair:
+
+```python
+import numpy as np
+from topokit.workflows.protein_ligand_prediction import featurize
+
+tensor = featurize("protein.pdb", "ligand.mol2")  # float32 (10, 50, 55)
+features = tensor.ravel(order="C")              # 27,500 topology values
+np.save("topology_features.npy", features, allow_pickle=False)
+```
+
+Use the batch exporter, including for a one-row CSV, when the user needs input
+hashes, a feature schema and a completion receipt with the vector.
+
+## Quick start: a manifest
 
 For a batch, prepare a CSV with `sample_id,protein_file,ligand_file`. IDs are
 unique letters/digits/underscores/hyphens. Resolve relative structure paths
@@ -41,9 +59,7 @@ python workflows/protein_ligand_prediction/extract_features.py \
 ```
 
 Replace the manifest/output paths for user data. The [ten-pair collection](../../../examples/protein_ligand/README.md)
-is a local smoke example, not a training/evaluation split. For a requested
-single array, use `featurize(protein_path, ligand_path)` directly; use the batch
-exporter even for one row when a provenance-complete store is needed.
+is a local smoke example, not a training/evaluation split. Keep the scientific recipe and feature order unchanged for user-supplied data.
 
 ## Verify and deliver
 
@@ -54,7 +70,7 @@ exporter even for one row when a provenance-complete store is needed.
 - Retain the canonical `feature_schema.json`, sample records, hashes and
   implementation receipt. Do not reserialize a schema for the prediction loader,
   which validates exact bytes. The exporter already writes the correct files.
-- Report output paths, sample count, tensor/vector shape, FS-AN identity and
+- Report output paths, sample count, tensor/vector shape, Topo recipe/schema identity and
   any input warnings. A descriptor vector alone is not an affinity prediction.
 
 If a resource cap is reached, explain the cap and likely memory impact before

@@ -1,0 +1,106 @@
+{
+  "architecture": "A03",
+  "core_selection": false,
+  "ensemble": {
+    "aggregation": "arithmetic_mean_predicted_pK",
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "weights": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ]
+  },
+  "epoch_selection_source": "fixed general-set training/validation split: 16648/1850 rows",
+  "epoch_transfer_to_refined": "reuse the selected per-seed epochs; no refined validation search or test-driven stopping",
+  "epochs_by_seed": {
+    "0": 99,
+    "1": 73,
+    "2": 155
+  },
+  "feature_recipe": "hpcc-alpha15-cb4760366e92bd2e",
+  "feature_schema_sha256": "34dde88aff5d7deab170347299f10b4153d2cdf3408a06d4f681b685490c0fa2",
+  "format": "topokit.topoformer.protocol_recipe.v1",
+  "model": {
+    "activation": "gelu",
+    "attention_dropout": 0.1,
+    "cls_position": "zero_vector",
+    "d_model": 768,
+    "dropout": 0.1,
+    "ff_multiplier": 4,
+    "head_activation": "tanh",
+    "head_hidden": "d_model",
+    "independent_layer_initialization": true,
+    "layer_norm_eps": 1e-12,
+    "name": "TopoFormerMini",
+    "norm_first": true,
+    "num_heads": 12,
+    "num_layers": 12,
+    "pooling": "cls_token",
+    "position_encoding": "topoformer_fixed_2d_sincos",
+    "position_grid": [
+      50,
+      1
+    ],
+    "position_index_unit": "patch_index",
+    "position_trainable": false
+  },
+  "model_artifacts_external_to_package": true,
+  "parameters": 86071297,
+  "refined_cohorts": [
+    {
+      "config": "refined_2007",
+      "n_test": 195,
+      "n_train": 1105,
+      "test_manifest": "test_casf_2007",
+      "test_manifest_sha256": "5cd96f42fbd334a093ef5e5c3991a289a8e2599050b1d684d8a385cb9f4276d0",
+      "train_manifest": "train_refined_2007",
+      "train_manifest_sha256": "43d4934dc214c4a708ce65d028491b2a2975dbec43456f8b6f3aaac58cab60ae",
+      "year": 2007
+    },
+    {
+      "config": "refined_2013",
+      "n_test": 195,
+      "n_train": 2764,
+      "test_manifest": "test_casf_2013",
+      "test_manifest_sha256": "06da9562ebfb9cab04a39166ff2860fb60811557024ef13f9268697078bc11eb",
+      "train_manifest": "train_refined_2013",
+      "train_manifest_sha256": "d075daba41a5ca7c1ff52842221f271bb7e3c3bc732a775d47eb35062723d9dc",
+      "year": 2013
+    },
+    {
+      "config": "refined_2016",
+      "n_test": 285,
+      "n_train": 3772,
+      "test_manifest": "test_casf_2016",
+      "test_manifest_sha256": "04935f607b8a7dbf10d672efa220eaa8749c4ac2330d82884f4eb50afabbdc82",
+      "train_manifest": "train_refined_2016",
+      "train_manifest_sha256": "3c529332af84dab993292e9553536764890fb0ee5fa32c410576915b20ab7c63",
+      "year": 2016
+    }
+  ],
+  "refined_source_lock_sha256": "75d47a1acb33a1e35f7421fb0b599b2a59147852cc33f413eb2d684acd1d4f54",
+  "training": {
+    "batch_size": 64,
+    "batch_size_semantics": "64 complexes per optimizer step on one GPU; no accumulation",
+    "early_stopping_min_delta": null,
+    "early_stopping_patience": null,
+    "gradient_accumulation_steps": 1,
+    "gradient_clip_norm": 1.0,
+    "learning_rate": 0.0001,
+    "loss": "mse",
+    "max_epochs": 200,
+    "min_lr_ratio": 0.1,
+    "monitor": null,
+    "optimizer": "AdamW",
+    "precision": "float32",
+    "scheduler": "cosine",
+    "seed": 0,
+    "tf32": false,
+    "warmup_epochs": 10,
+    "weight_decay": 0.001
+  }
+}

@@ -1,7 +1,7 @@
 # Protein–ligand feature examples
 
 Ten small, existing protein–ligand structure pairs demonstrate the default
-**FS-AN** topology feature recipe. The structures are byte-for-byte local copies
+**Topo** feature recipe. The structures are byte-for-byte local copies
 from the project's `datasets/protein_ligand_prediction/structures` collection;
 [SOURCE.json](SOURCE.json) records original paths, upstream metadata, file sizes,
 and SHA-256 hashes. The complete structure collection here is about 1.03 MB.
@@ -100,7 +100,7 @@ in downstream statistical or machine-learning analysis.
 | 4jv7 | 589 | 50 | Br, C, H, N, O |
 | 4aq3 | 736 | 94 | C, Cl, H, I, N, O, S |
 
-All ten pairs passed default FS-AN extraction on 2026-09-24: each yielded a
+All ten pairs passed default topology feature extraction on 2026-09-24: each yielded a
 finite float32 `(10, 50, 55)` tensor and a 27,500-value C-order feature vector.
 The ten-pair run took approximately **7.1 seconds** on the recorded macOS arm64
 environment with numerical-library thread counts set to one. Runtime varies by

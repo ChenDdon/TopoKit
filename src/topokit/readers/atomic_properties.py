@@ -1,6 +1,6 @@
 """Offline elemental attributes. Assignment is explicit, never a builder default.
 
-See markdown/REFERENCE_DATA.md for the PubChem snapshot and missing-value policy.
+See docs/REFERENCE_DATA.md for the PubChem snapshot and missing-value policy.
 These are scientific reference constants, not sample or demonstration datasets.
 """
 from collections.abc import Mapping

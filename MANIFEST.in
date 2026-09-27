@@ -1,18 +1,58 @@
-include README.md NOTICE.md LICENSE AGENTS.md environment.yml .gitattributes
+include README.md CHANGELOG.md NOTICE.md LICENSE AGENTS.md environment.yml .gitattributes
 include .github/workflows/tests.yml
 include .github/workflows/release.yml
-recursive-include markdown *.md *.json
+recursive-include docs *.md
+recursive-include release-notes *.md
 recursive-include examples *.py *.md *.csv *.json *.ipynb
 recursive-include examples/data *.xyz *.pdb *.pdbqt *.mol2 *.sdf *.mol *.cif
 recursive-include examples/protein_ligand *.pdb *.mol2
 prune examples/output
-prune examples/pressure_test/results
-prune examples/pressure_test/transfer
-prune examples/pressure_test/readability
-exclude examples/pressure_test/AWS_STATUS.json
+prune examples/pressure_test
+prune examples/performance_audit
+exclude examples/benchmark_incremental_l0.py examples/validate_incremental_l0_features.py
 recursive-include tests *.py
-recursive-include workflows *.py *.md *.sh *.json *.txt *.yml
+recursive-include tests/fixtures *.csv *.md
+# Public workflow inputs and guides are explicit; study receipts stay external.
+include workflows/README.md workflows/AGENTS.md
+include workflows/skills/topokit-protein-ligand/SKILL.md
+include workflows/skills/topokit-sequence/SKILL.md
+include workflows/protein_ligand_prediction/README.md
+include workflows/protein_ligand_prediction/DEFAULT_RECIPE.json
+include workflows/protein_ligand_prediction/MODEL_SELECTION.json
+include workflows/protein_ligand_prediction/extract_features.py
+include workflows/protein_ligand_prediction/representative_strategy.py
+include workflows/protein_ligand_prediction/ml/README.md
+include workflows/protein_ligand_prediction/ml/MODEL_CARD.md
+include workflows/protein_ligand_prediction/ml/predict.py
+include workflows/protein_ligand_prediction/ml/environment.yml
+include workflows/protein_ligand_prediction/ml/requirements.txt
+recursive-include workflows/protein_ligand_prediction/ml/tests *.py
+include workflows/protein_ligand_prediction/sequence/README.md
+include workflows/protein_ligand_prediction/sequence/MODEL_CARD.md
+include workflows/protein_ligand_prediction/sequence/RECIPE.json
+include workflows/protein_ligand_prediction/sequence/MODEL_SELECTION.json
+include workflows/protein_ligand_prediction/sequence/extract_features.py
+include workflows/protein_ligand_prediction/sequence/ENSEMBLE_PROTOCOL.md
+include workflows/protein_ligand_prediction/sequence/ENSEMBLE_PARAMETERS.json
+include workflows/protein_ligand_prediction/sequence/ENSEMBLE_METRICS.json
+include workflows/protein_ligand_prediction/sequence/ENSEMBLE_RESULTS.md
+include workflows/protein_ligand_prediction/dl/README.md
+include workflows/protein_ligand_prediction/dl/MODEL_CARD.md
+include workflows/protein_ligand_prediction/dl/IMPLEMENTATION.md
+include workflows/protein_ligand_prediction/dl/RECIPE.json
+include workflows/protein_ligand_prediction/dl/MODEL_SELECTION.json
+include workflows/protein_ligand_prediction/dl/OPTIMIZER_SELECTION.json
+include workflows/protein_ligand_prediction/dl/TOPOFORMER_REFERENCE.json
+include workflows/protein_ligand_prediction/dl/configs/baseline.json
+include workflows/protein_ligand_prediction/dl/configs/final_a03.json
+exclude workflows/protein_ligand_prediction/REPRESENTATIVE_STRATEGY.json
+exclude workflows/protein_ligand_prediction/sequence/ENSEMBLE_STUDY.json
+prune workflows/protein_ligand_prediction/sequence/history
+prune workflows/protein_ligand_persistent_homology
+prune workflows/protein_ligand_prediction_version2
+prune markdown
 prune archive
+prune maintenance
 prune build
 prune dist
 global-exclude __pycache__ *.py[cod] .DS_Store

@@ -3,9 +3,9 @@
 This optional workflow turns **explicit protein sequences and a prepared ligand
 SMILES** into one unscaled `float32[1792]` vector. It uses the frozen ESM-2
 `esm2_t33_650M_UR50D` protein encoder and the
-`chembl27_pubchem_zinc_512` (CPZ) ligand encoder. These are the features used by
-the selected **FS-AU** sequence model. They are learned sequence embeddings;
-the separate [structure workflow](../README.md) computes topology features.
+`chembl27_pubchem_zinc_512` (CPZ) ligand encoder. These are learned sequence embeddings;
+the separate [Topo workflow](../README.md) computes 27,500 topology features
+from 3D protein–ligand structures.
 
 The supported extraction route is `SequenceEncoder(ligand_profile="cpz")`.
 The [machine-readable recipe](RECIPE.json) pins both models, required files,
@@ -17,7 +17,7 @@ ChEMBL27-only recipe for compatibility; always select `cpz` explicitly here.
 From a cloned TopoKit repository:
 
 ```bash
-python -m pip install -e '.[sequence]'
+python -m pip install '.[sequence]'
 ```
 
 Model weights are external and are never downloaded by TopoKit. Supply trusted
@@ -32,7 +32,7 @@ The complete SHA256 map is in [RECIPE.json](RECIPE.json). The CPZ checkpoint
 starts with `c4788751…`; the ChEMBL27-only checkpoint starts with `8f4b94db…` and
 is a different representation despite having the same width. The loader rejects
 mismatched checkpoint and dictionary bytes before loading the ligand model.
-The CPZ hashes identify the retained source-study assets; an upstream archive
+The CPZ hashes pin the supported encoder assets; an upstream archive
 must be checked against them after extraction. Check the upstream terms when
 obtaining or distributing weights. The legacy `.pt` loader can deserialize
 Python objects, so supply weights from a trusted source, not an arbitrary upload.
@@ -118,26 +118,20 @@ For repeated inputs, instantiate one encoder and reuse it. The public
 `concatenate_embeddings` helpers support explicit caching/batching. Preserve
 this pooling and profile identity when composing a larger application.
 
-## Selected model versus historical helpers
+## Optional affinity model
 
-[MODEL_SELECTION.json](MODEL_SELECTION.json) preserves the original FS-AU
-selection receipt. Its paths describe external research assets and do not
-resolve in a public clone. The feature recipe ID above identifies embeddings;
-FS-AU's model recipe is `sequence-esm2-t33-cpz-bos-nmi-sqrt-gbdt-v1`.
-Its selected GBDT configuration uses 10,000 trees, depth 7, learning rate 0.005,
-minimum split 2, subsample 0.4, `max_features="sqrt"`, and
-`random_state=None`, with a training-only StandardScaler in the saved pipeline.
-These parameters are provenance, not an instruction to train.
+The public workflow supports **feature extraction**. The selected ESM-2 + CPZ
+affinity ensemble requires trusted fitted pipelines and an inference helper
+that are **not bundled** with TopoKit. The [model card](MODEL_CARD.md) describes
+its scope and evaluation limits; the [protocol](ENSEMBLE_PROTOCOL.md) and
+[model recipe](MODEL_SELECTION.json) define the external model contract.
 
 The installed `make_gbdt`, `fit_gbdt`, `predict_gbdt` and module-level `RECIPE_ID`
-retain their historical **FS-AQ / ChEMBL27** meanings. They do not implement
-FS-AU bundle inference. In particular, `predict_gbdt` deliberately rejects a
-CPZ/FS-AU bundle. Trained FS-AU pipelines, their compatible saved runtime,
-benchmark data and study controllers are not bundled here. Do not send a
-ChEMBL27-only vector to a CPZ model or standardize a vector twice.
+retain the ChEMBL27-only model contract (internal ID `FS-AQ`). They do not
+implement the selected CPZ ensemble (internal ID `FS-AU`). In particular,
+`predict_gbdt` rejects a CPZ bundle. Do not send a ChEMBL27-only vector to a CPZ
+model or standardize a vector twice. A shared vector width does not establish
+compatibility.
 
-The [earlier workflow log](history/README.before-public-guide-2026-09-24.md)
-is retained for research provenance; its dataset-relative links refer to the
-original research workspace. Current public usage is described on this page.
 The [repository skill](../../skills/topokit-sequence/SKILL.md) helps an agent
 follow the same feature recipe.

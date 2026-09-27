@@ -145,7 +145,7 @@ assert fs.schema()['construction']['backend']=='native'
 def test_near_planar_hull_sliver_uses_local_repair_only_after_old_failure(monkeypatch):
     from pathlib import Path
     points = np.loadtxt(Path(__file__).resolve().parents[1]/
-                        "examples/data/alpha_near_planar_hull_73.csv", delimiter=",", skiprows=1)
+                        "tests/fixtures/alpha_near_planar_hull_73.csv", delimiter=",", skiprows=1)
     repair = implementation._repair_cells
     def without_new_recovery(*args,**kwargs):
         if kwargs.get("ill_conditioned_stars"):
@@ -170,7 +170,7 @@ def test_near_planar_hull_full_complex_matches_exact_alpha():
     from pathlib import Path
     import gudhi
     points = np.loadtxt(Path(__file__).resolve().parents[1]/
-                        "examples/data/alpha_near_planar_hull_73.csv", delimiter=",", skiprows=1)
+                        "tests/fixtures/alpha_near_planar_hull_73.csv", delimiter=",", skiprows=1)
     native = dict(alpha_complex(points).get_filtration())
     external = gudhi.AlphaComplex(points=points,precision="exact").create_simplex_tree()
     expected = {tuple(s):float(b) for s,b in external.get_filtration()}

@@ -1,4 +1,4 @@
-"""Repository compatibility entry point for the installed FS-AN workflow."""
+"""Repository compatibility entry point for the installed Topo workflow."""
 import json
 from topokit.workflows.protein_ligand_prediction import (
     compute, featurize, implementation_receipt, read_selected_atoms, schema,

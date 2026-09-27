@@ -1,4 +1,4 @@
-"""Export the installed, fixed FS-AN recipe for user-supplied structure pairs."""
+"""Export the installed, fixed Topo recipe for user-supplied structure pairs."""
 from __future__ import annotations
 
 import argparse
@@ -77,10 +77,10 @@ def input_warnings(protein_file):
     warnings = []
     if alternate:
         warnings.append(f"{alternate} protein ATOM rows have alternate-location labels; "
-                        "FS-AN retains raw rows and does not select a conformer")
+                        "Topo retains raw rows and does not select a conformer")
     if zero_occupancy:
         warnings.append(f"{zero_occupancy} protein ATOM rows have nonpositive occupancy; "
-                        "FS-AN does not filter by occupancy")
+                        "Topo does not filter by occupancy")
     return warnings
 
 
