@@ -13,7 +13,7 @@ from topokit.workflows.protein_protein_prediction.features import RECIPE_ID, sch
 
 
 def _json(path, value):
-    path.write_text(json.dumps(value, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+    path.write_bytes((json.dumps(value, sort_keys=True, indent=2) + "\n").encode("utf-8"))
 
 
 def _refresh(folder):

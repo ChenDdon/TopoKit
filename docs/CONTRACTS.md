@@ -64,7 +64,9 @@ within a chain group and paths relative to the manifest. Requested chains must
 exist by default. Explicit `allowed_missing_chains` or `empty_partner` inputs
 are recorded; no dataset-specific exception is inferred. A complete store has
 finite float32 `(N,5040)` features, ordered sample IDs, canonical schema bytes
-and input/output hashes. Failed rows prevent the complete matrix from being
+and input/output hashes. The exported schema uses UTF-8 JSON with sorted keys,
+two-space indentation and LF newlines on every platform; preserve those bytes.
+Failed rows prevent the complete matrix from being
 published. Affinity inference requires that same schema and compatible trusted
 external bundles; its target is signed binding free energy in kcal/mol,
 not mutation ΔΔG. See the [PPI recipe](../workflows/protein_protein_prediction/README.md)

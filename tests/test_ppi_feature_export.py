@@ -29,7 +29,7 @@ def complex_row(tmp_path):
 
 
 def test_export_matches_api_and_preserves_order_and_hashes(tmp_path):
-    assert (SCRIPT.parent / "DEFAULT_RECIPE.json").read_bytes() == exporter.canonical_bytes(schema())
+    assert json.loads((SCRIPT.parent / "DEFAULT_RECIPE.json").read_text(encoding="utf-8")) == schema()
     row = complex_row(tmp_path)
     other = {**row, "sample_id": "second_pair"}
     output = tmp_path / "features"

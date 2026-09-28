@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Make PPI test fixtures portable across Windows and Unix line endings while
+  retaining strict canonical-byte checks for exported feature schemas.
 - Include ten compact protein–protein examples with exactly two chains, A and B,
   one per partner, plus a manifest, usage guide and byte-level provenance.
   All ten produce finite 5,040-value Topo features with the default recipe.

@@ -243,6 +243,7 @@ with columns `sample_id,structure_file,partner_a_chains,partner_b_chains`;
 separate chains within a multi-chain partner with semicolons.
 The exporter writes tensors, input-selection records and the exact feature
 schema, followed by an ordered `(N, 5040)` matrix when every sample succeeds.
+Keep the exporter-written schema when moving a feature store between platforms.
 The fixed recipe selects interface residues using a strict 20 Å Cα distance,
 uses 14 alpha radii from 1.0 through 7.5 Å in 0.5 Å steps, and summarizes
 36 atom-category channels. No topology background is needed to run it.
