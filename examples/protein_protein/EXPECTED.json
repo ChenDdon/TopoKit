@@ -1,0 +1,346 @@
+{
+  "schema_version": 1,
+  "validated_date": "2026-09-28",
+  "recipe_id": "ppi-topo-cnos-ca-disjoint-crop20-alpha-r1p0-r7p5-step0p5-v1",
+  "shape": [
+    10,
+    10,
+    14,
+    36
+  ],
+  "flattened_shape": [
+    10,
+    5040
+  ],
+  "dtype": "float32",
+  "order": "C",
+  "runtime": {
+    "python": "3.12.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "macOS-26.6.2-arm64-arm-64bit"
+  },
+  "validation_scope": "All ten examples extracted successfully through the installed public PPI API; no labels, learned models or sequence features used. Timings and nonzero counts are observations, not cross-platform numerical tolerances.",
+  "samples": [
+    {
+      "sample_id": "1q5w",
+      "tensor_shape": [
+        10,
+        14,
+        36
+      ],
+      "finite": true,
+      "dtype": "float32",
+      "nonzero_values": 3606,
+      "seconds": 0.5485,
+      "ordered_partner_chains": [
+        [
+          "B"
+        ],
+        [
+          "A"
+        ]
+      ],
+      "observed_residues": {
+        "A": 31,
+        "B": 76
+      },
+      "cropped_residues": [
+        67,
+        29
+      ],
+      "selected_atoms": [
+        531,
+        220
+      ]
+    },
+    {
+      "sample_id": "2l14",
+      "tensor_shape": [
+        10,
+        14,
+        36
+      ],
+      "finite": true,
+      "dtype": "float32",
+      "nonzero_values": 4016,
+      "seconds": 0.6848,
+      "ordered_partner_chains": [
+        [
+          "A"
+        ],
+        [
+          "B"
+        ]
+      ],
+      "observed_residues": {
+        "A": 59,
+        "B": 49
+      },
+      "cropped_residues": [
+        59,
+        49
+      ],
+      "selected_atoms": [
+        459,
+        391
+      ]
+    },
+    {
+      "sample_id": "2ktf",
+      "tensor_shape": [
+        10,
+        14,
+        36
+      ],
+      "finite": true,
+      "dtype": "float32",
+      "nonzero_values": 3390,
+      "seconds": 0.5688,
+      "ordered_partner_chains": [
+        [
+          "A"
+        ],
+        [
+          "B"
+        ]
+      ],
+      "observed_residues": {
+        "A": 76,
+        "B": 32
+      },
+      "cropped_residues": [
+        63,
+        32
+      ],
+      "selected_atoms": [
+        500,
+        264
+      ]
+    },
+    {
+      "sample_id": "2den",
+      "tensor_shape": [
+        10,
+        14,
+        36
+      ],
+      "finite": true,
+      "dtype": "float32",
+      "nonzero_values": 3481,
+      "seconds": 0.643,
+      "ordered_partner_chains": [
+        [
+          "B"
+        ],
+        [
+          "A"
+        ]
+      ],
+      "observed_residues": {
+        "A": 46,
+        "B": 76
+      },
+      "cropped_residues": [
+        68,
+        45
+      ],
+      "selected_atoms": [
+        540,
+        341
+      ]
+    },
+    {
+      "sample_id": "2l0f",
+      "tensor_shape": [
+        10,
+        14,
+        36
+      ],
+      "finite": true,
+      "dtype": "float32",
+      "nonzero_values": 3202,
+      "seconds": 0.6395,
+      "ordered_partner_chains": [
+        [
+          "A"
+        ],
+        [
+          "B"
+        ]
+      ],
+      "observed_residues": {
+        "A": 76,
+        "B": 45
+      },
+      "cropped_residues": [
+        64,
+        43
+      ],
+      "selected_atoms": [
+        515,
+        355
+      ]
+    },
+    {
+      "sample_id": "2rms",
+      "tensor_shape": [
+        10,
+        14,
+        36
+      ],
+      "finite": true,
+      "dtype": "float32",
+      "nonzero_values": 4090,
+      "seconds": 0.6698,
+      "ordered_partner_chains": [
+        [
+          "A"
+        ],
+        [
+          "B"
+        ]
+      ],
+      "observed_residues": {
+        "A": 71,
+        "B": 61
+      },
+      "cropped_residues": [
+        70,
+        38
+      ],
+      "selected_atoms": [
+        566,
+        273
+      ]
+    },
+    {
+      "sample_id": "1otr",
+      "tensor_shape": [
+        10,
+        14,
+        36
+      ],
+      "finite": true,
+      "dtype": "float32",
+      "nonzero_values": 3516,
+      "seconds": 0.6578,
+      "ordered_partner_chains": [
+        [
+          "B"
+        ],
+        [
+          "A"
+        ]
+      ],
+      "observed_residues": {
+        "A": 49,
+        "B": 76
+      },
+      "cropped_residues": [
+        64,
+        49
+      ],
+      "selected_atoms": [
+        508,
+        389
+      ]
+    },
+    {
+      "sample_id": "2jy6",
+      "tensor_shape": [
+        10,
+        14,
+        36
+      ],
+      "finite": true,
+      "dtype": "float32",
+      "nonzero_values": 3535,
+      "seconds": 0.6144,
+      "ordered_partner_chains": [
+        [
+          "A"
+        ],
+        [
+          "B"
+        ]
+      ],
+      "observed_residues": {
+        "A": 76,
+        "B": 52
+      },
+      "cropped_residues": [
+        64,
+        45
+      ],
+      "selected_atoms": [
+        509,
+        342
+      ]
+    },
+    {
+      "sample_id": "1wr1",
+      "tensor_shape": [
+        10,
+        14,
+        36
+      ],
+      "finite": true,
+      "dtype": "float32",
+      "nonzero_values": 3490,
+      "seconds": 0.6393,
+      "ordered_partner_chains": [
+        [
+          "A"
+        ],
+        [
+          "B"
+        ]
+      ],
+      "observed_residues": {
+        "A": 76,
+        "B": 58
+      },
+      "cropped_residues": [
+        64,
+        46
+      ],
+      "selected_atoms": [
+        513,
+        366
+      ]
+    },
+    {
+      "sample_id": "1u5s",
+      "tensor_shape": [
+        10,
+        14,
+        36
+      ],
+      "finite": true,
+      "dtype": "float32",
+      "nonzero_values": 3705,
+      "seconds": 0.5877,
+      "ordered_partner_chains": [
+        [
+          "A"
+        ],
+        [
+          "B"
+        ]
+      ],
+      "observed_residues": {
+        "A": 71,
+        "B": 66
+      },
+      "cropped_residues": [
+        54,
+        46
+      ],
+      "selected_atoms": [
+        440,
+        347
+      ]
+    }
+  ]
+}

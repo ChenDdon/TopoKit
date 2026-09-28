@@ -29,6 +29,48 @@ or feature width. It cannot make a CPZ vector compatible with a ChEMBL27 model.
 The installed sequence GBDT helpers use the ChEMBL27 recipe; the repository CPZ
 runner extracts embeddings only and does not train or perform ensemble inference.
 
+## Protein–protein Topo contract
+
+`topokit.workflows.protein_protein_prediction.featurize` accepts a prepared
+PDB/mmCIF structure and two explicit author-chain groups. The recipe identity is
+`ppi-topo-cnos-ca-disjoint-crop20-alpha-r1p0-r7p5-step0p5-v1`.
+The selected representation is topology only, with no partner-swap augmentation.
+Its output is C-contiguous float32 `(10,14,36)`; flattening in C order gives
+5,040 features, with channels varying fastest.
+
+Read only the first coordinate model's ATOM rows. Per residue/atom-name site,
+select highest occupancy; ties retain the first row and missing occupancy scores
+zero. Order intact partners by descending observed ATOM residue count before
+cropping; break ties by their first chain's appearance in the structure.
+Select residues whose Cα has a cross-partner Cα distance strictly below 20 Å;
+exclude and report residues without Cα. Keep each selected residue's C/N/O/S
+atoms. Deduplicate exact coordinates globally in ordered-partner order, keeping
+the first row's category and partner identity; do not round nearby coordinates.
+
+The categories `null,C,N,O,S,CA` form 36 ordered channels. `CA` means carbon
+named CA and is disjoint from `C`; `null` omits the partner. Per-channel native
+alpha construction computes full coface-dependent births before retaining only
+cross-partner edges in mixed channels or internal edges in single-partner
+channels. Admit edges with squared alpha birth ≤ radius² at radii 1.0, 1.5, …,
+7.5 Å; 8.0 Å is excluded. Include isolated selected vertices and use complete
+ordinary unweighted L0 spectra and the same ten summaries as the protein–ligand
+recipe. There is no two-scale persistent operator or silent partial spectrum.
+Absent required atom categories and null/null channels produce defined zeros;
+geometry failures do not.
+
+The PPI exporter accepts
+`sample_id,structure_file,partner_a_chains,partner_b_chains`, with semicolons
+within a chain group and paths relative to the manifest. Requested chains must
+exist by default. Explicit `allowed_missing_chains` or `empty_partner` inputs
+are recorded; no dataset-specific exception is inferred. A complete store has
+finite float32 `(N,5040)` features, ordered sample IDs, canonical schema bytes
+and input/output hashes. Failed rows prevent the complete matrix from being
+published. Affinity inference requires that same schema and compatible trusted
+external bundles; its target is signed binding free energy in kcal/mol,
+not mutation ΔΔG. See the [PPI recipe](../workflows/protein_protein_prediction/README.md)
+for input details and [model guide](../workflows/protein_protein_prediction/ml/README.md)
+for bundle/runtime requirements.
+
 ## Public route namespaces
 
 `topokit.builders` and `topokit.core` expose `simplicial`, `hyperdigraph`, and

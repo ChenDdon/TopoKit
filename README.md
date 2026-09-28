@@ -9,15 +9,17 @@ sequence hyperdigraphs, and two-factor interaction complexes**. It turns explici
 objects or scientific coordinates into homology, persistence, Laplacian spectra,
 and numerical features through composable APIs.
 
-Version **0.3.0** includes a ready-to-run, non-DL protein–ligand feature workflow:
-**Topo produces 27,500 topology features per prepared complex** using NumPy and
-SciPy. A separate sequence recipe uses frozen **ESM-2 + CPZ** encoders to produce
-1,792 embedding features; it requires optional dependencies and external model
-assets.
+The predefined **Topo** workflows turn prepared 3D structures into numerical
+features using NumPy and SciPy: **27,500 features for protein–ligand complexes**
+and **5,040 features for protein–protein complexes**. Feature extraction needs
+no pretrained weights. Optional affinity prediction uses compatible external
+models. A separate protein–ligand sequence recipe uses frozen **ESM-2 + CPZ**
+encoders to produce 1,792 embedding features with external encoder assets.
 
 [Install](#installation) · [Basic usage](#basic-usage) ·
 [Tutorial notebooks](#tutorial-notebooks) ·
 [Protein–ligand workflow](#proteinligand-topology-features) ·
+[Protein–protein workflow](#proteinprotein-topology-features) ·
 [Sequence recipe](#sequence-based-features) · [Documentation](#documentation)
 
 ## Installation
@@ -38,7 +40,9 @@ python -m topokit info
 To reproduce this release, run `git checkout v0.3.0` before installation.
 Alternatively, download the wheel or source archive from the
 [v0.3.0 release](https://github.com/ChenDdon/TopoKit/releases/tag/v0.3.0).
-The GitHub source archive includes the tutorials and example inputs; the wheel
+The PPI workflow below is an addition to the current source checkout and is
+not included in the original v0.3.0 assets. The GitHub source archive includes
+the tutorials and example inputs; the wheel
 contains the Python library and small runtime schemas. This release is hosted
 on GitHub; the command above does not rely on a PyPI package of the same name.
 
@@ -208,6 +212,47 @@ also predicts affinity from Topo features. Its
 the supported model, evaluation and limitations; the accompanying recipe
 records training settings. Trained models and scalers are external assets
 and are not needed for topology feature extraction.
+
+## Protein–protein topology features
+
+The predefined **PPI Topo** recipe takes a prepared PDB or mmCIF complex and
+explicit chain lists for its two binding partners. It returns **5,040 topology
+features**, as a float32 `(10, 14, 36)` tensor. Chain groups may contain multiple
+chains. Coordinates must be in angstroms and already describe the intended
+complex; the workflow does not dock proteins or build biological assemblies.
+
+```python
+import numpy as np
+from topokit.workflows.protein_protein_prediction import featurize
+
+tensor = featurize("complex.pdb", ["A"], ["B"])
+np.save("ppi_topology_features.npy", tensor.ravel(order="C"), allow_pickle=False)
+```
+
+Try the [ten bundled two-chain complexes](examples/protein_protein/README.md),
+each with chain A and chain B as its two partners. Run from the repository root:
+
+```bash
+python workflows/protein_protein_prediction/extract_features.py \
+  --manifest examples/protein_protein/manifest.csv \
+  --output examples/output/ppi
+```
+
+For your own collection, copy the [manifest](examples/protein_protein/manifest.csv)
+with columns `sample_id,structure_file,partner_a_chains,partner_b_chains`;
+separate chains within a multi-chain partner with semicolons.
+The exporter writes tensors, input-selection records and the exact feature
+schema, followed by an ordered `(N, 5040)` matrix when every sample succeeds.
+The fixed recipe selects interface residues using a strict 20 Å Cα distance,
+uses 14 alpha radii from 1.0 through 7.5 Å in 0.5 Å steps, and summarizes
+36 atom-category channels. No topology background is needed to run it.
+
+Follow the [PPI workflow guide](workflows/protein_protein_prediction/README.md)
+for chain selection, manifest examples and output checks, or the
+[PPI agent skill](workflows/skills/topokit-protein-protein/SKILL.md).
+Optional [GBDT inference](workflows/protein_protein_prediction/ml/README.md)
+predicts signed binding free energy in kcal/mol from these features and three
+compatible external model bundles. The public PPI recipe uses topology only.
 
 ## Sequence-based features
 

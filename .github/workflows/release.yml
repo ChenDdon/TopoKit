@@ -87,6 +87,9 @@ jobs:
                             str(root / "examples/data/point_cloud_24.csv")]),
               ("protein-ligand.log", [sys.executable, "-I", str(root / "tests/protein_ligand_wheel_smoke.py"),
                                       str(root / "examples/protein_ligand/manifest.csv")]),
+              ("protein-protein.log", [sys.executable, "-I", str(root / "tests/protein_protein_wheel_smoke.py"),
+                                      str(temporary / "topokit-release-ppi"),
+                                      str(root / "examples/protein_protein/manifest.csv")]),
           ]
           for name, command in commands:
               result = subprocess.run(command, cwd=temporary, text=True,

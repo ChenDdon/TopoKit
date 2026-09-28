@@ -38,6 +38,7 @@ include-package-data = false
 
 [tool.setuptools.package-data]
 "topokit.workflows.protein_ligand_prediction" = ["reference_schema.json", "model_profile.json"]
+"topokit.workflows.protein_protein_prediction" = ["model_profile.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests", "workflows/protein_ligand_prediction/ml/tests"]

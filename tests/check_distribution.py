@@ -12,6 +12,7 @@ import zipfile
 ALLOWED_WHEEL_JSON = {
     "topokit/workflows/protein_ligand_prediction/reference_schema.json",
     "topokit/workflows/protein_ligand_prediction/model_profile.json",
+    "topokit/workflows/protein_protein_prediction/model_profile.json",
 }
 SAMPLE_DIRECTORY = "examples/protein_ligand"
 
@@ -39,6 +40,8 @@ def check_wheel(path):
         "topokit/workflows/protein_ligand_prediction/features.py",
         "topokit/workflows/protein_ligand_prediction/prediction.py",
         "topokit/workflows/protein_ligand_prediction/sequence.py",
+        "topokit/workflows/protein_protein_prediction/features.py",
+        "topokit/workflows/protein_protein_prediction/prediction.py",
         *(f"topokit/{layer}/__init__.py" for layer in
           ("readers", "builders", "core", "postprocessing", "visualization", "workflows")),
     }
@@ -74,6 +77,11 @@ def check_sdist(path):
             "examples/different_input_formats_workflow.ipynb",
             "tests/check_distribution.py", "tests/wheel_smoke.py",
             "tests/protein_ligand_wheel_smoke.py",
+            "tests/protein_protein_wheel_smoke.py",
+            "workflows/skills/topokit-protein-protein/SKILL.md",
+            *("workflows/protein_protein_prediction/" + name for name in
+              ("README.md", "DEFAULT_RECIPE.json", "MODEL_SELECTION.json", "extract_features.py",
+               "ml/README.md", "ml/MODEL_CARD.md", "ml/predict.py", "ml/requirements.txt")),
             "tests/fixtures/alpha_near_planar_hull_73.csv",
             "tests/fixtures/alpha_near_planar_hull_73.md",
             "workflows/skills/topokit-protein-ligand/SKILL.md",
@@ -106,6 +114,10 @@ def check_sdist(path):
         unexpected = sorted(name for name in names if name.startswith(forbidden_prefixes)
                             or "__pycache__" in name or name.endswith(".pyc"))
         assert not unexpected, f"Generated or stale source artifacts: {unexpected}"
+        ppi_extra = sorted(name for name in names
+                           if name.startswith("workflows/protein_protein_prediction/")
+                           and members[name].isfile() and name not in required)
+        assert not ppi_extra, f"PPI process or non-public recipe files: {ppi_extra}"
         assert "workflows/protein_ligand_prediction/feature_strategy.py" not in names
         assert "workflows/protein_ligand_prediction/ml_feature_comparison.py" not in names
 
@@ -130,7 +142,24 @@ def check_sdist(path):
                 assert hashlib.sha256(read(member)).hexdigest() == expected_files[str(relative)], (
                     f"Source input checksum mismatch: {member}"
                 )
-    print("Source archive: public references, tutorials, recipes, agent skills and ten verified pairs; research-only files excluded.")
+        ppi_directory = "examples/protein_protein"
+        for name in ("README.md", "manifest.csv", "SOURCE.json", "EXPECTED.json"):
+            assert f"{ppi_directory}/{name}" in names, f"Missing PPI example file: {name}"
+        ppi_rows = list(csv.DictReader(io.StringIO(read(f"{ppi_directory}/manifest.csv").decode())))
+        assert len(ppi_rows) == 10 and len({row["sample_id"] for row in ppi_rows}) == 10
+        ppi_sources = json.loads(read(f"{ppi_directory}/SOURCE.json"))
+        ppi_sources = {row["sample_id"]: row for row in ppi_sources["samples"]}
+        assert set(ppi_sources) == {row["sample_id"] for row in ppi_rows}
+        for row in ppi_rows:
+            assert row["partner_a_chains"] == "A" and row["partner_b_chains"] == "B"
+            relative = PurePosixPath(row["structure_file"])
+            assert not relative.is_absolute() and ".." not in relative.parts
+            member = f"{ppi_directory}/{relative}"
+            assert member in names and members[member].isfile(), member
+            info = ppi_sources[row["sample_id"]]["files"]["structure"]
+            assert str(relative) == info["example_relative_path"]
+            assert hashlib.sha256(read(member)).hexdigest() == info["sha256"], member
+    print("Source archive: public references, tutorials, recipes, agent skills and ten pairs each for protein–ligand and protein–protein; research-only files excluded.")
 
 
 def main():

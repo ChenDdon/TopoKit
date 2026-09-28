@@ -1,0 +1,11 @@
+sample_id,structure_file,partner_a_chains,partner_b_chains
+1q5w,structures/1q5w/complex.pdb,A,B
+2l14,structures/2l14/complex.pdb,A,B
+2ktf,structures/2ktf/complex.pdb,A,B
+2den,structures/2den/complex.pdb,A,B
+2l0f,structures/2l0f/complex.pdb,A,B
+2rms,structures/2rms/complex.pdb,A,B
+1otr,structures/1otr/complex.pdb,A,B
+2jy6,structures/2jy6/complex.pdb,A,B
+1wr1,structures/1wr1/complex.pdb,A,B
+1u5s,structures/1u5s/complex.pdb,A,B

@@ -1,0 +1,60 @@
+{
+  "display_name": "PPI Topo + GBDT",
+  "evaluation": {
+    "fold_mean_std": {
+      "MAE": {
+        "mean": 1.578211888833259,
+        "std": 0.09779072158111737,
+        "std_ddof": 1,
+        "valid_folds": 10
+      },
+      "PCC": {
+        "mean": 0.5898624282680827,
+        "std": 0.032748688834193615,
+        "std_ddof": 1,
+        "valid_folds": 10
+      },
+      "R2": {
+        "mean": 0.3352280224195704,
+        "std": 0.032488458393141705,
+        "std_ddof": 1,
+        "valid_folds": 10
+      },
+      "RMSE": {
+        "mean": 2.021003044393113,
+        "std": 0.12599285029565477,
+        "std_ddof": 1,
+        "valid_folds": 10
+      }
+    },
+    "interpretation": "The same random-complex folds informed recipe selection. These scores are not an independent held-out estimate; related proteins may occur in different folds.",
+    "method": "10-fold out-of-fold evaluation, arithmetic mean of seeds 0, 1 and 2",
+    "pooled_oof": {
+      "MAE": 1.5781605360372626,
+      "PCC": 0.5896842070666277,
+      "R2": 0.3393636468640745,
+      "RMSE": 2.024487485754705,
+      "error_unit": "kcal/mol",
+      "n": 2368
+    },
+    "split": {
+      "method": "KFold",
+      "n_splits": 10,
+      "random_state": 0,
+      "shuffle": true,
+      "unit": "individual PDB complex; not sequence/family grouped"
+    }
+  },
+  "feature_count": 5040,
+  "format": "topokit.ppi_topo_selection.v1",
+  "inference": "Three final pipelines each fitted on all 2368 complexes; scores above use held-out fold models, not these final fitted models.",
+  "profile_id": "ppi-topo-gbdt-2368-3seed-v1",
+  "recipe_id": "ppi-topo-cnos-ca-disjoint-crop20-alpha-r1p0-r7p5-step0p5-v1",
+  "target": {
+    "column": "label_dg_bind_kcal_mol",
+    "name": "DeltaG_bind",
+    "transformation": "none; signed original values",
+    "unit": "kcal/mol"
+  },
+  "training_complexes": 2368
+}

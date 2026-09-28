@@ -91,9 +91,35 @@ the selected A03 architecture and its separately recorded training recipe.
 Feature extraction, sequence encoding and affinity prediction have different
 inputs and assets; see the [workflow index](../workflows/README.md).
 
+## Protein–protein application
+
+The installed `workflows.protein_protein_prediction` module supplies a separate
+**PPI Topo** encoder with explicit chain groups and guarded GBDT inference.
+It composes public readers, native alpha geometry and ordinary Hyperdigraph L0,
+reusing the protein–ligand spectral summaries. Application-specific selection
+and feature ordering stay in this workflow: first model, author chains,
+occupancy-based atom selection, observed-residue partner ordering, a 20 Å Cα
+interface crop and exact-coordinate deduplication. Fourteen radii and 36
+channels yield float32 `(10, 14, 36)` tensors, or 5,040 flattened values.
+
+The repository exporter manages manifest paths, hashes and completion records.
+The optional predictor checks the PPI feature schema and three external model
+bundles before loading their training-fitted pipelines. It averages their
+signed binding-free-energy predictions in kcal/mol, without partner-swap
+augmentation or automatic training. PPI runtime schemas and model identity
+metadata belong in the wheel; user commands and the recipe belong in the source
+distribution. Research datasets, feature stores and experiment history do not
+belong in either distribution. See the [PPI guide](../workflows/protein_protein_prediction/README.md).
+
+## Distribution boundaries
+
 PyTorch, Transformers, RDKit, scikit-learn and plotting dependencies remain
 lazy. Trained models, encoder weights, dataset memberships, training controllers
 and historical study outputs are external assets. The wheel includes library
 code and small runtime schemas; source distributions also contain user scripts,
 tutorials, examples, skills, tests and this reference documentation. Examples
 and generated outputs belong under `examples/`, never `src/topokit`.
+
+`examples/protein_protein/` supplies ten two-chain PPI inputs, a manifest and
+provenance alongside the protein–ligand examples. They are included in source
+archives and exercised by installed-wheel checks; no structures enter wheels.

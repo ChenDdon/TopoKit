@@ -92,3 +92,12 @@ PyTorch supplies neural-network primitives as an optional dependency.
 ## Optional ChEMBL sequence encoder
 
 The workflow private `_chembl.py` is adapted from the user-supplied minimal PyTorch implementation in WeilabMSU/PretrainModels (`bt_fps/molecular_roberta.py`, local repository commit 454393fb57bfbf12982745449dc3b6752b00d04d). The upstream repository declares MIT in its README: https://github.com/WeilabMSU/PretrainModels. Source and asset-copy receipts are retained with the external dataset assets. ESM-2 is loaded through Transformers from the pinned official facebook/esm2_t33_650M_UR50D snapshot. Neither pretrained checkpoint is bundled into the TopoKit wheel.
+
+The ten two-chain complexes in `examples/protein_protein/` are unchanged local
+PDBbind v2020R1 reference structures with the recorded v2024 reprocessing
+workflow. Partner assignments come from the saved PLNet V2020 subset. Their
+`SOURCE.json` preserves source paths and checksums; `EXPECTED.json` records
+PPI Topo extraction checks. Upstream data terms apply separately from the MIT
+software license. Original preparation and redistribution permission have not
+been independently verified. Source archives include these examples; wheels
+contain no structure files.

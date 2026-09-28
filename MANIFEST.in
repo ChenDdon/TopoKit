@@ -6,6 +6,7 @@ recursive-include release-notes *.md
 recursive-include examples *.py *.md *.csv *.json *.ipynb
 recursive-include examples/data *.xyz *.pdb *.pdbqt *.mol2 *.sdf *.mol *.cif
 recursive-include examples/protein_ligand *.pdb *.mol2
+recursive-include examples/protein_protein *.pdb
 prune examples/output
 prune examples/pressure_test
 prune examples/performance_audit
@@ -16,6 +17,15 @@ recursive-include tests/fixtures *.csv *.md
 include workflows/README.md workflows/AGENTS.md
 include workflows/skills/topokit-protein-ligand/SKILL.md
 include workflows/skills/topokit-sequence/SKILL.md
+include workflows/skills/topokit-protein-protein/SKILL.md
+include workflows/protein_protein_prediction/README.md
+include workflows/protein_protein_prediction/DEFAULT_RECIPE.json
+include workflows/protein_protein_prediction/MODEL_SELECTION.json
+include workflows/protein_protein_prediction/extract_features.py
+include workflows/protein_protein_prediction/ml/README.md
+include workflows/protein_protein_prediction/ml/MODEL_CARD.md
+include workflows/protein_protein_prediction/ml/predict.py
+include workflows/protein_protein_prediction/ml/requirements.txt
 include workflows/protein_ligand_prediction/README.md
 include workflows/protein_ligand_prediction/DEFAULT_RECIPE.json
 include workflows/protein_ligand_prediction/MODEL_SELECTION.json

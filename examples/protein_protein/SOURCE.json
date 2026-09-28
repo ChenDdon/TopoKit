@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "created_date": "2026-09-28",
+  "collection": "TopoKit protein–protein topology examples",
+  "source_dataset_workspace_relative_path": "datasets/protein_protein_prediction/plnet_pdbbind2020_2368",
+  "selection": {
+    "sample_ids": [
+      "1q5w",
+      "2l14",
+      "2ktf",
+      "2den",
+      "2l0f",
+      "2rms",
+      "1otr",
+      "2jy6",
+      "1wr1",
+      "1u5s"
+    ],
+    "rationale": "Ten compact prepared complexes with exactly two coordinate chains A and B, one chain per partner, at least 30 observed residues per chain, canonical ATOM residues, a CA for each ATOM residue, no alternate-location labels or MODEL records, and no missing-chain exception. Functional examples, not an evaluation benchmark."
+  },
+  "source_manifest": {
+    "dataset_relative_path": "labels.csv",
+    "sha256": "95a771ae2d8d0875eb90e1b3df7d74347d3df115e3372f6e5793dd3f9aa0273f"
+  },
+  "source_structure_inventory": {
+    "dataset_relative_path": "metadata/structures.csv",
+    "sha256": "91c0c26a5b0d25030613cfb35b16cc9ec6193243a3c044e0b7916e6ab51c942e"
+  },
+  "upstream_membership": {
+    "repository": "https://github.com/xxjan719/PLNet",
+    "commit": "0a99c1d3bb017dd30bec6e2882375aa5a3e03b09",
+    "subset": "V2020"
+  },
+  "structure_release": "PDBbind v2020R1; v2024 reprocessing workflow",
+  "structure_archive": "new_download/v2020_P-P.tar.gz",
+  "copy_policy": "Byte-for-byte copies of resolved local files; no symlinks, chain renaming, coordinate edits or biological-assembly expansion.",
+  "license_notice": "Third-party structure data retain their upstream PDBbind source terms. The TopoKit MIT software license does not relicense these files. Local file identity is verified; original preparation and redistribution permission have not been independently verified.",
+  "samples": [
+    {
+      "sample_id": "1q5w",
+      "partner_a_chains": [
+        "A"
+      ],
+      "partner_b_chains": [
+        "B"
+      ],
+      "observed_residues": {
+        "A": 31,
+        "B": 76
+      },
+      "source_csv_row": 208,
+      "files": {
+        "structure": {
+          "example_relative_path": "structures/1q5w/complex.pdb",
+          "source_workspace_relative_path": "datasets/protein_protein_prediction/plnet_pdbbind2020_2368/structures/1q5w/1q5w_complex.pdb",
+          "resolved_source_workspace_relative_path": "datasets/protein_protein_prediction/structures/1q5w/1q5w_complex.pdb",
+          "source_type": "local_pdbbind_v2020R1_reference",
+          "size_bytes": 136566,
+          "sha256": "e6ae853d023c9f5257c8ff1b8bc2287d6fe98926512ae6f1c60dff64c58a317a"
+        }
+      }
+    },
+    {
+      "sample_id": "2l14",
+      "partner_a_chains": [
+        "A"
+      ],
+      "partner_b_chains": [
+        "B"
+      ],
+      "observed_residues": {
+        "A": 59,
+        "B": 49
+      },
+      "source_csv_row": 368,
+      "files": {
+        "structure": {
+          "example_relative_path": "structures/2l14/complex.pdb",
+          "source_workspace_relative_path": "datasets/protein_protein_prediction/plnet_pdbbind2020_2368/structures/2l14/2l14_complex.pdb",
+          "resolved_source_workspace_relative_path": "datasets/protein_protein_prediction/structures/2l14/2l14_complex.pdb",
+          "source_type": "local_pdbbind_v2020R1_reference",
+          "size_bytes": 138672,
+          "sha256": "b033bfed1e2db8ca48709ca36f0742eeee92ffedd0d6b3d4e10d627512ebd516"
+        }
+      }
+    },
+    {
+      "sample_id": "2ktf",
+      "partner_a_chains": [
+        "A"
+      ],
+      "partner_b_chains": [
+        "B"
+      ],
+      "observed_residues": {
+        "A": 76,
+        "B": 32
+      },
+      "source_csv_row": 352,
+      "files": {
+        "structure": {
+          "example_relative_path": "structures/2ktf/complex.pdb",
+          "source_workspace_relative_path": "datasets/protein_protein_prediction/plnet_pdbbind2020_2368/structures/2ktf/2ktf_complex.pdb",
+          "resolved_source_workspace_relative_path": "datasets/protein_protein_prediction/structures/2ktf/2ktf_complex.pdb",
+          "source_type": "local_pdbbind_v2020R1_reference",
+          "size_bytes": 142641,
+          "sha256": "daa3f02d7c4ba8d6a809902409e351a44f6173ceb86fd40fe2ec17755676146c"
+        }
+      }
+    },
+    {
+      "sample_id": "2den",
+      "partner_a_chains": [
+        "A"
+      ],
+      "partner_b_chains": [
+        "B"
+      ],
+      "observed_residues": {
+        "A": 46,
+        "B": 76
+      },
+      "source_csv_row": 453,
+      "files": {
+        "structure": {
+          "example_relative_path": "structures/2den/complex.pdb",
+          "source_workspace_relative_path": "datasets/protein_protein_prediction/plnet_pdbbind2020_2368/structures/2den/2den_complex.pdb",
+          "resolved_source_workspace_relative_path": "datasets/protein_protein_prediction/structures/2den/2den_complex.pdb",
+          "source_type": "local_pdbbind_v2020R1_reference",
+          "size_bytes": 156492,
+          "sha256": "69211312c4944677f2d2d92fb582a5732420c1a3312c0ed878aec43d4ce9d9df"
+        }
+      }
+    },
+    {
+      "sample_id": "2l0f",
+      "partner_a_chains": [
+        "A"
+      ],
+      "partner_b_chains": [
+        "B"
+      ],
+      "observed_residues": {
+        "A": 76,
+        "B": 45
+      },
+      "source_csv_row": 1471,
+      "files": {
+        "structure": {
+          "example_relative_path": "structures/2l0f/complex.pdb",
+          "source_workspace_relative_path": "datasets/protein_protein_prediction/plnet_pdbbind2020_2368/structures/2l0f/2l0f_complex.pdb",
+          "resolved_source_workspace_relative_path": "datasets/protein_protein_prediction/structures/2l0f/2l0f_complex.pdb",
+          "source_type": "local_pdbbind_v2020R1_reference",
+          "size_bytes": 159165,
+          "sha256": "cf00f6ff26eb100167b255d5187ef420d962a1cb14c52802c3f2efa65ef72a51"
+        }
+      }
+    },
+    {
+      "sample_id": "2rms",
+      "partner_a_chains": [
+        "A"
+      ],
+      "partner_b_chains": [
+        "B"
+      ],
+      "observed_residues": {
+        "A": 71,
+        "B": 61
+      },
+      "source_csv_row": 337,
+      "files": {
+        "structure": {
+          "example_relative_path": "structures/2rms/complex.pdb",
+          "source_workspace_relative_path": "datasets/protein_protein_prediction/plnet_pdbbind2020_2368/structures/2rms/2rms_complex.pdb",
+          "resolved_source_workspace_relative_path": "datasets/protein_protein_prediction/structures/2rms/2rms_complex.pdb",
+          "source_type": "local_pdbbind_v2020R1_reference",
+          "size_bytes": 159813,
+          "sha256": "a58c856c293ace3575a57bb29b5f9f36ac77fc1c943ca849a5f330deb7e3e988"
+        }
+      }
+    },
+    {
+      "sample_id": "1otr",
+      "partner_a_chains": [
+        "A"
+      ],
+      "partner_b_chains": [
+        "B"
+      ],
+      "observed_residues": {
+        "A": 49,
+        "B": 76
+      },
+      "source_csv_row": 1172,
+      "files": {
+        "structure": {
+          "example_relative_path": "structures/1otr/complex.pdb",
+          "source_workspace_relative_path": "datasets/protein_protein_prediction/plnet_pdbbind2020_2368/structures/1otr/1otr_complex.pdb",
+          "resolved_source_workspace_relative_path": "datasets/protein_protein_prediction/structures/1otr/1otr_complex.pdb",
+          "source_type": "local_pdbbind_v2020R1_reference",
+          "size_bytes": 163620,
+          "sha256": "74a38dee1bd209c4d80dd59d4b3bb24a166f97fc3fc2d2189e5c413f08a7f3ce"
+        }
+      }
+    },
+    {
+      "sample_id": "2jy6",
+      "partner_a_chains": [
+        "A"
+      ],
+      "partner_b_chains": [
+        "B"
+      ],
+      "observed_residues": {
+        "A": 76,
+        "B": 52
+      },
+      "source_csv_row": 1304,
+      "files": {
+        "structure": {
+          "example_relative_path": "structures/2jy6/complex.pdb",
+          "source_workspace_relative_path": "datasets/protein_protein_prediction/plnet_pdbbind2020_2368/structures/2jy6/2jy6_complex.pdb",
+          "resolved_source_workspace_relative_path": "datasets/protein_protein_prediction/structures/2jy6/2jy6_complex.pdb",
+          "source_type": "local_pdbbind_v2020R1_reference",
+          "size_bytes": 164349,
+          "sha256": "dd8459211425fa8571b5624008903bfcff4aae96c28a7b3b4642707d2af17969"
+        }
+      }
+    },
+    {
+      "sample_id": "1wr1",
+      "partner_a_chains": [
+        "A"
+      ],
+      "partner_b_chains": [
+        "B"
+      ],
+      "observed_residues": {
+        "A": 76,
+        "B": 58
+      },
+      "source_csv_row": 535,
+      "files": {
+        "structure": {
+          "example_relative_path": "structures/1wr1/complex.pdb",
+          "source_workspace_relative_path": "datasets/protein_protein_prediction/plnet_pdbbind2020_2368/structures/1wr1/1wr1_complex.pdb",
+          "resolved_source_workspace_relative_path": "datasets/protein_protein_prediction/structures/1wr1/1wr1_complex.pdb",
+          "source_type": "local_pdbbind_v2020R1_reference",
+          "size_bytes": 169047,
+          "sha256": "f31734feb3f9a6e26d4bf3b048d24322f6b3dc0b67bcd25ea745433467c5c970"
+        }
+      }
+    },
+    {
+      "sample_id": "1u5s",
+      "partner_a_chains": [
+        "A"
+      ],
+      "partner_b_chains": [
+        "B"
+      ],
+      "observed_residues": {
+        "A": 71,
+        "B": 66
+      },
+      "source_csv_row": 187,
+      "files": {
+        "structure": {
+          "example_relative_path": "structures/1u5s/complex.pdb",
+          "source_workspace_relative_path": "datasets/protein_protein_prediction/plnet_pdbbind2020_2368/structures/1u5s/1u5s_complex.pdb",
+          "resolved_source_workspace_relative_path": "datasets/protein_protein_prediction/structures/1u5s/1u5s_complex.pdb",
+          "source_type": "local_pdbbind_v2020R1_reference",
+          "size_bytes": 176256,
+          "sha256": "94d46f49069c76c9390d691e6b7f18fc75a59d7648bef27d3dc6db739101bab9"
+        }
+      }
+    }
+  ]
+}

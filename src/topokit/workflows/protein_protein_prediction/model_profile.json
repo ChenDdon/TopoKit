@@ -1,0 +1,76 @@
+{
+  "aggregation": "arithmetic_mean",
+  "feature_count": 5040,
+  "feature_shape": [
+    10,
+    14,
+    36
+  ],
+  "flatten_order": "C",
+  "format": "topokit.ppi_topo_gbdt.v1",
+  "members": [
+    {
+      "file": "seed_0.joblib",
+      "seed": 0,
+      "sha256": "03d4d45551b2c340ae1202339d22eca9d04a371d3e9e851675c1660802a4868f"
+    },
+    {
+      "file": "seed_1.joblib",
+      "seed": 1,
+      "sha256": "a6777607b97bf3ed8cb18e0763407dc32e46de7ca18b2ee720dbc6475fb7f3e7"
+    },
+    {
+      "file": "seed_2.joblib",
+      "seed": 2,
+      "sha256": "1f61bf91f52ddba0a0d7eeb79ae51566c939db8a32fcb94e18ef891cf6f363bc"
+    }
+  ],
+  "model_availability": "External trusted model files required; weights are not bundled or downloaded automatically.",
+  "orientation": "Canonical protein1/protein2: descending observed ATOM residue count before cropping; ties first chain appearance in the structure. One prediction per seed; no partner-swap augmentation.",
+  "parameters": {
+    "alpha": 0.9,
+    "ccp_alpha": 0.0,
+    "criterion": "deprecated",
+    "init": null,
+    "learning_rate": 0.005,
+    "loss": "squared_error",
+    "max_depth": 7,
+    "max_features": "sqrt",
+    "max_leaf_nodes": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "n_estimators": 10000,
+    "n_iter_no_change": null,
+    "subsample": 0.4,
+    "tol": 0.0001,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "preprocessing": "Fitted StandardScaler inside each pipeline; no target transformation",
+  "profile_id": "ppi-topo-gbdt-2368-3seed-v1",
+  "python_compatibility": "Python 3.12 patch releases; exact recorded NumPy, SciPy, scikit-learn and joblib versions",
+  "recipe_id": "ppi-topo-cnos-ca-disjoint-crop20-alpha-r1p0-r7p5-step0p5-v1",
+  "software": {
+    "joblib": "1.5.3",
+    "numpy": "2.5.2",
+    "python": "3.12.11",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.0"
+  },
+  "target": {
+    "column": "label_dg_bind_kcal_mol",
+    "name": "DeltaG_bind",
+    "transformation": "none; signed original values",
+    "unit": "kcal/mol"
+  },
+  "training_complexes": 2368,
+  "training_rows_per_member": 2368,
+  "weights": [
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333
+  ]
+}

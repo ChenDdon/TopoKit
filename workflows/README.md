@@ -45,6 +45,37 @@ No trained model is needed to extract topology features. Optional
 [GBDT prediction](protein_ligand_prediction/ml/README.md) additionally requires
 compatible external model bundles with their training-fitted scalers.
 
+## Protein–protein Topo features
+
+The [PPI workflow](protein_protein_prediction/README.md) takes one PDB/mmCIF
+complex plus explicit chain groups and produces **5,040 topology features**.
+Its fixed recipe uses a 20 Å Cα interface crop, 14 alpha radii and 36 channels.
+Extraction needs only NumPy/SciPy and is independent of affinity labels.
+
+```python
+from topokit.workflows.protein_protein_prediction import featurize
+
+tensor = featurize("complex.pdb", ["A"], ["B"])  # float32 (10, 14, 36)
+features = tensor.ravel(order="C")               # 5,040 values
+```
+
+For a batch, use a CSV with
+`sample_id,structure_file,partner_a_chains,partner_b_chains`. Paths are relative
+to that CSV; multi-chain partners use semicolon-separated chain identifiers.
+
+```bash
+python workflows/protein_protein_prediction/extract_features.py \
+  --manifest my_pairs.csv \
+  --output examples/output/ppi
+```
+
+The [PPI agent skill](skills/topokit-protein-protein/SKILL.md) covers input
+identity and completed feature-store checks. Optional
+[PPI GBDT inference](protein_protein_prediction/ml/README.md) uses the completed
+store and three trusted external bundles to predict signed binding free energy
+in kcal/mol. The selected public PPI recipe contains topology features only,
+with one ordered representation per complex and no partner-swap augmentation.
+
 ## Protein–ligand sequence embeddings
 
 The [sequence recipe](protein_ligand_prediction/sequence/README.md) combines

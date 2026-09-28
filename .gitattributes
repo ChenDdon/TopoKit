@@ -3,3 +3,5 @@
 examples/protein_ligand/structures/** -text
 # The regression fixture also has a recorded byte-level checksum.
 tests/fixtures/alpha_near_planar_hull_73.csv -text
+# Preserve PPI structure bytes and checksums across Git checkouts.
+examples/protein_protein/structures/** -text

@@ -1,6 +1,6 @@
 # Examples
 
-Start with the three notebooks, then use the small scripts or protein–ligand
+Start with the three notebooks, then use the small scripts or protein-complex
 workflow with your own inputs. Run the commands below from the repository root.
 
 ## Notebooks
@@ -50,5 +50,14 @@ fixed **Topo** feature recipe for one complex or all ten included pairs, then
 adapt the [manifest](protein_ligand/manifest.csv) to your own prepared complexes.
 Extraction requires only the base package, NumPy, and SciPy.
 
+## Protein–protein topology features
+
+The [protein–protein guide](protein_protein/README.md) demonstrates the
+5,040-feature PPI Topo recipe using ten compact complexes. Every structure
+has exactly chains A and B, one chain per partner. Start with the supplied
+[manifest](protein_protein/manifest.csv), then replace its rows with your own
+prepared complexes. Extraction requires only the base package, NumPy and SciPy.
+
 Structure provenance and applicable source-data terms are documented in the
-[data inventory](data/README.md) and [protein–ligand guide](protein_ligand/README.md).
+[data inventory](data/README.md), [protein–ligand guide](protein_ligand/README.md)
+and [protein–protein guide](protein_protein/README.md).

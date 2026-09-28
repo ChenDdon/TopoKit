@@ -1,0 +1,266 @@
+{
+  "alpha_engine": "1.1.1",
+  "alpha_radii_angstrom": [
+    1.0,
+    1.5,
+    2.0,
+    2.5,
+    3.0,
+    3.5,
+    4.0,
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    6.5,
+    7.0,
+    7.5
+  ],
+  "alpha_squared_thresholds": [
+    1.0,
+    2.25,
+    4.0,
+    6.25,
+    9.0,
+    12.25,
+    16.0,
+    20.25,
+    25.0,
+    30.25,
+    36.0,
+    42.25,
+    49.0,
+    56.25
+  ],
+  "augmentation": "none",
+  "categories": [
+    "null",
+    "C",
+    "N",
+    "O",
+    "S",
+    "CA"
+  ],
+  "category_policy": "CA is carbon named CA; C excludes CA; no calcium category",
+  "channels": [
+    [
+      "null",
+      "null"
+    ],
+    [
+      "null",
+      "C"
+    ],
+    [
+      "null",
+      "N"
+    ],
+    [
+      "null",
+      "O"
+    ],
+    [
+      "null",
+      "S"
+    ],
+    [
+      "null",
+      "CA"
+    ],
+    [
+      "C",
+      "null"
+    ],
+    [
+      "C",
+      "C"
+    ],
+    [
+      "C",
+      "N"
+    ],
+    [
+      "C",
+      "O"
+    ],
+    [
+      "C",
+      "S"
+    ],
+    [
+      "C",
+      "CA"
+    ],
+    [
+      "N",
+      "null"
+    ],
+    [
+      "N",
+      "C"
+    ],
+    [
+      "N",
+      "N"
+    ],
+    [
+      "N",
+      "O"
+    ],
+    [
+      "N",
+      "S"
+    ],
+    [
+      "N",
+      "CA"
+    ],
+    [
+      "O",
+      "null"
+    ],
+    [
+      "O",
+      "C"
+    ],
+    [
+      "O",
+      "N"
+    ],
+    [
+      "O",
+      "O"
+    ],
+    [
+      "O",
+      "S"
+    ],
+    [
+      "O",
+      "CA"
+    ],
+    [
+      "S",
+      "null"
+    ],
+    [
+      "S",
+      "C"
+    ],
+    [
+      "S",
+      "N"
+    ],
+    [
+      "S",
+      "O"
+    ],
+    [
+      "S",
+      "S"
+    ],
+    [
+      "S",
+      "CA"
+    ],
+    [
+      "CA",
+      "null"
+    ],
+    [
+      "CA",
+      "C"
+    ],
+    [
+      "CA",
+      "N"
+    ],
+    [
+      "CA",
+      "O"
+    ],
+    [
+      "CA",
+      "S"
+    ],
+    [
+      "CA",
+      "CA"
+    ]
+  ],
+  "coordinate_selection": {
+    "alternate_locations": "highest occupancy per residue/atom name; ties first input row; record removed rows",
+    "chain_namespace": "author",
+    "model": "first encountered",
+    "records": "ATOM only; include noncanonical ATOM residues"
+  },
+  "coordinate_units": "angstrom",
+  "duplicate_coordinates": "global exact keep-first after ordering/cropping; retain atom category and component",
+  "geometry": "native alpha 1.1.1 on each selected channel union; full coface births before edge filtering",
+  "interface": {
+    "cutoff_angstrom": 20.0,
+    "empty_partner_policy": "if one partner is explicitly empty, retain all CA-anchored CNOS residues of the available partner for null-side channels",
+    "metric": "cross-partner CA-CA distance",
+    "missing_CA": "exclude unanchored residues and report their identities",
+    "missing_chain_policy": "only explicitly allowed missing chains contribute empty sets; present chains remain",
+    "predicate": "strictly_less_than",
+    "selection": "all CNOS ATOM rows in qualifying residues"
+  },
+  "missing_channel": "zero only when required category absent",
+  "mixed_edges": "cross-partner only",
+  "null_null": "intentional all-zero channel",
+  "null_side_edges": "within selected partner",
+  "operator": "complete ordinary unweighted Hyperdigraph L0 at each radius; not two-scale persistent L",
+  "parent_recipe": {
+    "projection": "dense_tensor[:, retained_radius_indices, :]; flatten in C order",
+    "recipe_id": "ppi-topo-cnos-ca-disjoint-crop20-alpha-r1p0-r7p9-v2",
+    "retained_radius_indices": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65
+    ],
+    "tensor_shape": [
+      10,
+      70,
+      36
+    ]
+  },
+  "partner_order": "descending total observed ATOM residue count before cropping; ties first chain appearance",
+  "radius_evaluation": "direct at retained radii",
+  "recipe_id": "ppi-topo-cnos-ca-disjoint-crop20-alpha-r1p0-r7p5-step0p5-v1",
+  "spectral_zero_tolerance": 1e-10,
+  "statistics": [
+    "matrix_size_n0",
+    "zero_eigenvalue_count",
+    "positive_mean",
+    "positive_min_over_mean",
+    "positive_MAD_over_mean",
+    "positive_max_over_mean",
+    "positive_q25",
+    "positive_median",
+    "positive_q75",
+    "spectral_entropy_nats"
+  ],
+  "tensor": {
+    "dtype": "float32",
+    "features": 5040,
+    "order": "C",
+    "shape": [
+      10,
+      14,
+      36
+    ]
+  },
+  "version": "1.0.0"
+}

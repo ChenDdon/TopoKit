@@ -2,8 +2,8 @@
 
 Start with the [package README](../README.md) for installation, basic usage and
 [tutorial notebooks](../README.md#tutorial-notebooks). The
-[workflow guides](../workflows/README.md) cover Topo protein–ligand features,
-optional affinity models and pretrained sequence embeddings.
+[workflow guides](../workflows/README.md) cover Topo protein–ligand and protein–protein
+features, optional affinity models and protein–ligand sequence embeddings.
 
 | Reference | What it explains |
 | --- | --- |

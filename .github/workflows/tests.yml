@@ -76,6 +76,9 @@ jobs:
                           str(root / "examples/data/point_cloud_24.csv")], cwd=temporary, check=True)
           subprocess.run([str(python), "-I", str(root / "tests/protein_ligand_wheel_smoke.py"),
                           str(root / "examples/protein_ligand/manifest.csv")], cwd=temporary, check=True)
+          subprocess.run([str(python), "-I", str(root / "tests/protein_protein_wheel_smoke.py"),
+                          str(temporary / "topokit-ppi-smoke"),
+                          str(root / "examples/protein_protein/manifest.csv")], cwd=temporary, check=True)
       - name: Run repository point-cloud example
         run: python examples/point_cloud.py --output examples/output
       - name: Preserve test reports and distributions

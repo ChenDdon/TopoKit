@@ -31,10 +31,13 @@ Publishing packages, repositories or datasets requires explicit direction
 from the maintainer.
 
 For user feature-generation tasks, read [workflows/AGENTS.md](workflows/AGENTS.md).
-The repository provides separate skills for fixed Topo topology features and
-ESM-2 + CPZ sequence embeddings. These instructions compose the public APIs;
+The repository provides separate skills for protein–ligand and protein–protein
+Topo features, and for protein–ligand ESM-2 + CPZ sequence embeddings. The public
+PPI workflow contains the selected topology-only recipe and optional inference;
+research runs, training controllers and sequence comparisons remain outside it. These instructions compose the public APIs;
 they do not authorize retraining or changing scientific defaults. Example
-complexes are under `examples/protein_ligand`, with byte-level provenance and
+complexes are under `examples/protein_ligand` and `examples/protein_protein`,
+with byte-level provenance and
 source-data terms distinct from the MIT code license.
 
 Use **Topo** or **topology features** in user-facing text. Internal recipe IDs,
