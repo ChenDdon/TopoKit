@@ -9,8 +9,7 @@ ensemble's fitted models and inference helper are not bundled.
 Use finite unscaled float32 `(N,1792)` embeddings in protein-then-ligand order:
 1,280 ESM-2 coordinates followed by 512 CPZ BOS coordinates. The
 [feature recipe](RECIPE.json) specifies checkpoint identities, pooling and
-input policies. ChEMBL27-only embeddings have the same width but are not
-compatible with this model.
+input policies. Supply features with that exact recipe identity.
 
 The model comprises three StandardScaler + GBDT pipelines trained on the
 18,498-member general-v2020R1 set with all CASF test IDs excluded. Each member
@@ -48,6 +47,5 @@ do not establish statistical significance.
 
 A usable external distribution must provide all three trusted pipelines,
 their fitted scalers and hash metadata, plus a compatible inference helper.
-The public package does not provide that distribution. Its installed
-`predict_gbdt` supports the separate ChEMBL27-only contract (internal `FS-AQ`)
-and rejects the CPZ ensemble (internal `FS-AU`).
+The public package provides feature extraction; obtain the ensemble assets
+and a compatible inference implementation separately.

@@ -30,8 +30,8 @@ schema: the loader verifies exact schema bytes, per-sample records and hashes.
 The batch exporter's sample IDs need not be real PDB IDs; `pdb_id` is the loader's
 manifest column name. No affinity labels are required for inference.
 
-Ensemble bundles contain `ENSEMBLE.json` and member directories; historical
-single-model bundles containing `MODEL.json` are also supported. Every pipeline
+Ensemble bundles contain `ENSEMBLE.json` and member directories. Single-model
+bundles contain `MODEL.json`. Every pipeline
 contains its fitted scaler. Pass raw features: the API scales once inside each
 pipeline, then averages predictions. Do not fit a new scaler on test inputs.
 

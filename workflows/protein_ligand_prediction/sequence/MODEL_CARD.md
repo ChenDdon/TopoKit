@@ -10,8 +10,6 @@ weights must be provided as trusted local files; TopoKit does not download them.
 The optional selected CPZ affinity ensemble has no bundled inference helper,
 fitted pipelines or benchmark data. Its recorded profile documents an external
 model and does not make affinity prediction available from a public clone alone.
-The installed ChEMBL27 `predict_gbdt` helper is a different model contract and
-rejects CPZ bundles.
 
 ## Inputs and features
 
@@ -24,9 +22,8 @@ float32 `[1792]`, protein first and ligand second.
 
 [RECIPE.json](RECIPE.json) pins model revisions, checkpoint hashes, pooling and
 token policies. This representation is independent of bound 3D coordinates.
-Different chain choices, missing residues, ligand preparation or checkpoint
-substitutions can change the features. The default `SequenceEncoder()` uses
-the separate ChEMBL27-only profile; select `cpz` explicitly.
+Select the intended protein chains and prepared ligand, supply the pinned
+assets, and set `ligand_profile="cpz"` explicitly.
 
 ## Optional affinity ensemble
 

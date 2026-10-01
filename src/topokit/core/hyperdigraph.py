@@ -1,4 +1,4 @@
-"""Analysis-only native sequence-hyperdigraph homology and real spectra."""
+"""Analysis-only native hyperdigraph homology and real spectra."""
 
 from dataclasses import asdict
 import numbers

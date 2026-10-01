@@ -1,4 +1,6 @@
-"""Analysis of explicit two-factor interaction chains.
+"""Analysis of interaction-complex quotient chains.
+
+The current public implementation supports two factors.
 
 This layer knows factor simplices, quotient boundaries, and scalar grades.
 It does not read point clouds, construct geometric complexes, or import any

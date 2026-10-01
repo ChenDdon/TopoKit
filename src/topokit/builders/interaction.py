@@ -1,4 +1,6 @@
-"""Construct two-factor interaction objects with explicit shared identity.
+"""Construct interaction complexes with explicit shared identity.
+
+The current public implementation supports two factors.
 
 Point-cloud factors are built independently. Their scalar filtrations are
 coupled by maximum birth, never by copying grades between matching vertices.

@@ -1,4 +1,4 @@
-"""Native sequence-hyperdigraph topology.
+"""Native hyperdigraph topology.
 
 The public API is intentionally small: construct a static or filtered
 hyperdigraph, then compute homology, persistence, or the corresponding

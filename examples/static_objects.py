@@ -10,5 +10,5 @@ directed = directed_builder.from_digraph([(0, 1), (1, 0)], vertices=(0, 1))
 print("Reciprocal digraph H0..H2:", hyperdigraph.homology(directed).betti_numbers)
 
 interacting = interaction_builder.from_complexes(sphere, sphere, max_dimension=2)
-print("Two-factor sphere interaction H0..H2:", interaction.homology(interacting).betti_numbers)
+print("Sphere interaction complex H0..H2:", interaction.homology(interacting).betti_numbers)
 print("Interaction L2 nullity:", interaction.laplacian(interacting, dimension=2).nullity)

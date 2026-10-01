@@ -219,12 +219,12 @@ def plot_hyperdigraph(topology, *, scale=None, dimensions=None, cloud=None,
     visible_cloud, cells, value, _ = _select_hyperdigraph_view(
         topology, scale=scale, dimensions=dimensions, cloud=cloud,
         max_scan_cells=max_scan_cells, options=options)
-    options.setdefault("title", "Sequence hyperdigraph" if value is None else f"Sequence hyperdigraph at {value:g}")
+    options.setdefault("title", "Hyperdigraph" if value is None else f"Hyperdigraph at {value:g}")
     return plot_hyperedges(visible_cloud, cells, **options)
 
 
 def plot_topology(topology, **options):
-    """Dispatch simplicial and sequence-hyperdigraph views only.
+    """Dispatch simplicial and hyperdigraph views only.
 
     Interaction quotient chains require the separate ``plot_interaction_factors``
     view; no geometric embedding is inferred for them.

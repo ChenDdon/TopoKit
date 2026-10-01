@@ -49,7 +49,7 @@ hashes, a feature schema and a completion receipt with the vector.
 
 For a batch, prepare a CSV with `sample_id,protein_file,ligand_file`. IDs are
 unique letters/digits/underscores/hyphens. Resolve relative structure paths
-against the manifest's directory. No labels or historical cohort are required.
+against the manifest's directory. No labels or fixed cohort are required.
 Run from the repository root with a new output directory:
 
 ```bash

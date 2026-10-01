@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Standard mathematical names are simplicial complexes, hyperdigraphs and
+  interaction complexes. The package overview links to detailed application
+  recipes and lists four method references with DOI links. Workflow guides
+  describe supported usage, required assets and output contracts.
+
 - Make PPI test fixtures portable across Windows and Unix line endings while
   retaining strict canonical-byte checks for exported feature schemas.
 - Include ten compact protein–protein examples with exactly two chains, A and B,

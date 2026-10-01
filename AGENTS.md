@@ -42,3 +42,11 @@ source-data terms distinct from the MIT code license.
 
 Use **Topo** or **topology features** in user-facing text. Internal recipe IDs,
 schemas, hashes and model contracts remain unchanged by display-name edits.
+
+Use **simplicial complexes**, **hyperdigraphs** (or **topological hyperdigraphs**)
+and **interaction complexes** as the mathematical family names. Describe the
+current interaction implementation's two-factor limit separately in API
+contracts. Keep feature dimensions, encoder names and detailed recipes in
+workflow guides; the root README covers the toolkit and links to those guides.
+Public usage guides state current interfaces and requirements without internal
+development narratives or old-versus-new recipe comparisons.

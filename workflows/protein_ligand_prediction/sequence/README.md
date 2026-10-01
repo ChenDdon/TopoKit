@@ -9,8 +9,8 @@ from 3D protein–ligand structures.
 
 The supported extraction route is `SequenceEncoder(ligand_profile="cpz")`.
 The [machine-readable recipe](RECIPE.json) pins both models, required files,
-pooling, feature order and hashes. The default constructor remains the historical
-ChEMBL27-only recipe for compatibility; always select `cpz` explicitly here.
+pooling, feature order and hashes. Set `ligand_profile="cpz"` explicitly when
+constructing the encoder for this recipe.
 
 ## Install and supply the model assets
 
@@ -29,12 +29,11 @@ local copies of these exact assets:
 | `chembl_dir` / `--cpz-dir` | `checkpoint_best.pt`, `dict.txt` from `chembl27_pubchem_zinc_512` | [WeilabMSU/PretrainModels](https://github.com/WeilabMSU/PretrainModels) |
 
 The complete SHA256 map is in [RECIPE.json](RECIPE.json). The CPZ checkpoint
-starts with `c4788751…`; the ChEMBL27-only checkpoint starts with `8f4b94db…` and
-is a different representation despite having the same width. The loader rejects
-mismatched checkpoint and dictionary bytes before loading the ligand model.
+starts with `c4788751…`. The loader verifies both checkpoint and dictionary
+bytes before loading the ligand model.
 The CPZ hashes pin the supported encoder assets; an upstream archive
 must be checked against them after extraction. Check the upstream terms when
-obtaining or distributing weights. The legacy `.pt` loader can deserialize
+obtaining or distributing weights. The `.pt` loader can deserialize
 Python objects, so supply weights from a trusted source, not an arbitrary upload.
 
 ESM-2 has 650 million parameters; its weights alone are about 2.6 GB. Allow
@@ -126,12 +125,10 @@ that are **not bundled** with TopoKit. The [model card](MODEL_CARD.md) describes
 its scope and evaluation limits; the [protocol](ENSEMBLE_PROTOCOL.md) and
 [model recipe](MODEL_SELECTION.json) define the external model contract.
 
-The installed `make_gbdt`, `fit_gbdt`, `predict_gbdt` and module-level `RECIPE_ID`
-retain the ChEMBL27-only model contract (internal ID `FS-AQ`). They do not
-implement the selected CPZ ensemble (internal ID `FS-AU`). In particular,
-`predict_gbdt` rejects a CPZ bundle. Do not send a ChEMBL27-only vector to a CPZ
-model or standardize a vector twice. A shared vector width does not establish
-compatibility.
+For affinity inference, use the external ensemble specified in
+[MODEL_SELECTION.json](MODEL_SELECTION.json), together with an inference
+implementation that validates this feature recipe and applies each member’s
+fitted scaler exactly once. The public sequence runner performs extraction only.
 
 The [repository skill](../../skills/topokit-sequence/SKILL.md) helps an agent
 follow the same feature recipe.

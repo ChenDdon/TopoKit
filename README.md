@@ -5,22 +5,18 @@
 [Report an issue](https://github.com/ChenDdon/TopoKit/issues)
 
 TopoKit is a Python toolkit for constructing and analyzing **simplicial complexes,
-sequence hyperdigraphs, and two-factor interaction complexes**. It turns explicit
-objects or scientific coordinates into homology, persistence, Laplacian spectra,
-and numerical features through composable APIs.
+hyperdigraphs, and interaction complexes**. It turns explicit objects or scientific
+coordinates into homology, persistence, Laplacian spectra and numerical features
+through composable APIs.
 
-The predefined **Topo** workflows turn prepared 3D structures into numerical
-features using NumPy and SciPy: **27,500 features for protein–ligand complexes**
-and **5,040 features for protein–protein complexes**. Feature extraction needs
-no pretrained weights. Optional affinity prediction uses compatible external
-models. A separate protein–ligand sequence recipe uses frozen **ESM-2 + CPZ**
-encoders to produce 1,792 embedding features with external encoder assets.
+Use the general APIs to build an analysis for your scientific question, or start
+with a predefined workflow for protein–ligand or protein–protein complexes.
+Tutorial notebooks and small example datasets demonstrate construction,
+analysis, visualization and feature extraction.
 
 [Install](#installation) · [Basic usage](#basic-usage) ·
-[Tutorial notebooks](#tutorial-notebooks) ·
-[Protein–ligand workflow](#proteinligand-topology-features) ·
-[Protein–protein workflow](#proteinprotein-topology-features) ·
-[Sequence recipe](#sequence-based-features) · [Documentation](#documentation)
+[Tutorial notebooks](#tutorial-notebooks) · [Application workflows](#application-workflows) ·
+[Citing the methods](#citing-the-methods) · [Documentation](#documentation)
 
 ## Installation
 
@@ -37,14 +33,10 @@ python -m pip install .
 python -m topokit info
 ```
 
-To reproduce this release, run `git checkout v0.3.0` before installation.
-Alternatively, download the wheel or source archive from the
-[v0.3.0 release](https://github.com/ChenDdon/TopoKit/releases/tag/v0.3.0).
-The PPI workflow below is an addition to the current source checkout and is
-not included in the original v0.3.0 assets. The GitHub source archive includes
-the tutorials and example inputs; the wheel
-contains the Python library and small runtime schemas. This release is hosted
-on GitHub; the command above does not rely on a PyPI package of the same name.
+The source checkout includes tutorials, example inputs and workflow scripts.
+The Python wheel contains the library and its runtime schemas. Versioned
+packages are available from [GitHub Releases](https://github.com/ChenDdon/TopoKit/releases).
+The installation above uses this repository's source.
 
 The base installation depends only on NumPy and SciPy. Use an editable
 installation when developing the package:
@@ -61,7 +53,7 @@ Optional extras are installed only when needed:
 | `.[test]` | Pytest |
 | `.[ml]` | Scikit-learn estimators and companion GBDT inference |
 | `.[sequence]` | Frozen protein/ligand encoders: PyTorch, Transformers, RDKit and scikit-learn |
-| `.[dl]` | Optional supervised TopoFormer application |
+| `.[dl]` | Optional supervised affinity models |
 | `.[alpha_exact]` | Explicit GUDHI exact-alpha backend for reference or custom constructions |
 
 Base topology extraction does not require pretrained weights, PyTorch, RDKit,
@@ -145,139 +137,25 @@ outputs go under `examples/output/`. The input-format tutorial uses explicit
 small subsets for its larger structures. Ordinary Laplacian snapshot curves
 are distinct from the two-scale persistent Laplacian API.
 
-## Protein–ligand topology features
+## Application workflows
 
-The default **Topo** workflow accepts a prepared protein PDB and ligand MOL2 in
-the **same coordinate frame**, with coordinates in angstroms. It crops protein
-atoms within 15 Å of supported ligand atoms, uses 50 alpha radii from 0.1 to
-5.0 Å and 55 element/null channels, and computes ten summaries of ordinary
-Hyperdigraph L0 spectra. Its output is a C-contiguous `float32` tensor of shape
-`(10, 50, 55)`; C-order flattening gives **27,500 features**.
+Predefined recipes help turn prepared molecular inputs into feature arrays for
+analysis or downstream modelling. Their guides specify input preparation,
+feature definitions, optional dependencies and model requirements.
 
-The public feature name is **Topo**. Schemas use the internal compatibility
-identifier `FS-AN` to identify the exact numerical recipe, feature order and
-saved-model contract.
+| Workflow | Inputs | Guide and examples |
+| --- | --- | --- |
+| Protein–ligand topology features | A prepared protein structure and ligand pose in the same coordinate frame | [Recipe and usage](workflows/protein_ligand_prediction/README.md) · [Ten example complexes](examples/protein_ligand/README.md) |
+| Protein–protein topology features | A prepared complex structure and explicit partner-chain assignments | [Recipe and usage](workflows/protein_protein_prediction/README.md) · [Ten two-chain examples](examples/protein_protein/README.md) |
+| Protein–ligand sequence features | Protein sequences and ligand SMILES | [Recipe and model assets](workflows/protein_ligand_prediction/sequence/README.md) |
 
-For one complex:
+Topology feature extraction uses the base installation. Optional pretrained
+embeddings and affinity prediction require the assets and dependencies described
+in their workflow guides. Inputs should already represent the intended molecular
+system; docking and structure preparation are separate steps.
 
-```python
-from pathlib import Path
-import numpy as np
-from topokit.workflows.protein_ligand_prediction import featurize
-
-# Replace these with a prepared protein–ligand pair.
-tensor = featurize("protein.pdb", "ligand.mol2")
-features = tensor.ravel(order="C")
-Path("examples/output").mkdir(parents=True, exist_ok=True)
-np.save("examples/output/topology_features.npy", features)
-```
-
-For the ten supplied test pairs, run the manifest-based exporter from the
-repository root:
-
-```bash
-python workflows/protein_ligand_prediction/extract_features.py \
-  --manifest examples/protein_ligand/manifest.csv \
-  --output examples/output/protein_ligand
-```
-
-The exporter saves individual tensors and provenance records, the canonical
-feature schema, and a complete `(N, 27500)` feature matrix with ordered sample
-IDs when every row succeeds. Use the [sample guide](examples/protein_ligand/README.md)
-and [manifest](examples/protein_ligand/manifest.csv) to prepare your own batch.
-Sample provenance and redistribution status are recorded with the data. Git
-preserves these structure files byte-for-byte on every platform, including
-Windows, so their recorded SHA-256 checksums remain valid after cloning.
-
-Read the [full workflow guide](workflows/protein_ligand_prediction/README.md) for
-input preparation, channel/statistic meanings, resource guards and output files.
-An [agent skill](workflows/skills/topokit-protein-ligand/SKILL.md) guides an
-assistant through the default recipe and checks its outputs.
-
-The workflow expects an already prepared complex; docking and structure
-preparation are separate steps. Resolve alternate conformations and choose the
-intended receptor/ligand before extraction. Exact duplicate coordinates are
-kept once, in cropped-protein-then-ligand order, with a removal receipt. Changes
-to the crop, radii, channels or summaries define a different feature recipe and
-must not be passed to a model trained for the default Topo recipe.
-
-Feature extraction produces descriptors. Affinity prediction additionally
-requires a compatible trained model bundle and its fitted scaler. The selected
-companion topology predictor is a three-seed GBDT ensemble; model assets are
-separate from the package. See the [prediction guide](workflows/protein_ligand_prediction/ml/README.md).
-
-The optional [TopoFormer application](workflows/protein_ligand_prediction/dl/README.md)
-also predicts affinity from Topo features. Its
-[model card](workflows/protein_ligand_prediction/dl/MODEL_CARD.md) describes
-the supported model, evaluation and limitations; the accompanying recipe
-records training settings. Trained models and scalers are external assets
-and are not needed for topology feature extraction.
-
-## Protein–protein topology features
-
-The predefined **PPI Topo** recipe takes a prepared PDB or mmCIF complex and
-explicit chain lists for its two binding partners. It returns **5,040 topology
-features**, as a float32 `(10, 14, 36)` tensor. Chain groups may contain multiple
-chains. Coordinates must be in angstroms and already describe the intended
-complex; the workflow does not dock proteins or build biological assemblies.
-
-```python
-import numpy as np
-from topokit.workflows.protein_protein_prediction import featurize
-
-tensor = featurize("complex.pdb", ["A"], ["B"])
-np.save("ppi_topology_features.npy", tensor.ravel(order="C"), allow_pickle=False)
-```
-
-Try the [ten bundled two-chain complexes](examples/protein_protein/README.md),
-each with chain A and chain B as its two partners. Run from the repository root:
-
-```bash
-python workflows/protein_protein_prediction/extract_features.py \
-  --manifest examples/protein_protein/manifest.csv \
-  --output examples/output/ppi
-```
-
-For your own collection, copy the [manifest](examples/protein_protein/manifest.csv)
-with columns `sample_id,structure_file,partner_a_chains,partner_b_chains`;
-separate chains within a multi-chain partner with semicolons.
-The exporter writes tensors, input-selection records and the exact feature
-schema, followed by an ordered `(N, 5040)` matrix when every sample succeeds.
-Keep the exporter-written schema when moving a feature store between platforms.
-The fixed recipe selects interface residues using a strict 20 Å Cα distance,
-uses 14 alpha radii from 1.0 through 7.5 Å in 0.5 Å steps, and summarizes
-36 atom-category channels. No topology background is needed to run it.
-
-Follow the [PPI workflow guide](workflows/protein_protein_prediction/README.md)
-for chain selection, manifest examples and output checks, or the
-[PPI agent skill](workflows/skills/topokit-protein-protein/SKILL.md).
-Optional [GBDT inference](workflows/protein_protein_prediction/ml/README.md)
-predicts signed binding free energy in kcal/mol from these features and three
-compatible external model bundles. The public PPI recipe uses topology only.
-
-## Sequence-based features
-
-The **ESM-2 + CPZ** sequence recipe combines the **ESM-2
-`esm2_t33_650M_UR50D`** protein encoder (1,280 features) with the **CPZ
-`chembl27_pubchem_zinc_512`** ligand encoder (512 features), yielding a
-**1,792-dimensional** vector. This is a separate pretrained embedding modality.
-It takes protein sequence information and a ligand SMILES string; it does not
-calculate topology from a bound three-dimensional complex.
-
-Install `.[sequence]`, then follow the [sequence recipe and asset instructions](workflows/protein_ligand_prediction/sequence/README.md).
-The [sequence agent skill](workflows/skills/topokit-sequence/SKILL.md) specifies
-the selected encoders and verification steps. Encoder weights and downstream
-GBDT models are external assets and are not downloaded at import time. Preserve
-the documented model identities, pooling and token policies when reusing the
-recipe; replacing CPZ with the ChEMBL27-only checkpoint changes the features.
-
-An optional sequence affinity model uses these embeddings with an external
-GBDT ensemble. See its
-[model card](workflows/protein_ligand_prediction/sequence/MODEL_CARD.md) for
-model requirements, evaluation and limitations. The supplied sequence runner
-extracts features; ensemble inference requires separate model assets and a
-compatible inference implementation. Sequence embeddings, Topo features and
-trained affinity models are distinct assets.
+See the [workflow index](workflows/README.md) for commands and the accompanying
+agent skills for guided use of each recipe.
 
 ## Architecture and scientific scope
 
@@ -299,12 +177,22 @@ large or higher-dimensional constructions can be expensive. CIF parsing does
 not perform symmetry or periodic-image expansion. See the [architecture](docs/ARCHITECTURE.md),
 [mathematical contracts](docs/CONTRACTS.md) and [native alpha notes](docs/NATIVE_ALPHA.md).
 
+## Citing the methods
+
+If TopoKit supports your research, cite the papers relevant to the methods you
+use and report the package version and workflow recipe in your methods section.
+
+1. Dong Chen, Jian Liu and Guo-Wei Wei. **Multiscale topology-enabled structure-to-sequence transformer for protein–ligand interaction predictions.** *Nature Machine Intelligence* **6**, 799–810 (2024). [doi:10.1038/s42256-024-00855-1](https://doi.org/10.1038/s42256-024-00855-1).
+2. Dong Chen, Jian Liu, Chun-Long Chen and Guo-Wei Wei. **Interaction topology theory deciphers multiscale codes of MOF-like materials.** *Science Advances* **12**(34), eaee8016 (2026). [doi:10.1126/sciadv.aee8016](https://doi.org/10.1126/sciadv.aee8016).
+3. Jian Liu, Dong Chen and Guo-Wei Wei. **Persistent interaction topology in data analysis.** *Foundations of Data Science* **9**, 34–60 (2026). [doi:10.3934/fods.2025011](https://doi.org/10.3934/fods.2025011).
+4. Dong Chen, Jian Liu, Jie Wu and Guo-Wei Wei. **Persistent hyperdigraph homology and persistent hyperdigraph Laplacians.** *Foundations of Data Science* **5**(4), 558–588 (2023). [doi:10.3934/fods.2023010](https://doi.org/10.3934/fods.2023010).
+
 ## Documentation
 
 - [Reference guide](docs/README.md): architecture, scientific contracts, notation and visualization
 - [Workflow guides](workflows/README.md): Topo features, sequence embeddings and optional affinity prediction
 - [Changelog](CHANGELOG.md), [v0.3.0 release notes](release-notes/v0.3.0.md) and [automated checks](https://github.com/ChenDdon/TopoKit/actions)
-- [Example-data provenance](examples/data/README.md) and [protein–ligand sample provenance](examples/protein_ligand/README.md)
+- [Example-data provenance](examples/data/README.md), [protein–ligand examples](examples/protein_ligand/README.md) and [protein–protein examples](examples/protein_protein/README.md)
 
 For development checks:
 

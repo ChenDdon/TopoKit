@@ -21,8 +21,7 @@ ordering, a strict 20 Å Cα interface crop and exact-coordinate deduplication.
 
 Requested chains must exist by default. Use `allowed_missing_chains` or
 `empty_partner` only when explicitly requested for these inputs, and retain the
-choice in the manifest and output records. Do not import historical cohort
-exceptions. Neither exception establishes a meaningful binding interface.
+choice in the manifest and output records. Apply missing-chain exceptions only when specified for the current inputs. Neither exception establishes a meaningful binding interface.
 
 ## Extract the predefined features
 

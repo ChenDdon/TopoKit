@@ -20,14 +20,13 @@ alternate-location/occupancy diagnostics are warnings, not atom-selection rules.
 Prepare the intended conformer upstream. Complete ordinary L0 spectra are
 required; explicit resource caps cannot silently substitute partial spectra.
 
-`SequenceEncoder(ligand_profile="cpz")` selects the pinned CPZ checkpoint and
-dictionary and reports `sequence-esm2-t33-cpz-bos-v1`. Omitting the profile keeps
-the ChEMBL27 default and its distinct recipe. Both use ESM-2 residue-count-weighted
-pooling followed by the ligand BOS vector, yielding float32[1792] in protein-then-
-ligand order. The explicit profile changes ligand weights/vocabulary, not pooling
-or feature width. It cannot make a CPZ vector compatible with a ChEMBL27 model.
-The installed sequence GBDT helpers use the ChEMBL27 recipe; the repository CPZ
-runner extracts embeddings only and does not train or perform ensemble inference.
+Use `SequenceEncoder(ligand_profile="cpz")` for the predefined sequence recipe.
+It loads the pinned CPZ checkpoint and dictionary and reports
+`sequence-esm2-t33-cpz-bos-v1`. ESM-2 residue-count-weighted pooling followed by
+the ligand BOS vector yields float32[1792] in protein-then-ligand order.
+The repository runner extracts embeddings. Affinity inference requires the
+external ensemble assets and a compatible implementation described in the
+[sequence guide](../workflows/protein_ligand_prediction/sequence/README.md).
 
 ## Protein–protein Topo contract
 
@@ -107,9 +106,8 @@ provenance.
 
 ## Distinct objects
 
-Simplicial complexes, ordered sequence hyperdigraphs, and two-factor interaction
-quotient chains retain different mathematical representations. Shared result
-envelopes do not identify their homology or force them through a simplex tree.
+Simplicial complexes, hyperdigraphs, and interaction complexes retain distinct
+mathematical representations. Shared result envelopes do not identify their homology or force them through a simplex tree.
 An explicit graph is a one-dimensional simplicial object unless flag expansion
 is explicitly requested. An explicit digraph contains the supplied directed
 edges, not implicit higher hyperedges. Point-cloud construction is a separate,
@@ -243,8 +241,7 @@ mean prediction vector; individual metric means/SD remain separate summaries.
 Ensemble inference requires external model/scaler bundles and a compatible
 inference implementation, as described in the
 [model card](../workflows/protein_ligand_prediction/sequence/MODEL_CARD.md).
-The repository sequence runner extracts embeddings only; installed ChEMBL27
-estimator helpers are not compatible with CPZ features.
+The repository sequence runner supplies feature extraction only.
 
 ## Points, weights, and bonds
 
@@ -306,7 +303,7 @@ Weights/birth values are not smuggled into a binary adjacency matrix.
 | Alpha (default) | Delaunay alpha geometry | Rejected | Alpha squared radius |
 | Rips | Complete distance graph | Rejected | Edge distance |
 | Graph / flag | Delaunay edges | Replace inferred pairs | Edge distance |
-| Digraph / sequence-hyperdigraph | Delaunay edges | Replace inferred pairs | Edge distance |
+| Digraph / hyperdigraph | Delaunay edges | Replace inferred pairs | Edge distance |
 
 `bonds=[]` means no edges, not missing input. `cutoff=None` imposes no extra
 distance pruning. A finite cutoff retains edges of length <= cutoff and applies
@@ -326,7 +323,7 @@ degree one unless the corresponding explicit higher-order construction is chosen
 `filtration_range=(start, end)` is an inclusive **construction domain** in the
 selected builder's native units. It is not a two-point observation schedule.
 Absent bounds mean start 0 and all finite constructed events, subject to explicit
-resource guards. Nondefault legacy `filtration_start`/`max_scale` must agree with
+resource guards. Nondefault `filtration_start`/`max_scale` must agree with
 a supplied range. Births below a positive start are clamped, not translated;
 initial bars may be left-truncated, and terminal infinite bars in a bounded
 domain are right-censored. They are not automatically essential in a larger object.
@@ -352,11 +349,11 @@ all-pairs grid is generated implicitly. Higher degrees use the general algebra
 with existing resource guards; no claim of universal high-dimensional efficiency
 or parity with other platforms is made.
 
-## Two-factor interaction
+## Interaction complexes
 
 Only k=2 is supported. One cloud means two factors with full vertex overlap.
 Two clouds require a partial one-to-one map `overlap_vertices=[(id_a,id_b), ...]`
-(the existing `overlap_pairs` name remains available). Input rows and IDs are
+(`overlap_pairs` is an accepted alias). Input rows and IDs are
 never reordered to manufacture overlap. A matched vertex may have different
 local IDs; internal factor namespaces distinguish all unmatched vertices.
 

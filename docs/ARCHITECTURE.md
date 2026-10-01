@@ -115,7 +115,7 @@ belong in either distribution. See the [PPI guide](../workflows/protein_protein_
 
 PyTorch, Transformers, RDKit, scikit-learn and plotting dependencies remain
 lazy. Trained models, encoder weights, dataset memberships, training controllers
-and historical study outputs are external assets. The wheel includes library
+and study outputs are external assets. The wheel includes library
 code and small runtime schemas; source distributions also contain user scripts,
 tutorials, examples, skills, tests and this reference documentation. Examples
 and generated outputs belong under `examples/`, never `src/topokit`.

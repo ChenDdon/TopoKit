@@ -20,7 +20,7 @@ def from_digraph(edges, vertices=None):
 def from_points(cloud, max_dimension=2, filtration_start=0, max_scale=math.inf,
                 *, max_hyperedges=500_000, bonds=None, cutoff=None, weights=None,
                 object_type="hyperdigraph", filtration_range=None):
-    """Build a filtered sequence hyperdigraph from a generic weighted cloud.
+    """Build a filtered hyperdigraph from a generic weighted cloud.
 
     A retained pair points from lower to higher weight; exact equal
     weights retain BOTH directions. Directed sequences contain distinct IDs

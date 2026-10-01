@@ -2,7 +2,7 @@
 
 The matrix adapters intentionally generate only *simple directed paths*:
 vertices cannot repeat inside a sequence.  This agrees with the native
-sequence-hyperdigraph definition used by the package and with the legacy
+hyperdigraph definition used by the package and with the legacy
 ``connected_map_to_dihyperedge`` example.
 
 Two independent kinds of bounds are supported:

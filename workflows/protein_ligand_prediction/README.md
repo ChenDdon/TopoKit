@@ -52,7 +52,7 @@ complex_B,structures/B/protein.pdb,structures/B/ligand.mol2
 ```
 
 IDs must be unique and contain only letters, digits, underscores or hyphens.
-No four-character PDB ID, affinity label, train/test split or historical dataset
+No four-character PDB ID, affinity label, train/test split or fixed dataset
 membership is required. Run the same command with your manifest path.
 
 Inputs must describe an already prepared complex in a common coordinate frame
@@ -100,9 +100,8 @@ may need an explicitly designed scheduling layer.
 [DEFAULT_RECIPE.json](DEFAULT_RECIPE.json) summarizes the recipe and links it to
 the installed canonical schema. The following definition preserves the selected
 Topo arithmetic; the canonical schema defines the geometric and statistical contract.
-The internal strategy ID `FS-AN` remains in schemas and model receipts for
-compatibility. **Topo** is the user-facing name; do not rename hash-pinned
-identifiers or rewrite schema files.
+Use **Topo** as the feature name. The schema and model receipts identify the
+recipe as `FS-AN`; preserve that identifier and the exporter-written schema.
 
 ## Feature definition
 

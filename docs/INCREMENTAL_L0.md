@@ -1,6 +1,6 @@
 # Incremental ordinary L0 construction
 
-For an explicit sequence-hyperdigraph filtration in which every edge's two
+For an explicit hyperdigraph filtration in which every edge's two
 singleton faces are present no later than that edge, ordinary L0 is
 
 \[

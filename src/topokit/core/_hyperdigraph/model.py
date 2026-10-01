@@ -90,7 +90,7 @@ class WeightedHyperedge:
 
 
 class SequenceHyperdigraph:
-    """A finite native sequence hyperdigraph.
+    """A finite native hyperdigraph.
 
     By default, ambient vertices are not silently inserted into ``F_0``.  Pass
     ``include_all_vertices=True`` for the common graph-like convention.

@@ -9,8 +9,8 @@ Full construction contracts are in [CONTRACTS.md](CONTRACTS.md).
   charges, atom names/types, unit cells, and raw source records remain metadata
   until an application explicitly selects how to use them.
 * A builder produces a mathematical object or scalar filtration `K(t)`, `D(t)`,
-  or `IC(t)` for a simplicial, sequence-hyperdigraph, or two-factor interaction
-  route. Their chain spaces are distinct and are not implicitly interchangeable.
+  or `IC(t)` for a simplicial complex, hyperdigraph, or interaction complex.
+  Their chain spaces are distinct and are not implicitly interchangeable.
 * `C_q(t)` denotes the relevant degree-q chain space, with boundary `B_q(t)`.
   In any valid chain complex, `B_q B_(q+1) = 0`. Embedded and interaction chain
   bases can be combinations/quotients; they are not necessarily individual cells.

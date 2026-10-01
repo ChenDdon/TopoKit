@@ -66,14 +66,6 @@
     "weights_bundled": false,
     "trusted_local_assets_required": true
   },
-  "historical_api": {
-    "default_ligand_profile": "chembl27",
-    "default_feature_recipe_id": "sequence-esm2-t33-chembl27-bos-v1",
-    "model": "WeilabMSU/PretrainModels/chembl27_512",
-    "checkpoint_sha256": "8f4b94db0b35514068b755313a1630233041a1f99714003ad76c530dbc979924",
-    "dictionary_sha256": "65fd0c5ca8af7403bd170155c9740b63273fb203ef347c856a0e9d72045acc7c",
-    "make_gbdt_and_predict_gbdt": "retain original FS-AQ settings and bundle identity; not the selected FS-AU training or inference route"
-  },
   "provenance": {
     "model_selection_receipt": "MODEL_SELECTION.json",
     "asset_hash_authority": "asset identities pinned by this recipe and the installed encoder; checkpoints remain external",

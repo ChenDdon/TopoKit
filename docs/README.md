@@ -15,11 +15,11 @@ features, optional affinity models and protein–ligand sequence embeddings.
 | [Incremental L0](INCREMENTAL_L0.md) | Ordinary hyperdigraph L0 sweeps and independent vertex deletion |
 | [Reference constants](REFERENCE_DATA.md) | Pauling electronegativity snapshot and attribution |
 
-Changes are summarized in the [changelog](../CHANGELOG.md). The
-[v0.3.0 release notes](../release-notes/v0.3.0.md) retain the wording shipped
-with that release. Current automated checks are available in
+Changes are summarized in the [changelog](../CHANGELOG.md). Version details are in the
+[release notes](../release-notes/v0.3.0.md). Automated checks are available in
 [GitHub Actions](https://github.com/ChenDdon/TopoKit/actions).
 
 Examples have their own [data inventory](../examples/data/README.md) and
-[protein–ligand provenance](../examples/protein_ligand/README.md). Code, data
+[protein–ligand provenance](../examples/protein_ligand/README.md) and
+[protein–protein provenance](../examples/protein_protein/README.md). Code, data
 and model weights have distinct licensing terms; see [NOTICE.md](../NOTICE.md).

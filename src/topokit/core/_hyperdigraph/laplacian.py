@@ -1,6 +1,6 @@
 """Ordinary and persistent hyperdigraph Laplacians over the reals.
 
-The module implements the sequence-hyperdigraph construction of Chen, Liu,
+The module implements the hyperdigraph construction of Chen, Liu,
 Wu, and Wei.  Explicit directed hyperedges form orthonormal ambient bases.  A
 real orthonormal basis is then constructed for
 

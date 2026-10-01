@@ -48,10 +48,9 @@ encoder = SequenceEncoder(esm_dir=esm_dir, chembl_dir=cpz_dir,
 features, token_receipt = encoder.encode(protein_chains, smiles)
 ```
 
-`chembl_dir` is the shared argument name even for CPZ. Omitting `ligand_profile`
-selects historical ChEMBL27-only embeddings. A matching output width is not proof
-of recipe compatibility. Keep nonoverlapping 1,022-residue windows,
-residue-weighted protein pooling and CPZ BOS pooling unchanged.
+Pass the CPZ asset directory as `chembl_dir` and set `ligand_profile="cpz"`
+explicitly. Verify the emitted recipe ID. Use nonoverlapping 1,022-residue
+windows, residue-weighted protein pooling and CPZ BOS pooling.
 
 Unsupported tokens and overlength ligand strings fail by default. Do not enable
 `--allow-unknown` or `--allow-truncation` without an explicit choice to accept the
@@ -60,7 +59,6 @@ asset hashes or dimensionality to make a case pass.
 
 This skill extracts features. Do not call `fit_gbdt`, tune a model, create a
 train/test split, or claim an affinity prediction as part of this recipe.
-The installed `predict_gbdt` supports only its ChEMBL27 model contract (internal
-ID `FS-AQ`); it rejects CPZ bundles. The selected CPZ ensemble (internal ID
-`FS-AU`) has no bundled inference helper or trained models. See the
+Affinity inference for this recipe requires the specified external ensemble
+and a compatible inference helper, neither of which is bundled. See the
 [model card](../../protein_ligand_prediction/sequence/MODEL_CARD.md) for scope.

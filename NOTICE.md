@@ -76,7 +76,7 @@ its dependencies retain their own upstream licenses. Independent external
 reference comparisons also remain part of development/validation.
 No path-complex, path-homology, or path-Laplacian module is exposed. The
 hyperdigraph's directed-sequence construction and specialized internal
-sequence algorithms preserve sequence-hyperdigraph embedded topology.
+sequence algorithms preserve hyperdigraph embedded topology.
 
 ## Compact supervised TopoFormer
 
